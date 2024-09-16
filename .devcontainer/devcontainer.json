@@ -14,7 +14,11 @@
             "rebornix.Ruby", // Ruby syntax highlighting, etc.
             "misogi.ruby-rubocop", // Rubocop
             "KoichiSasada.vscode-rdbg" // Ruby Debug see below
-        ]
+        ],
+        "settings": {
+          "ruby.rubocop.executePath": "/usr/local/bundle/bin/",
+          "ruby.rubocop.onSave": true
+        }
     }
   },
 

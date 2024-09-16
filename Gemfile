@@ -55,6 +55,8 @@ group :development do
   gem "rubocop-rails", require: false
   gem "rubocop-performance", require: false
   gem "pre-commit", require: false
+  gem "execjs", require: false
+  gem 'mini_racer', require: false
 end
 
 group :test do
