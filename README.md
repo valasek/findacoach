@@ -8,7 +8,9 @@ Focus on coaching and Find a Coach will manage all what you need: your coaching 
 
 ## Technical notes
 
-Include Rubocop into precommit hook
+Include into precommit hook:
+rubocop
+rails db:test:prepare test test:system
 
 
 * Rails dev-container configuration
