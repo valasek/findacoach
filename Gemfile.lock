@@ -166,6 +166,9 @@ GEM
     parser (3.3.5.0)
       ast (~> 2.4.1)
       racc
+    pluginator (1.5.0)
+    pre-commit (0.40.0)
+      pluginator (~> 1.5)
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
@@ -354,6 +357,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  pre-commit
   puma (>= 5.0)
   rails (~> 7.2.1)
   rubocop
