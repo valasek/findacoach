@@ -8,6 +8,9 @@ Focus on coaching and Find a Coach will manage all what you need: your coaching 
 
 ## Technical notes
 
+Include Rubocop into precommit hook
+
+
 * Rails dev-container configuration
 https://dev.to/konyu/how-to-use-docker-containers-for-ruby-on-rails-development-in-visual-studio-code-23np
 
