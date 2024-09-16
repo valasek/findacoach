@@ -6,6 +6,18 @@
   "service": "rails-app",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
+  // Extensions to use in containers
+  "customizations": {
+    "vscode": {
+        "extensions": [
+            "castwide.solargraph", // solargraph
+            "rebornix.Ruby", // Ruby syntax highlighting, etc.
+            "misogi.ruby-rubocop", // Rubocop
+            "KoichiSasada.vscode-rdbg" // Ruby Debug see below
+        ]
+    }
+  },
+
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},

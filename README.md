@@ -1,9 +1,15 @@
-# README
+# Find a Coach
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Focus on coaching and Find a Coach will manage all what you need: your coaching session times and notes and clients.
 
-Things you may want to cover:
+## Roadmap
+
+[Roadmap](https://github.com/users/valasek/projects/1)
+
+## Technical notes
+
+* Rails dev-container configuration
+https://dev.to/konyu/how-to-use-docker-containers-for-ruby-on-rails-development-in-visual-studio-code-23np
 
 * Ruby version
 
@@ -20,5 +26,3 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-* ...
