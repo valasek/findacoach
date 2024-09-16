@@ -105,6 +105,7 @@ GEM
     e2mmap (0.1.0)
     erubi (1.13.0)
     execjs (2.9.1)
+    ffi (1.17.0-aarch64-linux-gnu)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -134,6 +135,9 @@ GEM
     libv8-node (18.19.0.0-x86_64-darwin)
     libv8-node (18.19.0.0-x86_64-linux)
     libv8-node (18.19.0.0-x86_64-linux-musl)
+    listen (3.9.0)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.6.1)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -214,6 +218,11 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails_live_reload (0.3.6)
+      listen
+      nio4r
+      railties
+      websocket-driver
     railties (7.2.1)
       actionpack (= 7.2.1)
       activesupport (= 7.2.1)
@@ -224,6 +233,9 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
+    rb-fsevent (0.11.2)
+    rb-inotify (0.11.1)
+      ffi (~> 1.0)
     rbs (2.8.4)
     rdoc (6.7.0)
       psych (>= 4.0.0)
@@ -372,6 +384,7 @@ DEPENDENCIES
   pre-commit
   puma (>= 5.0)
   rails (~> 7.2.1)
+  rails_live_reload
   rubocop
   rubocop-performance
   rubocop-rails

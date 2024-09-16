@@ -19,8 +19,20 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-28 px-5 flex ">
       <%= yield %>
     </main>
+    <footer class="mt-auto py-4 flex justify-center border-solid border-2 border-sky-500">
+      <p>
+        © <%= Date.today.strftime("%Y") %>
+        <div class="mx-1 text-xl">Find a Coach</div>
+        is designed, built, and backed with ♡ in
+        <a href="https://www.lonelyplanet.com/slovakia"
+          class="underline underline-offset-2 decoration-sky-500/30 mx-1">
+          Slovakia
+        </a>
+        by <a href="https://stanislavvalasek.com" class="underline underline-offset-2 decoration-sky-500/30 mx-1">Stanislav Valasek.</a></p>
+      <p>Enjoy your <%= Date.today.strftime("%A") %>!</p>
+    </footer>
   </body>
 </html>

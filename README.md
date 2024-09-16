@@ -4,9 +4,21 @@ Focus on coaching and Find a Coach will manage all what you need: your coaching 
 
 ## Roadmap
 
+Login, Logout, Profile
+Clients, Dashboard, About, Request new feature, Report a bug
+Footer
+
 [Roadmap](https://github.com/users/valasek/projects/1)
 
 ## Technical notes
+
+Start app with bin/dev
+
+Precompile rails assets:
+- rails assets:clean assets:precompile
+
+- clean all assets
+rails assets:clobber
 
 Include into precommit hook:
 rubocop

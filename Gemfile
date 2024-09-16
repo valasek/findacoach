@@ -57,6 +57,7 @@ group :development do
   gem "pre-commit", require: false
   gem "execjs", require: false
   gem "mini_racer", require: false
+  gem "rails_live_reload"
 end
 
 group :test do
