@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Findacoach" %></title>
+    <title><%= content_for(:title) || "Find a Coach" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -19,20 +19,10 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex ">
+    <%= render 'layouts/header' %>
+    <main class="container mx-auto my-8 px-5 flex ">
       <%= yield %>
     </main>
-    <footer class="mt-auto py-4 flex justify-center border-solid border-2 border-sky-500">
-      <p>
-        © <%= Date.today.strftime("%Y") %>
-        <div class="mx-1 text-xl">Find a Coach</div>
-        is designed, built, and backed with ♡ in
-        <a href="https://www.lonelyplanet.com/slovakia"
-          class="underline underline-offset-2 decoration-sky-500/30 mx-1">
-          Slovakia
-        </a>
-        by <a href="https://stanislavvalasek.com" class="underline underline-offset-2 decoration-sky-500/30 mx-1">Stanislav Valasek.</a></p>
-      <p>Enjoy your <%= Date.today.strftime("%A") %>!</p>
-    </footer>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
