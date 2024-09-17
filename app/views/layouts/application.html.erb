@@ -21,7 +21,23 @@
   <body>
     <%= render 'layouts/header' %>
     <main class="container mx-auto my-8 px-5 flex ">
-      <%= yield %>
+      <div class="grid grid-cols-1 col-span-full">
+        <% if notice %>
+        <div class="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3 mb-3" role="alert">
+          <p class="font-bold">Notice</p>
+          <p class="text-sm"><%= notice %></p>
+        </div>
+        <% end %>
+        <% if alert %>
+        <div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 mb-3" role="alert">
+          <p class="font-bold">Alert</p>
+          <p class="text-sm"><%= alert %></p>
+        </div>
+        <% end %>
+        <div>
+          <%= yield %>
+        </div>
+      </div>
     </main>
     <%= render 'layouts/footer' %>
   </body>

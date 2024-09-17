@@ -16,7 +16,6 @@
             "KoichiSasada.vscode-rdbg" // Ruby Debug see below
         ],
         "settings": {
-          // "ruby.rubocop.executePath": "/usr/local/bundle/bin/",
           "ruby.rubocop.executePath": "/home/vscode/.rbenv/shims/",
           "ruby.rubocop.onSave": true,
           "rubyLsp.erbSupport": false

@@ -4,11 +4,7 @@ Focus on coaching and Find a Coach will manage all what you need: your coaching 
 
 ## Roadmap
 
-Login, Logout, Profile
-Clients, Dashboard, About, Request new feature, Report a bug
-Footer
-
-[Roadmap](https://github.com/users/valasek/projects/1)
+[Roadmap](https://github.com/users/valasek/projects/2/views/1?layout=board)
 
 ## Technical notes
 
