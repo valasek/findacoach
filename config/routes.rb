@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   get "/findacoach", to: "findacoach#index"
+  get "whatsnew", to: "whats_new#index"
 end

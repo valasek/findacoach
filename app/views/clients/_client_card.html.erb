@@ -1,0 +1,54 @@
+<!-- Client Card -->
+<div class="relative bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="p-4">
+        <h2 class="text-xl font-semibold mb-2"><%= client.name %></h2> <%= client.archived %>
+        <p class="text-gray-600 mb-2"><%= client.position %> at <%= client.company %></p>
+
+        <div class="grid grid-cols-[auto_1fr] gap-y-1 text-sm mb-2">
+            <span class="text-sm font-medium text-gray-500">Email:</span>
+            <%= mail_to client.email, class: "text-sm text-gray-900 ml-1 underline underline-offset-2 decoration-sky-500/80" %>
+            <span class="text-sm font-medium text-gray-500">Phone:</span>
+            <span class="text-sm text-gray-900 ml-1"><%= client.phone %></span>
+            <span class="text-sm font-medium text-gray-500">Hours:</span>
+            <span class="text-sm text-gray-900 ml-1"><%= client.hours_ordered %> / <%= client.hours_delivered %></span>
+        </div>
+        <div class="mb-10">
+            <details>
+                <summary class="text-sm font-medium text-gray-500 cursor-pointer">Coaching Goal</summary>
+                <p class="text-sm text-gray-900 mt-1"><%= client.coaching_goal %></p>
+            </details>
+        </div>
+        <div class="absolute inset-x-3 bottom-3">
+            <%= link_to new_client_path, class: "rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" do %>
+            New Client
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                </svg>
+            <% end %>
+            <%= link_to edit_client_path(client), class: "rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" do %>
+            Edit this Client
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                </svg>
+            <% end %>
+
+            <button class="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="ml-1">Edit</span>
+            </button>
+            <button class="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
+                    <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd" />
+                </svg>
+                <span class="ml-1">Archive</span>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- End of client card -->

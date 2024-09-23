@@ -1,6 +1,6 @@
 require "test_helper"
 
-class FindacoachControllerTest < ActionDispatch::IntegrationTest
+class WhatsNewControllerTest < ActionDispatch::IntegrationTest
   setup do
     @client = clients(:one)
     @user = users(:one)
@@ -8,7 +8,7 @@ class FindacoachControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get findacoach_url
+    get whatsnew_url
     assert_response :success
   end
 end

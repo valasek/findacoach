@@ -1,12 +1,11 @@
-<footer class="mt-auto py-4 flex justify-center border-solid border-2 border-sky-500">
+<footer class="mt-auto py-4 flex justify-center items-center border-t border-t-solid border-t-2 border-t-sky-500">
     <p>
-    © <%= Date.today.strftime("%Y") %>
-    <div class="mx-1 text-xl">Find a Coach</div>
-    is designed, built, and backed with ♡ in
+    <%= image_tag ("favicon.ico"), class: "h-8 w-auto inline", alt: "Find a Coach", loading: "lazy" %>
+    Find a Coach is designed, built, and backed with ♡ in
     <a href="https://www.lonelyplanet.com/slovakia"
         class="underline underline-offset-2 decoration-sky-500/80 mx-1">
         Slovakia
     </a>
-    by <a href="https://stanislavvalasek.com" class="underline underline-offset-2 decoration-sky-500/80 mx-1">Stanislav Valasek.</a></p>
-    <p>Enjoy your <%= Date.today.strftime("%A") %>!</p>
+    by <a href="https://stanislavvalasek.com" class="underline underline-offset-2 decoration-sky-500/80 mx-1">Stanislav Valasek.</a>
+    Enjoy the rest of your <%= Date.today.strftime("%A") %>!</p>
 </footer>

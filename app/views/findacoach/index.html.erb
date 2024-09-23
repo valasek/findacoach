@@ -12,4 +12,14 @@
       - DB koučov s kontaktom i referencemi
     </li>
     <a href="https://github.com/users/valasek/projects/2/views/1?layout=board" class="underline underline-offset-2 decoration-sky-500/80">Roadmap</a>
+    <br/><br/>
+    <b>App statistics:</b><br/>
+    Clients total: <%= @clients_count %><br/>
+    - active: <%= @clients_unarchived %><br/>
+    - archived: <%= @clients_archived %><br/>
+    <br/>
+    Users: <%= @users.count %><br/>
+    <% @users.each do |user| %>
+      <%= user.email %>, active: <%= user.clients.filter_by_archive_status("unarchived").count %>, archived:<%= user.clients.filter_by_archive_status("archived").count %><br/>
+    <% end %>
 </div>

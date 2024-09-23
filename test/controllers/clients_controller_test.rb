@@ -23,7 +23,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
       post clients_url, params: { client: { archived: @client.archived, user_id: @client.user_id, coaching_goal: @client.coaching_goal, company: @client.company, email: "email99@gmail.com", hours_delivered: @client.hours_delivered, hours_ordered: @client.hours_ordered, name: @client.name, phone: "123456789", position: @client.position } }
     end
 
-    assert_redirected_to client_url(Client.last)
+    assert_redirected_to clients_url # (Client.last)
   end
 
   test "should show client" do

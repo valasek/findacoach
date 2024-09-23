@@ -1,9 +1,13 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /clients or /clients.json
   def index
-    @clients = Client.all
+    @archive_status = params[:archive_status]
+    @clients = current_user.clients.filter_by_archive_status(@archive_status).order(name: :asc).page(params[:page])
+    @active_clients = current_user.clients.unarchived.count
+    @archived_clients = current_user.clients.archived.count
   end
 
   # GET /clients/1 or /clients/1.json
@@ -12,8 +16,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/new
   def new
-    @client = Client.new
-    @client.user_id = current_user.id
+    @client = current_user.clients.build
   end
 
   # GET /clients/1/edit
@@ -23,10 +26,11 @@ class ClientsController < ApplicationController
   # POST /clients or /clients.json
   def create
     @client = Client.new(client_params)
+    @client.user_id = current_user.id
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: "Client was successfully created." }
+        format.html { redirect_to clients_path, notice: "Client was successfully created." }
         format.json { render :show, status: :created, location: @client }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -61,7 +65,8 @@ class ClientsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client
-      @client = Client.find(params[:id])
+      # @client = Client.find(params[:id])
+      @client = current_user.clients.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
