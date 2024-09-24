@@ -20,6 +20,6 @@
     <br/>
     Users: <%= @users.count %><br/>
     <% @users.each do |user| %>
-      <%= user.email %>, active: <%= user.clients.filter_by_archive_status("unarchived").count %>, archived:<%= user.clients.filter_by_archive_status("archived").count %><br/>
+      <%= user.email %>, active: <%= user.clients.unarchived.count %>, archived:<%= user.clients.archived.count %><br/>
     <% end %>
 </div>

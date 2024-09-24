@@ -4,7 +4,7 @@ class FindacoachController < ApplicationController
   def index
     @users = User.all
     @clients_count = Client.count
-    @clients_archived = Client.filter_by_archive_status("archived").count
-    @clients_unarchived = Client.filter_by_archive_status("unarchived").count
+    @clients_archived = Client.archived.count
+    @clients_unarchived = Client.unarchived.count
   end
 end

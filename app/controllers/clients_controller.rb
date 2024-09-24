@@ -4,8 +4,11 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
-    @archive_status = params[:archive_status]
-    @clients = current_user.clients.filter_by_archive_status(@archive_status).order(name: :asc).page(params[:page])
+    @clients =  if params[:show_archived] == "true"
+      current_user.clients.archived.order(name: :asc).page(params[:page])
+    else
+      current_user.clients.unarchived.order(name: :asc).page(params[:page])
+    end
     @active_clients = current_user.clients.unarchived.count
     @archived_clients = current_user.clients.archived.count
   end
@@ -21,6 +24,26 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
+  end
+
+  # PATCH /clients/1/archive
+  def archive
+    @client = Client.find(params["id"])
+    if @client.update(archived: true)
+      redirect_to clients_path, notice: "Client has been archived successfully. Check \"Show archived clients\" to list your archived clients."
+    else
+      redirect_to clients_path, notice: "Failed to archive the client."
+    end
+  end
+
+  # PATCH /clients/1/unarchive
+  def unarchive
+    @client = Client.find(params["id"])
+    if @client.update(archived: false)
+      redirect_to clients_path, notice: "Client is active again. Uncheck \"Show archived clients\" to list your active clients."
+    else
+      redirect_to clients_path, notice: "Failed to activate the client."
+    end
   end
 
   # POST /clients or /clients.json

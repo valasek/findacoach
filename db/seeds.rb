@@ -22,7 +22,7 @@ user_ids = User.ids
 puts "Created #{User.count} sample users successfully!"
 
 Client.destroy_all
-5.times do |i|
+45.times do |i|
   Client.create!(
     user_id: user_ids.sample,  # having all the same coach i + 1
     name: Faker::Name.name,

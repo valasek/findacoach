@@ -16,10 +16,14 @@
             </div>
 
             <div class="flex items-center">
-                <label class="flex items-center mr-4 cursor-pointer">
-                    <input type="checkbox", class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
-                    <span class="ml-2 text-sm text-gray-500">Show archived clients</span>
-                </label>
+                <div class="flex items-center mr-4 cursor-pointer">
+                    <%= form_with url: clients_path, method: :get, data: { controller: "autosubmit", turbo_frame: "clients" } do |form| %>
+                        <%= check_box_tag 'show_archived', 'true', params[:show_archived] == 'true', 
+                                            data: { action: "change->autosubmit#submit" },
+                                            class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer" %>
+                        <%= form.label :show_archived, "Show archived clients", class: "ml-1 text-sm text-gray-500 cursor-pointer" %>
+                    <% end %>
+                </div>
                 <%= link_to new_client_path, class: "rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" do %>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 inline">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -30,11 +34,13 @@
         </header>
 
         <!-- Client Cards -->
+        <%= turbo_frame_tag "clients" do %>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <% @clients.each do |client| %>
                 <%= render "client_card", client: client %>
             <% end %>
         </div>
+        <% end %>
         <!-- End of Client Cards -->
         <br/><hr/>
         <%= paginate @clients %>

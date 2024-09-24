@@ -16,15 +16,4 @@ class Client < ApplicationRecord
   validates :name, length: { in: 2..128 }
   validates :company, :position, length: { maximum: 128 }
   validates :hours_delivered, :hours_ordered, numericality: { greater_than_or_equal_to: 0, less_than: BigDecimal(10**2) }
-
-  def self.filter_by_archive_status(status)
-    case status
-    when "archived"
-      archived
-    when "unarchived"
-      unarchived
-    else
-      all
-    end
-  end
 end
