@@ -1,16 +1,5 @@
 <%= form_with(model: client, class: "contents") do |form| %>
-  <% if client.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
-
-      <ul>
-        <% client.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= render "partials/show_form_errors", object: client %>
   <div class="md:flex md:space-x-4">
     <div class="my-5 md:w-1/3">
       <%= form.label :name, "Name", class: "block text-sm font-medium leading-6 text-gray-900" %>

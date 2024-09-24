@@ -1,5 +1,8 @@
 <div class="container px-4 py-8">
-  <h1 class="text-3xl font-bold mb-8">What's New?</h1>
+  <h1 class="text-3xl font-bold mb-2">What's New?</h1>
+  <div class="mb-8">
+    <%= link_to "Your Opinion Matters: Find a Coach Feedback", "https://forms.gle/rMP5FwtpPDMgSn337", class: "underline underline-offset-2 decoration-sky-500/80" %>
+  </div>
   <% @changelog_entries.each_with_index do |entry, index| %>
     <details class="bg-white shadow-md rounded-lg mb-6" <%= 'open' if index.zero? %>>
         <summary class="p-4 border-b border-gray-200 cursor-pointer">
