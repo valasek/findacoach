@@ -4,13 +4,8 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
-    @clients =  if params[:show_archived] == "true"
-      current_user.clients.archived.order(name: :asc).page(params[:page])
-    else
-      current_user.clients.unarchived.order(name: :asc).page(params[:page])
-    end
-    @active_clients = current_user.clients.unarchived.count
-    @archived_clients = current_user.clients.archived.count
+    @clients = current_user.clients.order(name: :asc).page(params[:page])
+    @clients_count = current_user.clients.count
   end
 
   # GET /clients/1 or /clients/1.json
@@ -24,26 +19,6 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
-  end
-
-  # PATCH /clients/1/archive
-  def archive
-    @client = Client.find(params["id"])
-    if @client.update(archived: true)
-      redirect_to clients_path, notice: "Client has been archived successfully. Check \"Show archived clients\" to list your archived clients."
-    else
-      redirect_to clients_path, notice: "Failed to archive the client."
-    end
-  end
-
-  # PATCH /clients/1/unarchive
-  def unarchive
-    @client = Client.find(params["id"])
-    if @client.update(archived: false)
-      redirect_to clients_path, notice: "Client is active again. Uncheck \"Show archived clients\" to list your active clients."
-    else
-      redirect_to clients_path, notice: "Failed to activate the client."
-    end
   end
 
   # POST /clients or /clients.json
@@ -88,12 +63,11 @@ class ClientsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client
-      # @client = Client.find(params[:id])
       @client = current_user.clients.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def client_params
-      params.require(:client).permit(:user_id, :name, :email, :phone, :company, :position, :hours_ordered, :hours_delivered, :coaching_goal, :archived)
+      params.require(:client).permit(:user_id, :name, :email, :phone, :notes)
     end
 end

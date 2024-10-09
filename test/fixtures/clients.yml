@@ -5,21 +5,11 @@ one:
   name: MyString
   email: email1@gmail.com
   phone: +421949888635
-  company: MyString
-  position: MyString
-  hours_ordered: 12
-  hours_delivered: 1
-  coaching_goal: MyText
-  archived: false
+  notes: MyText 1
 
 two:
   user: two
   name: MyString
   email: email2@gmail.com
   phone: +421949888634
-  company: MyString
-  position: MyString
-  hours_ordered: 11
-  hours_delivered: 1
-  coaching_goal: MyText
-  archived: true
+  notes: MyText 2

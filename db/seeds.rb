@@ -28,12 +28,7 @@ Client.destroy_all
     name: Faker::Name.name,
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.phone_number,
-    company: Faker::Company.name,
-    position: Faker::Job.title,
-    hours_ordered: Faker::Number.between(from: 10, to: 20),
-    hours_delivered: Faker::Number.between(from: 0, to: 10),
-    coaching_goal: Faker::Lorem.paragraph(sentence_count: 12),
-    archived: Faker::Boolean.boolean(true_ratio: 0.2),  # 20% chance of being archived
+    notes: Faker::Lorem.paragraph(sentence_count: 12),
     created_at: Faker::Time.between(from: 2.years.ago, to: Time.now),
     updated_at: Faker::Time.between(from: 1.year.ago, to: Time.now)
   )

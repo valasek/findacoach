@@ -14,18 +14,13 @@ class ClientsTest < ApplicationSystemTestCase
 
   test "should create client" do
     visit clients_url
-    click_on "New client"
+    click_on "New"
 
-    check "Archived" if @client.archived
     # fill_in "User", with: @client.user_id
-    fill_in "Coaching goal", with: @client.coaching_goal
-    fill_in "Company", with: @client.company
+    fill_in "Notes", with: @client.notes
     fill_in "Email", with: @client.email
-    fill_in "Hours delivered", with: @client.hours_delivered
-    fill_in "Hours ordered", with: @client.hours_ordered
     fill_in "Name", with: @client.name
     fill_in "Phone", with: @client.phone
-    fill_in "Position", with: @client.position
     click_on "Create Client"
 
     assert_text "Client was successfully created"
@@ -36,16 +31,11 @@ class ClientsTest < ApplicationSystemTestCase
     visit client_url(@client)
     click_on "Edit this client", match: :first
 
-    check "Archived" if @client.archived
     # fill_in "User", with: @client.user_id
-    fill_in "Coaching goal", with: @client.coaching_goal
-    fill_in "Company", with: @client.company
+    fill_in "Notes", with: @client.notes
     fill_in "Email", with: @client.email
-    fill_in "Hours delivered", with: @client.hours_delivered
-    fill_in "Hours ordered", with: @client.hours_ordered
     fill_in "Name", with: @client.name
     fill_in "Phone", with: @client.phone
-    fill_in "Position", with: @client.position
     click_on "Update Client"
 
     assert_text "Client was successfully updated"

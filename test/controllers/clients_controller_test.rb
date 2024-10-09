@@ -20,7 +20,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
   test "should create client" do
     assert_difference("Client.count") do
       # avoid Client validation errors: ["Email has already been taken", "Phone has already been taken"]
-      post clients_url, params: { client: { archived: @client.archived, user_id: @client.user_id, coaching_goal: @client.coaching_goal, company: @client.company, email: "email99@gmail.com", hours_delivered: @client.hours_delivered, hours_ordered: @client.hours_ordered, name: @client.name, phone: "123456789", position: @client.position } }
+      post clients_url, params: { client: { user_id: @client.user_id, notes: @client.notes, email: "email99@gmail.com", name: @client.name, phone: "123456789" } }
     end
 
     assert_redirected_to clients_url # (Client.last)
@@ -38,7 +38,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update client" do
     # commented out setting user_id: @client.user_id
-    patch client_url(@client), params: { client: { archived: @client.archived, coaching_goal: @client.coaching_goal, company: @client.company, email: @client.email, hours_delivered: @client.hours_delivered, hours_ordered: @client.hours_ordered, name: @client.name, phone: @client.phone, position: @client.position } }
+    patch client_url(@client), params: { client: { notes: @client.notes, email: @client.email, name: @client.name, phone: @client.phone } }
     assert_redirected_to client_url(@client)
   end
 

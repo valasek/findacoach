@@ -10,20 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_17_151145) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_09_133504) do
   create_table "clients", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name"
     t.string "email"
     t.string "phone"
-    t.string "company"
-    t.string "position"
-    t.integer "hours_ordered"
-    t.integer "hours_delivered"
-    t.text "coaching_goal"
-    t.boolean "archived"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "notes"
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
