@@ -4,7 +4,14 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
-    @clients = current_user.clients.order(name: :asc).page(params[:page])
+    @clients = current_user.clients.order(created_at: :desc)
+
+    if params[:query].present?
+      query = "%#{params[:query].downcase}%"
+      @clients = @clients.where("LOWER(name) LIKE ? OR LOWER(email) LIKE ?", query, query)
+    end
+
+    @clients = @clients.page(params[:page])
     @clients_count = current_user.clients.count
   end
 
@@ -41,7 +48,7 @@ class ClientsController < ApplicationController
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: "Client was successfully updated." }
+        format.html { redirect_to clients_path, notice: "Client was successfully updated." }
         format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +62,7 @@ class ClientsController < ApplicationController
     @client.destroy!
 
     respond_to do |format|
-      format.html { redirect_to clients_path, status: :see_other, notice: "Client was successfully destroyed." }
+      format.html { redirect_to clients_path, status: :see_other, notice: "Client was successfully deleted." }
       format.json { head :no_content }
     end
   end
