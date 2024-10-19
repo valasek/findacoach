@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_09_133504) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_16_092011) do
   create_table "clients", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name"
@@ -20,6 +20,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_09_133504) do
     t.datetime "updated_at", null: false
     t.string "notes"
     t.index ["user_id"], name: "index_clients_on_user_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.integer "client_id", null: false
+    t.date "date"
+    t.decimal "duration", precision: 3, scale: 1
+    t.text "notes"
+    t.boolean "paid", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_sessions_on_client_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,4 +46,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_09_133504) do
   end
 
   add_foreign_key "clients", "users"
+  add_foreign_key "sessions", "clients"
 end

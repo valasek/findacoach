@@ -35,7 +35,7 @@
     <%= turbo_frame_tag "clients-list" do %>
         <div class="space-y-2">
             <% @clients.each do |client| %>
-                <%= render "client_card", client: client %>
+                <%= render "client_card", client: client, sessions: client.sessions %>
             <% end %>
         </div>
         <!-- End of Client Cards -->

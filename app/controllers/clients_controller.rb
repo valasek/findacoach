@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  before_action :set_client, only: %i[ show edit update destroy ]
 
   # GET /clients or /clients.json
   def index
@@ -26,6 +26,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
+    @sessions = @client.sessions
   end
 
   # POST /clients or /clients.json

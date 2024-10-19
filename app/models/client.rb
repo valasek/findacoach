@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
   belongs_to :user
+  has_many :sessions, dependent: :destroy
 
   validates :user, :name, presence: true
   validates :email, :phone, uniqueness: true

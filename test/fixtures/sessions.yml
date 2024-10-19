@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  date: 2024-10-16
+  duration: 9.99
+  notes: MyText
+  paid: false
+
+two:
+  client: two
+  date: 2024-10-16
+  duration: 9.99
+  notes: MyText
+  paid: false
