@@ -32,6 +32,9 @@
         </div>
     </header>
     <!-- Client Cards -->
+    <% if @clients.empty? %>
+    Now create your first client using "New" button
+    <% end %>
     <%= turbo_frame_tag "clients-list" do %>
         <div class="space-y-2">
             <% @clients.each do |client| %>
