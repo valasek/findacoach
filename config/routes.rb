@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  get "/findacoach", to: "findacoach#index"
+  get "dashboard/index"
+  get "whatsnew", to: "whats_new#index"
   resources :clients do
     resources :sessions
   end
@@ -15,7 +18,4 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-
-  get "/findacoach", to: "findacoach#index"
-  get "whatsnew", to: "whats_new#index"
 end
