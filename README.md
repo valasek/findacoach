@@ -45,6 +45,8 @@ export RAILS_MASTER_KEY=<key from console>
 docker login
 run kamal setup
 
+redeploy using kamal deploy
+
 * Rails dev-container configuration
 https://dev.to/konyu/how-to-use-docker-containers-for-ruby-on-rails-development-in-visual-studio-code-23np
 
