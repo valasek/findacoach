@@ -38,6 +38,9 @@ ssh-add -l
 
 create RAILS_MASTER_KEY
 VISUAL="code --wait" bin/rails credentials:edit
+export key from console from previous commant to env variable
+export RAILS_MASTER_KEY=<key from console>
+
 
 docker login
 run kamal setup
