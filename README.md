@@ -29,7 +29,7 @@ ssh:
   keys: [ "~/.ssh/id_ed25519" ]
 
 Create private docker repository e.h. on DockerHub
-add access token (Read, Write, Delete) and store it in ./kamal/secrets in variable KAMAL_REGISTRY_PASSWORD= or set as en environment variable
+add access token (Read, Write, Delete) and store it in ./kamal/secrets in variable KAMAL_REGISTRY_PASSWORD= or set as en environment variable export KAMAL_REGISTRY_PASSWORD=password
 
 Create e.f. Hetzner machine with ssh
 Add identity to ssh
