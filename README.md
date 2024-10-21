@@ -35,6 +35,8 @@ Create e.f. Hetzner machine with ssh
 Add identity to ssh
 Confirm it
 ssh-add -l
+
+docker login
 run kamal setup
 
 * Rails dev-container configuration
