@@ -20,6 +20,22 @@ Include into precommit hook:
 rubocop
 rails db:test:prepare test test:system
 
+### KAMAL deployment
+
+run kamal init
+if not using root account, in ./delpoy.yaml add
+ssh:
+  user: kamal
+  keys: [ "~/.ssh/id_ed25519" ]
+
+Create private docker repository e.h. on DockerHub
+add access token (Read, Write, Delete) and store it in ./kamal/secrets in variable KAMAL_REGISTRY_PASSWORD= or set as en environment variable
+
+Create e.f. Hetzner machine with ssh
+Add identity to ssh
+Confirm it
+ssh-add -l
+run kamal setup
 
 * Rails dev-container configuration
 https://dev.to/konyu/how-to-use-docker-containers-for-ruby-on-rails-development-in-visual-studio-code-23np
