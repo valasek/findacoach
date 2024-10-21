@@ -36,6 +36,9 @@ Add identity to ssh
 Confirm it
 ssh-add -l
 
+create RAILS_MASTER_KEY
+VISUAL="code --wait" bin/rails credentials:edit
+
 docker login
 run kamal setup
 
