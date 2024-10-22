@@ -41,11 +41,20 @@ VISUAL="code --wait" bin/rails credentials:edit
 export key from console from previous commant to env variable
 export RAILS_MASTER_KEY=<key from console>
 
+VISUAL="code --wait" bin/rails credentials:edit
+export key from console from previous commant to env variable
+export RAILS_MASTER_KEY=<key from console>
 
 docker login
 run kamal setup
 
-redeploy using kamal deploy
+#### Deploy using KAMAL
+export KAMAL_REGISTRY_PASSWORD=<DockedHub access token>
+VISUAL="code --wait" bin/rails credentials:edit
+export key from console from previous commant to env variable por comy it from config/master.key
+export RAILS_MASTER_KEY=<key from console>
+docker login
+kamal deploy
 
 * Rails dev-container configuration
 https://dev.to/konyu/how-to-use-docker-containers-for-ruby-on-rails-development-in-visual-studio-code-23np
