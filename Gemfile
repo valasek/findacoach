@@ -39,6 +39,7 @@ gem "bootsnap", require: false
 # My inserted gems
 gem "devise"
 gem "kaminari"
+gem "faker"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -63,7 +64,6 @@ group :development do
   gem "execjs", require: false
   gem "mini_racer", require: false
   gem "rails_live_reload"
-  gem "faker"
 end
 
 group :test do
