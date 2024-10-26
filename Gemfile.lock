@@ -112,7 +112,7 @@ GEM
     e2mmap (0.1.0)
     erubi (1.13.0)
     execjs (2.10.0)
-    faker (3.4.2)
+    faker (3.5.1)
       i18n (>= 1.8.11, < 2)
     ffi (1.17.0-aarch64-linux-gnu)
     ffi (1.17.0-aarch64-linux-musl)
