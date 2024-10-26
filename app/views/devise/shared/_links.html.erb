@@ -1,5 +1,6 @@
 <p class="mt-10 text-center text-sm text-gray-500">
 <%- if controller_name != 'sessions' %>
+  Already Signed Up?
   <%= link_to "Log in", new_session_path(resource_name), class: "font-semibold leading-6 text-indigo-600 hover:text-indigo-500" %><br />
 <% end %>
 
@@ -24,6 +25,6 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %><br />
+    <%= button_to "Log in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %><br />
   <% end %>
 <% end %>

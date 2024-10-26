@@ -1,22 +1,24 @@
 <div>
   <h1 class="font-bold text-4xl">Find a Coach</h1>
-  <p>Vízia:</p>
-  <ul>
-    <li>
-      - Sústredenie sa na koučing a podpora na efektívne lekcie<br/>
-      - Prehľad o klientoch<br/>
-      - jednoduchá evidencia klientov pre kouča<br/>
-      - Najčastejšie nástoje kouča<br/>
-      - zoznam koučov<br/>
-      - Nájdi si svojho kouča<br/>
-      - DB koučov s kontaktom i referencemi
-    </li>
-    <a href="https://github.com/users/valasek/projects/2/views/1?layout=board" class="underline underline-offset-2 decoration-sky-500/80">Roadmap</a>
-    <br/><br/>
-    <b>Current usage</b><br/>
-    Registered coaches: <%= @users.count %><br/>
-    <% @users.each do |user| %>
-      <%= user.email %>, počet klientov: DOPLNIT<br/>
-    <% end %>
-    Total coached hours: <%= @users.count %><br/>
+
+  <p class="py-4">Coach's Companion: Effortlessly Manage Your Clients and Coaching Sessions with ICF Export Support.</p>
+
+  <% if not user_signed_in? %>
+    <p class="pt-4 pb-6 text-center sm:hidden">
+      <%= link_to "Sign up", new_user_registration_path, class: "flex-shrink-0 rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+      <span class="mx-1">or</span> <%= link_to "Log in", new_user_session_path, class: "flex-shrink-0 rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    </p>
+  <% end %>
+
+  <b>Current usage</b><br/>
+  Registered coaches: <%= @users.count %><br/>
+  <%#
+  <% @users.each do |user|
+    <%= user.email , total clientspočet klientov: DOPLNIT<br/>
+  <% end %>
+  Total coached hours: <%= @users.count %><br/>
+  <br/>
+  Read <%= link_to "What's new", whatsnew_path, class: "underline underline-offset-2 decoration-sky-500/80" %>,
+  check the <a href="https://github.com/users/valasek/projects/2/views/1?layout=board" class="underline underline-offset-2 decoration-sky-500/80">Roadmap</a>
+  or <%= link_to "leave a feedback", "https://forms.gle/rMP5FwtpPDMgSn337", class: "underline underline-offset-2 decoration-sky-500/80" %>.
 </div>
