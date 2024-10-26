@@ -3,11 +3,12 @@ class WhatsNewController < ApplicationController
     @changelog_entries = [
       {
         version: "0.1",
-        date: "September 23, 2024",
+        date: "October 23, 2024",
         changes: {
           "New" => [
-            "First version of Find a Coach to gather initial feedback",
-            "Generally available for all users without restrictions"
+            "Find a Coach - alpha version. First release to gather initial feedback",
+            "Available for all users without any restrictions",
+            "Coach can manage clients and coaching hours per client"
           ]
           # "Changed" => [
           #   "...",

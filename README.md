@@ -42,7 +42,7 @@ export key from console from previous commant to env variable
 export RAILS_MASTER_KEY=<key from console>
 
 VISUAL="code --wait" bin/rails credentials:edit
-export key from console from previous commant to env variable
+export key from console from previous commant to env variable por comy it from config/master.key
 export RAILS_MASTER_KEY=<key from console>
 
 docker login
@@ -50,8 +50,6 @@ run kamal setup
 
 #### Deploy using KAMAL
 export KAMAL_REGISTRY_PASSWORD=<DockedHub access token>
-VISUAL="code --wait" bin/rails credentials:edit
-export key from console from previous commant to env variable por comy it from config/master.key
 export RAILS_MASTER_KEY=<key from console>
 docker login
 kamal deploy

@@ -3,10 +3,11 @@ class Client < ApplicationRecord
   has_many :sessions, dependent: :destroy
 
   validates :user, :name, presence: true
-  validates :email, :phone, uniqueness: true
+  validates :email, uniqueness: true, if: :email_present?
+  validates :phone, uniqueness: true, if: :phone_present?
   validates :email, presence: true, unless: :phone?
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, if: :email_present?
-  validates :phone, length: { minimum: 6, maximum: 12 }, if: :phone_present?
+  validates :phone, length: { minimum: 5, maximum: 15 }, if: :phone_present?
   validates :phone, presence: true, unless: :email?
   validates :name, length: { in: 2..128 }
 
