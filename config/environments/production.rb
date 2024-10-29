@@ -101,5 +101,5 @@ Rails.application.configure do
   #   /.*\.findacoach\.eu/ # Allow requests from subdomains like `www.findacoach.eu`
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
-#   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-# end
+  # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+end
