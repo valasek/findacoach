@@ -13,7 +13,11 @@
             "castwide.solargraph", // solargraph
             "rebornix.Ruby", // Ruby syntax highlighting, etc.
             "misogi.ruby-rubocop", // Rubocop
-            "KoichiSasada.vscode-rdbg" // Ruby Debug see below
+            "KoichiSasada.vscode-rdbg", // Ruby Debug see below
+            "shopify.ruby-lsp",
+            "ms-azuretools.vscode-docker",
+            "bung87.rails",
+            "bung87.vscode-gemfile"
         ],
         "settings": {
           "ruby.rubocop.executePath": "/home/vscode/.rbenv/shims/",
