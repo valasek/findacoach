@@ -22,8 +22,6 @@ proxy:
     - www.findacoach.eu
     - findacoach.eu
   # kamal-proxy connects to your container over port 80, use `app_port` to specify a different port.
-  ssl_email: valasek@example.com
-  force_ssl: true  # Redirects HTTP to HTTPS
   app_port: 3000
 
 # Credentials for your image host.
