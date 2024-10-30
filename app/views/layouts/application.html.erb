@@ -23,12 +23,12 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= favicon_link_tag asset_path("favicon.ico") %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="h-full bg-yellow-50">
+  <body class="h-full bg-yellow-50 font-sans">
     <%= render 'layouts/header' %>
     <main class="container mx-auto my-8 px-5 flex ">
       <div class="grid grid-cols-1 col-span-full">
