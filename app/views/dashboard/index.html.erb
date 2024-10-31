@@ -7,19 +7,19 @@
     <br/><br/>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
       <div class="text-center p-4 bg-white rounded-lg shadow-sm">
-        <div class="text-3xl font-semibold text-blue-600">3</div>
+        <div class="text-3xl font-semibold text-blue-600"><%= @clients_count %></div>
         <div class="text-sm text-gray-600">Lives Touched</div>
       </div>
       <div class="text-center p-4 bg-white rounded-lg shadow-sm">
-        <div class="text-3xl font-semibold text-blue-600">3.5</div>
+        <div class="text-3xl font-semibold text-blue-600"><%= @hours_count %></div>
         <div class="text-sm text-gray-600">Coaching Hours</div>
       </div>
       <div class="text-center p-4 bg-white rounded-lg shadow-sm">
-        <div class="text-3xl font-semibold text-blue-600">4</div>
+        <div class="text-3xl font-semibold text-blue-600"><%= @sessions_count %></div>
         <div class="text-sm text-gray-600">Sessions</div>
       </div>
       <div class="text-center p-4 bg-white rounded-lg shadow-sm">
-        <div class="text-3xl font-semibold text-blue-600">71%</div>
+        <div class="text-3xl font-semibold text-blue-600"><%= @sessions_paid %>%</div>
         <div class="text-sm text-gray-600">Time Compensated</div>
       </div>
     </div>
