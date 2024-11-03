@@ -1,8 +1,11 @@
-<div class="flex min-h-full flex-col justify-center px-6 py-6 lg:px-8">
-  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+<div class="sm:mx-auto sm:w-full sm:max-w-sm">
+  <h2 class="mt-0 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Log in to your account</h2>
 
-    <h2 class="mt-0 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Log in to your account</h2>
-  </div>
+  <p class="text-sm text-gray-500 mt-2 text-center">
+    <span class="font-medium">Demo credentials:</span>
+    <code class="font-mono bg-gray-50 px-1.5 py-0.5 rounded text-gray-600 ml-1">demo@example.com / demo</code>
+  </p>
+</div>
 
   <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-6" }) do |f| %>
