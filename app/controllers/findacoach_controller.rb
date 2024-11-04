@@ -5,11 +5,5 @@ class FindacoachController < ApplicationController
   end
 
   def Security
-    begin
-      1 / 0
-    rescue ZeroDivisionError => exception
-      Sentry.capture_exception(exception)
-    end
-    Sentry.capture_message("test message")
   end
 end

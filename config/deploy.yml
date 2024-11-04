@@ -58,6 +58,7 @@ aliases:
     console: app exec --interactive --reuse "bin/rails console"
     shell: app exec --interactive --reuse "bash"
     logs: app logs -f
+    reset_demo_user: app exec --interactive --reuse "bin/rails demo_user:reset"
 #   shell: app exec --interactive --reuse "bash"
 
 # Use a different ssh user than root

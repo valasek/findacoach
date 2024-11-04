@@ -10,13 +10,14 @@
   "customizations": {
     "vscode": {
         "extensions": [
-            "castwide.solargraph", // solargraph
-            "misogi.ruby-rubocop", // Rubocop
-            "KoichiSasada.vscode-rdbg", // Ruby Debug see below
+            "castwide.solargraph",        // solargraph
+            "misogi.ruby-rubocop",        // Rubocop
+            "KoichiSasada.vscode-rdbg",   // Ruby Debug see below
             "shopify.ruby-lsp",
             "ms-azuretools.vscode-docker",
             "bung87.rails",
-            "bung87.vscode-gemfile"
+            "bung87.vscode-gemfile",
+            "alexcvzz.vscode-sqlite"      // SQLite
         ],
         "settings": {
           "ruby.rubocop.executePath": "/home/vscode/.rbenv/shims/",

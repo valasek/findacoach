@@ -20,6 +20,9 @@ Include into precommit hook:
 rubocop
 rails db:test:prepare test test:system
 
+Reset demo user
+rails demo_user:reset
+
 ### KAMAL deployment
 
 run kamal init
@@ -53,6 +56,10 @@ export KAMAL_REGISTRY_PASSWORD=<DockedHub access token>
 export RAILS_MASTER_KEY=<key from console>
 docker login
 kamal deploy
+
+And optional:
+kamal reset_demo_user
+kamal logs
 
 * Rails dev-container configuration
 https://dev.to/konyu/how-to-use-docker-containers-for-ruby-on-rails-development-in-visual-studio-code-23np
