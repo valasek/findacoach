@@ -2,6 +2,21 @@ class WhatsNewController < ApplicationController
   def index
     @changelog_entries = [
       {
+        version: "0.3",
+        date: "November 4, 2024",
+        changes: {
+          "New" => [
+            "Full demo version available"
+          ]
+          # "Changed" => [
+          # ]
+          # "Fixed" => [
+          #   "",
+          #   ""
+          # ]
+        }
+      },
+      {
         version: "0.2",
         date: "October 31, 2024",
         changes: {

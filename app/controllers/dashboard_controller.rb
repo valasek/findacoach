@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @clients_count = current_user.clients.count
     @hours_count = current_user.total_coaching_hours
