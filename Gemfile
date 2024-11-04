@@ -37,10 +37,13 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # My inserted gems
-gem "devise"
-gem "kaminari"
-gem "faker"
-gem "rubyXL"
+gem "devise"        # User management
+gem "kaminari"      # Pagination
+gem "faker"         # Seeding data
+gem "rubyXL"        # Export to MS Excel using template
+gem "stackprof"     # Sentry
+gem "sentry-ruby"   # Sentry
+gem "sentry-rails"  # Sentry
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
