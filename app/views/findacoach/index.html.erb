@@ -33,7 +33,28 @@
     </div>
   </div>
 </div>
-  <div class="max-w-6xl mx-auto space-y-16">
+</main>
+<!-- Full-width image section -->
+<div class="relative w-screen overflow-hidden flex justify-center items-center min-h-[500px] mt-0 mb-8">
+  <%= image_tag("demo_list_of_clients.png",
+    class: "absolute w-[55%] max-h-[600px] transform -rotate-6 -translate-x-[45%] hover:z-10 transition-transform duration-300 hover:scale-105",
+    alt: "Find a Coach",
+    loading: "lazy")
+  %>
+  <%= image_tag("demo_dashboard.png",
+    class: "absolute w-[59%] max-h-[600px] z-[1] hover:z-10 transition-transform duration-300 hover:scale-105",
+    alt: "Find a Coach",
+    loading: "lazy")
+  %>
+  <%= image_tag("demo_coaching_sessions.png",
+    class: "absolute w-[52%] max-h-[600px] transform rotate-6 translate-x-[45%] hover:z-10 transition-transform duration-300 hover:scale-105",
+    alt: "Find a Coach",
+    loading: "lazy")
+  %>
+</div>
+<!-- Reopen the container for the rest of the content -->
+<main class="container mx-auto px-5 flex">
+<div class="max-w-6xl mx-auto space-y-16">
   <!-- Updated Hero Message -->
   <div class="text-center space-y-6">
     <h1 class="text-4xl md:text-5xl font-bold text-slate-900">
