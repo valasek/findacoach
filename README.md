@@ -23,9 +23,6 @@ rails db:test:prepare test test:system
 Reset demo user
 rails demo_user:reset
 
-Preview emails:
-http://localhost:3000/rails/mailers
-
 ### KAMAL deployment
 
 run kamal init
