@@ -21,5 +21,5 @@ module.exports = {
   ],
   corePlugins: {
     fontFamily: true,
-  }
+  },
 }

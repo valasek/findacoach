@@ -1,0 +1,28 @@
+<div class="container px-4 py-8">
+  <h1 class="text-3xl font-bold mb-2">What's New?</h1>
+  <div class="mb-8">
+    Your Opinion Matters. Check the
+    <a href="https://github.com/users/valasek/projects/2/views/1?layout=board" class="underline underline-offset-2 decoration-sky-500/80">Roadmap</a>
+    or <%= link_to "Leave a Feedback", "https://forms.gle/rMP5FwtpPDMgSn337", class: "underline underline-offset-2 decoration-sky-500/80" %>.
+  </div>
+  <% @changelog_entries.each_with_index do |entry, index| %>
+    <details class="bg-white shadow-md rounded-lg mb-6" <%= 'open' if index.zero? %>>
+        <summary class="p-4 border-b border-gray-200 cursor-pointer">
+        <span class="text-xl font-semibold">Version <%= entry[:version] %><br/></span>
+        <span class="text-sm text-gray-500"><%= entry[:date] %></span>
+        </summary>
+        <div class="p-4">
+            <% entry[:changes].each do |category, items| %>
+                <div class="mb-4">
+                    <h3 class="font-medium text-gray-700 mb-2"><%= category %></h3>
+                    <ul class="list-disc list-inside space-y-1">
+                        <% items.each do |item| %>
+                            <li class="text-sm text-gray-600"><%= item %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+        </div>
+    </details>
+  <% end %>
+</div>

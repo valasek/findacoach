@@ -72,4 +72,7 @@ Rails.application.configure do
 
   # My: Enable Tailwind autoreload
   config.assets.debug = true
+
+  # Suppress logger output for asset requests.
+  # config.assets.quiet = true
 end

@@ -1,0 +1,2 @@
+module FindacoachHelper
+end
