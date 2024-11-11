@@ -56,6 +56,15 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "solargraph"
+  gem "rubocop", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-performance", require: false
+  # My inserted gems
+  gem "pre-commit", require: false
+  gem "execjs", require: false
+  gem "mini_racer", require: false
+  gem "rails_live_reload"
 end
 
 group :test do

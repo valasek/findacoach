@@ -10,10 +10,11 @@
   "customizations": {
     "vscode": {
         "extensions": [
-            "castwide.solargraph",        // solargraph
+            "castwide.solargraph",        // SolarGraph
             "misogi.ruby-rubocop",        // Rubocop
             "KoichiSasada.vscode-rdbg",   // Ruby Debug see below
-            "shopify.ruby-lsp",
+            "shopify.ruby-lsp",           // Rubz Language Server
+            "marcoroth.stimulus-lsp",     // Stimulus Langiage Server
             "ms-azuretools.vscode-docker",
             "bung87.rails",
             "bung87.vscode-gemfile",
@@ -51,5 +52,5 @@
 
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "bin/setup"
+  "postCreateCommand": "bin/setup --skip-server"
 }
