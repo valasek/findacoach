@@ -7,9 +7,10 @@ class WhatsNewController < ApplicationController
         changes: {
           "New" => [
             "Full demo version available"
+          ],
+          "Changed" => [
+            "Upgrade the underlying technology to Rails 8.0.0"
           ]
-          # "Changed" => [
-          # ]
           # "Fixed" => [
           #   "",
           #   ""
@@ -22,10 +23,10 @@ class WhatsNewController < ApplicationController
         changes: {
           "New" => [
             "Export to MS Excel, compliant with ICF requirements",
-            "Security section on home page"
+            "Security hardening and new security section on home page"
           ],
           "Changed" => [
-            "Added statistics to the dashboard"
+            "New statistics to the dashboard"
           ]
           # "Fixed" => [
           #   "",

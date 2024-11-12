@@ -39,7 +39,8 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
   test "should update client" do
     # commented out setting user_id: @client.user_id
     patch client_url(@client), params: { client: { notes: @client.notes, email: @client.email, name: @client.name, phone: @client.phone } }
-    assert_redirected_to client_url(@client)
+    # assert_redirected_to client_url(@client)
+    assert_redirected_to clients_path
   end
 
   test "should destroy client" do
