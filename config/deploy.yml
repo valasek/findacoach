@@ -24,10 +24,6 @@ proxy:
     - www.findacoach.eu
     - findacoach.eu
     #  - test.findacoach.eu
-  healthcheck:
-    path: /up
-    interval: 2
-    timeout: 2
 
 # Credentials for your image host.
 registry:
