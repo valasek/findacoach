@@ -95,8 +95,8 @@ builder:
   #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
-# ssh:
-#   user: app
+ssh:
+  user: kamal
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
