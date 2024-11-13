@@ -26,7 +26,7 @@ rails demo_user:reset
 ### Backup and restore DB
 Backup Process: From your host machine
 docker cp your-rails7-container:/storage/production.sqlite3 ./backup/production.sqlite3
-docker cp 290055864fd3:/storage/production.sqlite3 ./production.sqlite3
+docker cp 290055864fd3:/storage/production-backup.sqlite3 ./production.sqlite3
 
 Restore Process: To your new Rails 8 container
 docker cp --chown rails:rails ./production.sqlite3 your-rails8-container:/rails/storage/production.sqlite3
@@ -36,7 +36,7 @@ And backup locally
 scp root@168.119.124.201:/root/backup/production.sqlite3 ./production.sqlite3
 
 Inspect container via bash
-docker exec -it 290055864fd3 sh
+docker exec -it 290055864fd3 bash
 
 ### KAMAL deployment
 

@@ -7,8 +7,8 @@ image: svalasek/findacoach
 # Deploy to these servers.
 servers:
   web:
-    #  - 168.119.124.201
-    - 162.55.185.37
+    - 168.119.124.201
+    # - 162.55.185.37
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -21,9 +21,9 @@ servers:
 proxy:
   ssl: true
   hosts:
-    #  - www.findacoach.eu
-    #  - findacoach.eu
-    - test.findacoach.eu
+    - www.findacoach.eu
+    - findacoach.eu
+    # - test.findacoach.eu
 
 # Credentials for your image host.
 registry:
