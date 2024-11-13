@@ -7,8 +7,8 @@ image: svalasek/findacoach
 # Deploy to these servers.
 servers:
   web:
-    - 168.119.124.201
-    # - 162.55.185.37
+    #  - 168.119.124.201
+    - 162.55.185.37
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -21,9 +21,9 @@ servers:
 proxy:
   ssl: true
   hosts:
-    - www.findacoach.eu
-    - findacoach.eu
-    #  - test.findacoach.eu
+    #  - www.findacoach.eu
+    #  - findacoach.eu
+    - test.findacoach.eu
 
 # Credentials for your image host.
 registry:
@@ -58,8 +58,8 @@ env:
     # RAILS_LOG_LEVEL: debug
     RAILS_ENV: production
     RAILS_SERVE_STATIC_FILES: true
-    # RAILS_HOSTS: test.findacoach.eu
-    RAILS_HOSTS: www.findacoach.eu, findacoach.eu
+    RAILS_HOSTS: test.findacoach.eu
+    # RAILS_HOSTS: www.findacoach.eu, findacoach.eu
 
 # Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
 # "bin/kamal logs -r job" will tail logs from the first server in the job section.
