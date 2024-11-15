@@ -34,9 +34,10 @@ docker cp ./production.sqlite3 290055864fd3:/rails/storage/production.sqlite3
 
 And backup locally
 scp root@168.119.124.201:/root/backup/production.sqlite3 ./production.sqlite3
+scp ./production.sqlite3 root@162.55.185.37:/root/production.sqlite3 
 
 Inspect container via bash
-docker exec -it 290055864fd3 bash
+docker exec -it 4ede8af7b7e9 bash
 
 ### KAMAL deployment
 
