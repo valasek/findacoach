@@ -9,7 +9,6 @@ Focus on coaching and Find a Coach will manage all what you need: your coaching 
 ## Technical notes
 
 Start app with bin/dev
-Run tests - bin/rails test
 
 Precompile rails assets:
 - rails assets:clean assets:precompile
@@ -23,10 +22,6 @@ rails db:test:prepare test test:system
 
 Reset demo user
 rails demo_user:reset
-
- ## Upgrate gems
- bundle outdated
- bundle update
 
 ### Backup and restore DB
 Backup Process: From your host machine
@@ -81,7 +76,6 @@ kamal deploy
 And optional:
 kamal reset_demo_user
 kamal logs
-kamal console
 
 * Rails dev-container configuration
 https://dev.to/konyu/how-to-use-docker-containers-for-ruby-on-rails-development-in-visual-studio-code-23np
