@@ -5,10 +5,6 @@ class FindacoachController < ApplicationController
     @total_hours = Session.sum(:duration) # for now lets count demo_users_hours as well
   end
 
-  def security
-  end
-
-  def adminland
-    @users = User.all
+  def Security
   end
 end
