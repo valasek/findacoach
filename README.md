@@ -10,8 +10,13 @@ Focus on coaching and Find a Coach will manage all what you need: your coaching 
 
 Start app with bin/dev
 
+Run tests - bin/rails test
+
 Precompile rails assets:
 - rails assets:clean assets:precompile
+
+Build Tailwind
+- bin/rails tailwindcss:build
 
 - clean all assets
 rails assets:clobber
@@ -23,6 +28,10 @@ rails db:test:prepare test test:system
 Reset demo user
 rails demo_user:reset
 
+ ## Upgrate gems
+ bundle outdated
+ bundle update
+
 ### Backup and restore DB
 Backup Process: From your host machine
 docker cp your-rails7-container:/storage/production.sqlite3 ./backup/production.sqlite3
@@ -33,7 +42,7 @@ docker cp --chown rails:rails ./production.sqlite3 your-rails8-container:/rails/
 docker cp ./production.sqlite3 290055864fd3:/rails/storage/production.sqlite3
 
 And backup locally
-scp root@168.119.124.201:/root/backup/production.sqlite3 ./production.sqlite3
+scp ./production.sqlite3 root@162.55.185.37:/root/production.sqlite3 
 
 Inspect container via bash
 docker exec -it 290055864fd3 bash
@@ -75,6 +84,7 @@ kamal deploy
 And optional:
 kamal reset_demo_user
 kamal logs
+kamal console
 
 * Rails dev-container configuration
 https://dev.to/konyu/how-to-use-docker-containers-for-ruby-on-rails-development-in-visual-studio-code-23np

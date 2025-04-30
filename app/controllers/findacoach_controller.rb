@@ -7,4 +7,8 @@ class FindacoachController < ApplicationController
 
   def Security
   end
+
+  def adminland
+    @users = User.all
+  end
 end

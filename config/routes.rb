@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   get "/findacoach", to: "findacoach#index"
   get "/security", to: "findacoach#security"
+  get "/adminland", to: "findacoach#adminland"
   get "dashboard/index"
   get "whatsnew", to: "whats_new#index"
   resources :clients do

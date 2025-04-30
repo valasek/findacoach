@@ -1,17 +1,21 @@
-<footer class="mt-auto py-4 px-2 text-center justify-center items-center border-t border-t-solid border-t-2 border-t-sky-500">
-    <div class="">
-        <%= image_tag ("favicon.ico"), class: "h-8 w-auto inline pr-2", alt: "Find a Coach", loading: "lazy" %>
-        <b>Find a Coach</b> is designed, built, and backed with ♡ in
-        <a href="https://www.lonelyplanet.com/slovakia"
-            class="underline underline-offset-2 decoration-sky-500/80 mx-1">
+<footer class="footer footer-center p-4 bg-base-100 text-base-content border-t border-primary">
+    <div class="grid grid-flow-row gap-4">
+        <div>
+            <%= image_tag ("favicon.ico"), class: "h-8 w-auto inline", alt: "Find a Coach", loading: "lazy" %>
+            <p class="font-bold inline">Find a Coach</p>
+        </div>
+        <div>
+            Designed, built, and backed with ♡ in
+            <a href="https://www.lonelyplanet.com/slovakia" class="link">
             Slovakia
-        </a>
-        by <a href="https://stanislavvalasek.com/en/" class="underline underline-offset-2 decoration-sky-500/80 mx-1">Stanislav Valasek.</a>
-        Enjoy the rest of your <%= Date.today.strftime("%A") %>!<br/>
-    </div>
-    <div class="text-center py-2 mt-auto border-t border-gray-100">
-        <span class="text-xs text-gray-400 hover:text-gray-600 transition-colors">
-            Version: <%= APP_VERSION %>
-        </span>
+            </a>
+            by <a href="https://stanislavvalasek.com/en/" class="link">Stanislav Valasek</a>.
+            Enjoy the rest of your <%= Date.today.strftime("%A") %>!
+        </div>
+        <div>
+            <%= link_to "What's New", whatsnew_path, class: "link" %> / 
+            <%= link_to "Security", security_path, class: "link" %>
+        </div>
+        <div class="text-xs text-opacity-60">Version: <%= APP_VERSION %></div>
     </div>
 </footer>
