@@ -17,7 +17,8 @@ module.exports = {
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
-    require("daisyui"),
+    require("../vendor-javascript/daisyui"),
+    require("../vendor-javascript/daisyui-theme"),
   ],
   corePlugins: {
     fontFamily: true,
