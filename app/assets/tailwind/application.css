@@ -4,14 +4,4 @@
 @source "../../../app/javascript/**/*.js";
 @source "../../../app/views/**/*";
 
-/* @plugin "daisyui"; */
-
-/* Optional for custom themes – Docs: https://daisyui.com/docs/themes/#how-to-add-a-new-custom-theme */
-@plugin "./daisyui.js"{
-  themes: light --default, dark --prefersdark;
-  root: ":root";
-  include: ;
-  exclude: ;
-  prefix: ;
-  logs: true;
-}
+@plugin "./daisyui.js";
