@@ -4,4 +4,4 @@
 @source "../../../app/javascript/**/*.js";
 @source "../../../app/views/**/*";
 
-@plugin "./daisyui.js";
+@plugin "../../../vendor/javascript/daisyui.js";
