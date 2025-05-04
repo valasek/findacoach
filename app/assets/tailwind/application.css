@@ -3,5 +3,4 @@
 @source "../../../app/helpers/**/*.rb";
 @source "../../../app/javascript/**/*.js";
 @source "../../../app/views/**/*";
-
-@plugin ".daisyui";
+@plugin "./daisyui.js";
