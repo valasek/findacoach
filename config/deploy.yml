@@ -7,6 +7,7 @@ image: svalasek/findacoach
 # Deploy to these servers.
 servers:
   web:
+    # - 168.119.124.201
     - 162.55.185.37
   # job:
   #   hosts:
@@ -16,12 +17,13 @@ servers:
 # Enable SSL auto certification via Let's Encrypt and allow for multiple apps on a single web server.
 # Remove this section when using multiple web servers and ensure you terminate SSL at your load balancer.
 #
-# Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
+# Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable end-to-end encryption.
 proxy:
   ssl: true
   hosts:
     - www.findacoach.eu
     - findacoach.eu
+    # - test.findacoach.eu
 
 # Credentials for your image host.
 registry:
@@ -56,6 +58,7 @@ env:
     # RAILS_LOG_LEVEL: debug
     RAILS_ENV: production
     RAILS_SERVE_STATIC_FILES: true
+    # RAILS_HOSTS: test.findacoach.eu
     RAILS_HOSTS: www.findacoach.eu, findacoach.eu
 
 # Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
@@ -71,7 +74,6 @@ aliases:
 # Recommended to change this to a mounted volume path that is backed up off server.
 volumes:
   - "findacoach_storage:/rails/storage"
-
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid
 # hitting 404 on in-flight requests. Combines all files from new and old
@@ -94,7 +96,7 @@ builder:
 
 # Use a different ssh user than root
 # ssh:
-#   user: app
+#   user: kamal
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
