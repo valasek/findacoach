@@ -1,16 +1,7 @@
 <!DOCTYPE html>
-<html class="h-full">
+<html>
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QS0SQ4NF2B"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-QS0SQ4NF2B');
-    </script>
-    <title><%= content_for(:title) || "Find a Coach" %></title>
+    <title><%= content_for(:title) || "Findacoach" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -20,40 +11,20 @@
     <%= yield :head %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-    <%= favicon_link_tag asset_path("favicon.ico") %>
+
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= Sentry.get_trace_propagation_meta.html_safe %>
   </head>
 
-  <body class="font-sans">
-    <%= render 'layouts/header' %>
-    <main class="container mx-auto my-8 px-5 flex ">
-      <div class="grid grid-cols-1 col-span-full">
-        <% if notice %>
-        <div class="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3 mb-3" role="alert">
-          <p class="font-bold">Notice</p>
-          <p class="text-sm"><%= notice %></p>
-        </div>
-        <% end %>
-        <% if alert %>
-        <div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 mb-3" role="alert">
-          <p class="font-bold">Alert</p>
-          <p class="text-sm"><%= alert %></p>
-        </div>
-        <% end %>
-        <div>
-          <%= yield %>
-        </div>
-      </div>
+  <body>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <%= yield %>
     </main>
-    <%= render 'layouts/footer' %>
   </body>
 </html>
