@@ -6,6 +6,28 @@
   "service": "rails-app",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
+  // Extensions to use in containers
+  "customizations": {
+    "vscode": {
+        "extensions": [
+            "castwide.solargraph",        // SolarGraph
+            "misogi.ruby-rubocop",        // Rubocop
+            "KoichiSasada.vscode-rdbg",   // Ruby Debug see below
+            "shopify.ruby-lsp",           // Ruby Language Server
+            "marcoroth.stimulus-lsp",     // Stimulus Language Server
+            "ms-azuretools.vscode-docker",
+            "bung87.rails",
+            "bung87.vscode-gemfile",
+            "alexcvzz.vscode-sqlite"      // SQLite
+        ],
+        "settings": {
+          "ruby.rubocop.executePath": "/home/vscode/.rbenv/shims/",
+          "ruby.rubocop.onSave": true,
+          "rubyLsp.erbSupport": false
+        }
+    }
+  },
+
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
@@ -16,11 +38,12 @@
 
   "containerEnv": {
     "CAPYBARA_SERVER_PORT": "45678",
-    "SELENIUM_HOST": "selenium",
-    "KAMAL_REGISTRY_PASSWORD": "$KAMAL_REGISTRY_PASSWORD"
+    "SELENIUM_HOST": "selenium"
+    // "REDIS_URL": "redis://redis:6379/1"
   },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [3000, 6379],
   "forwardPorts": [3000],
 
   // Configure tool-specific properties.
