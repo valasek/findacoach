@@ -8,6 +8,6 @@
 @plugin "@tailwindcss/typography";
 
 /* Optional for custom themes – Docs: https://daisyui.com/docs/themes/#how-to-add-a-new-custom-theme */
-@plugin "./daisyui-theme.js"{
+/* @plugin "./daisyui-theme.js"{ */
   /* custom theme here */
-}
+/* } */
