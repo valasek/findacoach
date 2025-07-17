@@ -17,14 +17,17 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
+    <%= favicon_link_tag asset_path("favicon.ico") %>
+
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="min-h-screen flex flex-col bg-base-100">
+  <body class="min-h-screen font-serif flex flex-col bg-base-100">
     <%= render "layouts/menu" %>
-    <main class="flex-1 container prose mt-8 px-5">
+    <main class="flex-1 container mt-4 px-5">
       <%= yield %>
     </main>
     <%= render "layouts/footer" %>

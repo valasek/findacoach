@@ -18,7 +18,10 @@
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <a class="btn btn-ghost text-xl">Find a Coach</a>
+    <%= link_to "/" do%>
+      <%= image_tag "favicon.ico", class: "inline" %>
+    <% end %>
+    <%= link_to "Find a Coach", "/", class: "hover:underline px-2 text-xl" %>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
