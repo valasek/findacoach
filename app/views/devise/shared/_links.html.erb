@@ -1,7 +1,7 @@
 <div class="grid gap-4 pt-8">
   <div>
   <%- if controller_name != 'sessions' %>
-    <%= link_to "Sign in", new_session_path(resource_name) %><br />
+    <%= link_to "Sign in", new_session_path(resource_name), class: "btn btn-outline"  %><br />
   <% end %>
   </div>
 
