@@ -1,5 +1,15 @@
 # Findacoach
 
+ToDo:
+- add clients
+- dashboard
+- add sessions
+- demo account
+- export to icf log
+- admin
+- welcome email
+- auto expire notice alerts
+
 
 ## How to deploy
 
