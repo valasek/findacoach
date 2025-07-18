@@ -8,14 +8,7 @@
         tabindex="0"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li><a>Dashboard</a></li>
-        <li>
-          <a>Parent</a>
-          <ul class="p-2">
-            <li><a>Clients</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
+        <li><a>Clients</a></li>
       </ul>
     </div>
     <%= link_to "/" do%>
@@ -25,20 +18,38 @@
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
+      <% if user_signed_in? %>
       <li><a>Dashboard</a></li>
-      <li>
-        <details>
-          <summary>Clients</summary>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
+      <li><a>Clients</a></li>
+      <% end %>
     </ul>
   </div>
-  <div class="navbar-end">
-    <a class="btn">Button</a>
+  <div class="navbar-end flex gap-2">
+    <% if user_signed_in? %>
+    <a class="btn btn-outline btn-primary">Add Session</a>
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full">
+          <img
+            alt="Tailwind CSS Navbar component"
+            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+        </div>
+      </div>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li>
+          <a class="justify-between">
+            Profile
+          </a>
+        </li>
+        <li><a>Settings</a></li>
+        <li><a>Logout</a></li>
+      </ul>
+    </div>
+    <% else %>
+    <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline mr-4" %>
+    <%= link_to "Sign up free", new_user_registration_path, class: "btn btn-success" %>
+    <% end %>
   </div>
 </div>
