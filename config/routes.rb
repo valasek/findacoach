@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :clients
   devise_for :users
   get "findacoach/index"
   get "findacoach/changelog"
