@@ -1,0 +1,30 @@
+<div id="<%= dom_id session %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Client:</strong>
+    <%= session.client_id %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Date:</strong>
+    <%= session.date %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Duration:</strong>
+    <%= session.duration %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Paid:</strong>
+    <%= session.paid? ? "Yes" : "No" %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Group:</strong>
+    <%= session.group? ? "Yes" : "No" %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Group size:</strong>
+    <%= session.group_size %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Notes:</strong>
+    <%= session.notes %>
+  </div>
+</div>
