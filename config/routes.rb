@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
-  resources :sessions
-  resources :clients
   devise_for :users
+
+  # public pages
   get "findacoach/index"
   get "findacoach/changelog"
   get "findacoach/admin"
   get "findacoach/contact"
+
+  # app pages
+  resources :clients do
+    resources :sessions
+  end
+
   get "findacoach/dashboard"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

@@ -1,6 +1,7 @@
 # Findacoach
 
 ToDo:
+- export also group sessions
 - add clients
 - dashboard
 - add sessions

@@ -1,3 +1,48 @@
-<div>
-    Dashboard
+<div class="w-full">
+  <% content_for :title, "Dashboard" %>
+  <div class="container mx-auto px-4">
+    <h1 class="text-2xl font-bold mb-4">Welcome Back</h1>
+    <br/>
+    Great progress! You're making a positive impact
+    <br/><br/>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="card bg-base-200 shadow-sm">
+        <div class="card-body p-4 text-center">
+          <div class="text-3xl font-semibold text-primary"><%= @clients_count %></div>
+          <div class="text-sm text-base-content">Lives Touched</div>
+        </div>
+      </div>
+      <div class="card bg-base-200 shadow-sm">
+        <div class="card-body p-4 text-center">
+          <div class="text-3xl font-semibold text-primary"><%= @hours_count %></div>
+          <div class="text-sm text-base-content">Coaching Hours</div>
+        </div>
+      </div>
+      <div class="card bg-base-200 shadow-sm">
+        <div class="card-body p-4 text-center">
+          <div class="text-3xl font-semibold text-primary"><%= @sessions_count %></div>
+          <div class="text-sm text-base-content">Sessions</div>
+        </div>
+      </div>
+      <div class="card bg-base-200 shadow-sm">
+        <div class="card-body p-4 text-center">
+          <div class="text-3xl font-semibold text-primary"><%= @sessions_paid %>%</div>
+          <div class="text-sm text-base-content">Time Compensated</div>
+        </div>
+      </div>
+    </div>
+    Keep up the fantastic work! Every session brings you closer to your goals.
+    <div class="card bg-base-200 mt-4 shadow-sm">
+      <div class="card-body p-6">
+        <h3 class="text-lg mb-2">Ready for ICF Certification?</h3>
+        <p class="text-base-content mb-4">Streamline your journey with our ICF-compatible coaching log template</p>
+        <%= button_to clients_path(format: :xlsx), method: :get, class: "btn btn-primary" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          Download Excel Template
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

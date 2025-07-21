@@ -1,13 +1,21 @@
 class FindacoachController < ApplicationController
-  before_action :authenticate_user!, only: [:admin, :dashboard]
+  before_action :authenticate_user!, only: [ :admin, :dashboard ]
 
   def index
+    @total_users = User.all.count # for now lets count demo user as well
+    # demo_users_hours = User.find_by(email: "demo@example.com").sessions.sum(:duration)
+    @total_hours = Session.sum(:duration) # for now lets count demo_users_hours as well
   end
 
   def admin
+    @users = User.all
   end
 
   def dashboard
+    @clients_count = current_user.clients.count
+    @hours_count = current_user.total_coaching_hours
+    @sessions_paid = current_user.percentage_paid_seesions
+    @sessions_count = current_user.sessions.count
   end
 
    def changelog
