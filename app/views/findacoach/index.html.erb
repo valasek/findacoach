@@ -7,7 +7,7 @@
         <h1 class="text-5xl font-bold text-base-content mb-4">Find a Coach</h1>
         <h2 class="text-3xl font-semibold text-primary mb-6">Your Coaching Journey, Simplified</h2>
         <p class="text-xl text-base-content/80 mb-8 max-w-2xl mx-auto">
-          Effortless Client & Session Management Built for Modern Coaches
+          Effortless Client & Session Management Built for Coaches, Mentors and Guides
         </p>
         <div class="flex flex-wrap gap-4 justify-center">
           <%= link_to "Sign up free", new_user_registration_path, class: "btn btn-primary btn-lg" %>
@@ -16,6 +16,44 @@
       </div>
     </div>
   </div>
+
+<!-- Stats Section -->
+  <section class="pt-16">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-center">
+        <div class="stats shadow">
+          <div class="stat">
+            <div class="stat-figure text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-8 w-8 stroke-current">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                ></path>
+              </svg>
+            </div>
+            <div class="stat-title">Active coaches</div>
+            <div class="stat-value text-primary"><%= @total_users %></div>
+          </div>
+          <div class="stat">
+            <div class="stat-figure text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-8 w-8 stroke-current">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                ></path>
+              </svg>
+            </div>
+            <div class="stat-title">Total Hours Tracked</div>
+            <div class="stat-value text-primary"><%= @total_hours.to_i %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Value Proposition Section -->
   <section class="py-16 bg-base-100">
@@ -41,51 +79,19 @@
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section id="features" class="py-16 bg-base-200">
-    <div class="container mx-auto px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-base-content mb-4">Why Choose Our Platform?</h2>
-        <div class="divider max-w-xs mx-auto"></div>
-      </div>
-      
-      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        <!-- Feature 1 -->
-        <div class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow">
-          <div class="card-body">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
-                </svg>
-              </div>
-              <h3 class="card-title text-xl text-base-content">Streamlined Client Management</h3>
-            </div>
-            <p class="text-base-content/80 leading-relaxed">
-              Keep all your client information, progress notes, and communication in one secure, organized space. 
-              Track your clients' journeys with ease and never miss an important detail.
-            </p>
-          </div>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow">
-          <div class="card-body">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                </svg>
-              </div>
-              <h3 class="card-title text-xl text-base-content">Professional & Secure</h3>
-            </div>
-            <p class="text-base-content/80 leading-relaxed">
-              Your clients trust you with their goals and challenges. We protect that trust with enterprise-grade 
-              security and professional tools that elevate your practice.
-            </p>
-          </div>
-        </div>
+  <!-- Personal Journey Message -->
+  <div class="max-w-4xl mx-auto mb-16">
+    <div class="card bg-base-200 shadow-sm">
+      <div class="card-body text-center">
+        <h3 class="text-2xl font-bold mt-4">Built During My ACC Journey</h3>
+        <p class="text-lg text-base-content/80 leading-relaxed">
+          "I created this tool while pursuing my ICF ACC certification, ensuring it includes everything
+          I wished I had when starting my coaching practice. Every feature is built from real experience
+          and aligned with <a href="https://coachingfederation.org" class="link">ICF</a> requirements."
+        </p>
+        <div class="text-sm opacity-70">- Stanislav Valasek</div>
       </div>
     </div>
-  </section>
+  </div>
+
 </div>
