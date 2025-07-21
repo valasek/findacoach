@@ -2,15 +2,13 @@
 
 ToDo:
 - export also group sessions
+- redirect to dashboard after startup and show add new session
 - add clients
-- dashboard
 - add sessions
 - demo account
-- export to icf log
 - admin
 - welcome email
 - auto expire notice alerts
-
 
 ## How to deploy
 
