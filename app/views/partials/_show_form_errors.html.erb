@@ -1,10 +1,12 @@
 <% if object.errors.any? %>
-<div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 mb-2 mt-2" role="alert">
-    <h2 class="font-bold"><%= pluralize(object.errors.count, "error") %> prohibited this <%= object.class.model_name.human.downcase %> from being saved:</h2>
-    <ul>
-    <% object.errors.each do |error| %>
-        <li class="text-sm"><%= error.full_message %></li>
-    <% end %>
-    </ul>
-</div>
+    <div role="alert" class="alert alert-error alert-outline py-8">
+        <span>
+            <h3 class="font-bold pb-4">Fix these <%= pluralize(object.errors.count, "error") %> so <%= object.class.model_name.human.downcase %> can be saved:</h4>
+            <ul>
+                <% object.errors.each do |error| %>
+                <li class="text-sm"><%= error.full_message %></li>
+                <% end %>
+            </ul>
+        </span>
+    </div>
 <% end %>
