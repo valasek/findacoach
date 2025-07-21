@@ -1,11 +1,8 @@
-<div class="w-full">
+<div class="w-full text-center">
   <% content_for :title, "Dashboard" %>
-  <div class="container mx-auto px-4">
-    <h1 class="text-2xl font-bold mb-4">Welcome Back</h1>
-    <br/>
+    <h1 class="mb-4">Welcome Back</h1>
     Great progress! You're making a positive impact
-    <br/><br/>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+    <div class="w-fit mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 my-16">
       <div class="card bg-base-200 shadow-sm">
         <div class="card-body p-4 text-center">
           <div class="text-3xl font-semibold text-primary"><%= @clients_count %></div>
@@ -44,5 +41,4 @@
         <% end %>
       </div>
     </div>
-  </div>
 </div>

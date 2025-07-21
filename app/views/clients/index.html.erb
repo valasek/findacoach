@@ -14,7 +14,7 @@
       </div>
     </div>
     
-    <h1 class="text-4xl font-bold">Clients</h1>
+    <h1>Clients</h1>
     
     <div class="w-full lg:w-auto lg:min-w-80">
       <%= form_with url: clients_path, method: :get, class: "w-full", data: { controller: "search-client", turbo_frame: "clients-list" } do |f| %>
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <div id="clients" class="w-full">
+  <div id="clients">
     <% if @clients.any? %>
       <%= turbo_frame_tag "clients-list" do %>
         <div class="space-y-4">

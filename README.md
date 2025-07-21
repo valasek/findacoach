@@ -3,6 +3,7 @@
 ToDo:
 - export also group sessions
 - redirect to dashboard after startup and show add new session
+- add font awesome so I can use fab fav ...
 - add clients
 - add sessions
 - demo account

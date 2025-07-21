@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     resources :sessions
   end
 
+  # Standalone session routes for starting a session without a client
+  resources :sessions, only: [:new, :create]
+  get "session/start", to: "sessions#new", as: :start_session
+
   get "findacoach/dashboard"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

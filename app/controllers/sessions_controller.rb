@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   # GET /sessions or /sessions.json
   def index
-    @sessions = Session.all
+    @sessions = current_user.sessions.all
   end
 
   # GET /sessions/1 or /sessions/1.json
@@ -13,6 +13,8 @@ class SessionsController < ApplicationController
   # GET /sessions/new
   def new
     @session = Session.new
+    @clients = current_user.clients.all
+    @new_client = Client.new
   end
 
   # GET /sessions/1/edit
@@ -28,6 +30,8 @@ class SessionsController < ApplicationController
         format.html { redirect_to @session, notice: "Session was successfully created." }
         format.json { render :show, status: :created, location: @session }
       else
+        @clients = Client.all
+        @new_client = Client.new
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @session.errors, status: :unprocessable_entity }
       end
