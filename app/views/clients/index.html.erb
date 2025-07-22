@@ -33,7 +33,7 @@
   <div id="clients">
     <%= turbo_frame_tag "clients-list" do %>
       <% if @clients.any? %>
-        <div class="space-y-4">
+        <div class="flex flex-row flex-wrap gap-8">
           <% @clients.each do |client| %>
             <%= render "client_card", client: client, sessions: client.sessions %>
           <% end %>
