@@ -33,12 +33,12 @@
   <div id="clients">
     <%= turbo_frame_tag "clients-list" do %>
       <% if @clients.any? %>
-        <div class="flex flex-row flex-wrap gap-8">
+        <div class="flex flex-row flex-wrap justify-center gap-8">
           <% @clients.each do |client| %>
             <%= render "client_card", client: client, sessions: client.sessions %>
           <% end %>
         </div>
-        <div class="flex justify-center mt-8">
+        <div class="flex justify-center my-8">
           <%= paginate @clients %>
         </div>
       <% else %>
