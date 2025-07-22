@@ -1,13 +1,26 @@
 <% content_for :title, "Showing client" %>
 
-<div class="md:w-2/3 w-full">
+<div class="md:w-2/3 w-full mx-auto">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <h1>Showing client</h1>
+  <h1 class="text-center"><%= @client.name %></h1>
 
   <%= render @client %>
+
+  <div class="relative mb-8">
+  <h2 class="text-center">Sessions</h2>
+  <span class="badge badge-outline badge-neutral badge-sm absolute left-0 top-1/2 -translate-y-1/2">
+    <%= @client.sessions.count %> sessions | <%= @client.sessions.sum(&:duration) %> hours
+  </span>
+</div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% @client.sessions.each do |client_session| %>
+      <%= render "sessions/session", client_session: client_session %>
+    <% end %>
+  </div>
 
   <%= link_to "Edit this client", edit_client_path(@client), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
   <%= link_to "Back to clients", clients_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>

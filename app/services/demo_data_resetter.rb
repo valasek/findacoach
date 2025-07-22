@@ -42,10 +42,13 @@ class DemoDataResetter
       paid_values = ([ true ] * (session_count * 0.8).round + [ false ] * (session_count * 0.2).round).shuffle
 
       session_count.times do |i|
+        group = Random.rand < 0.4 # 40% chance of being a group session
         Session.create!(
           client_id: client.id,
           date: Faker::Date.between(from: 30.days.ago, to: Time.now),
           duration: Faker::Number.between(from: 0, to: 2.0),
+          group: group,
+          group_size: group ? Faker::Number.between(from: 2, to: 15) : nil,
           notes: Faker::Lorem.paragraph(sentence_count: 12),
           paid: paid_values[i]
         )

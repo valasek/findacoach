@@ -3,7 +3,7 @@
   <div class="card-body">
     <div class="flex justify-between">
     <h2>
-        <%= link_to client.name, edit_client_path(client), title: "Edit client", class: "link", data: { turbo_frame: "_top" } %>
+        <%= link_to client.name, client_path(client), title: "Edit client", class: "link", data: { turbo_frame: "_top" } %>
     </h2>
     </div>
     <span class="badge badge-outline badge-neutral badge-sm">

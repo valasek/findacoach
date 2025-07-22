@@ -1,22 +1,15 @@
-<div id="<%= dom_id client %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= client.user_id %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= client.name %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Email:</strong>
-    <%= client.email %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Phone:</strong>
-    <%= client.phone %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Notes:</strong>
+<div id="<%= dom_id client %>" class="flex flex-row gap-4">
+  <fieldset class="fieldset basis-1/3">
+    <legend class="fieldset-legend">Email</legend><%= client.email %>
+  </fieldset>
+    <fieldset class="fieldset basis-1/3">
+    <legend class="fieldset-legend">Phone</legend><%= client.phone %>
+  </fieldset>
+</div>
+
+<div class="flex flex-row gap-4 mb-8">
+  <fieldset class="fieldset basis-full">
+    <legend class="fieldset-legend">Notes</legend>
     <%= client.notes %>
-  </div>
+  </fieldset>
 </div>
