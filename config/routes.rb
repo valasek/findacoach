@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   # Standalone session routes for starting a session without a client
-  resources :sessions, only: [:new, :create]
+  resources :sessions, only: [ :new, :create ]
   get "session/start", to: "sessions#new", as: :start_session
 
   get "findacoach/dashboard"

@@ -27,8 +27,8 @@ class SessionsController < ApplicationController
 
     respond_to do |format|
       if @session.save
-        format.html { redirect_to @session, notice: "Session was successfully created." }
-        format.json { render :show, status: :created, location: @session }
+        format.html { redirect_to clients_path, notice: "Session was successfully created." }
+        format.json { render :show, status: :created, location: clients_path }
       else
         @clients = Client.all
         @new_client = Client.new
@@ -42,8 +42,8 @@ class SessionsController < ApplicationController
   def update
     respond_to do |format|
       if @session.update(session_params)
-        format.html { redirect_to @session, notice: "Session was successfully updated." }
-        format.json { render :show, status: :ok, location: @session }
+        format.html { redirect_to clients_path, notice: "Session was successfully updated." }
+        format.json { render :show, status: :ok, location: clients_path }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @session.errors, status: :unprocessable_entity }

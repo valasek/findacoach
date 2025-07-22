@@ -1,9 +1,13 @@
-<% content_for :title, "New session" %>
-
-<div class="md:w-2/3 w-full">
+<div class="w-full">
+  <% content_for :title, "New session" %>
   <h1>New session</h1>
 
   <%= render "form", session: @session %>
 
-  <%= link_to "Back to sessions", sessions_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <%= link_to clients_path, class: "btn ml-4", data: { turbo_prefetch: false } do %>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 inline">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+    </svg>
+    Back to clients
+  <%end%>
 </div>

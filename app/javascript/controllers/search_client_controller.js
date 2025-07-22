@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["input"]
 
   connect() {
+    // console.log("connected search-client controller")
     document.addEventListener("turbo:frame-load", this.refocus.bind(this))
   }
 

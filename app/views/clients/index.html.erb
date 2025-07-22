@@ -31,8 +31,8 @@
   </div>
 
   <div id="clients">
-    <% if @clients.any? %>
-      <%= turbo_frame_tag "clients-list" do %>
+    <%= turbo_frame_tag "clients-list" do %>
+      <% if @clients.any? %>
         <div class="space-y-4">
           <% @clients.each do |client| %>
             <%= render "client_card", client: client, sessions: client.sessions %>
@@ -41,21 +41,39 @@
         <div class="flex justify-center mt-8">
           <%= paginate @clients %>
         </div>
-      <% end %>
-    <% else %>
-      <div class="hero min-h-96">
-        <div class="hero-content text-center">
-          <div class="max-w-md">
-            <p class="text-lg mb-6">Create your first client</p>
-            <%= link_to new_client_path, class: "btn btn-primary btn-lg" do %>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-              New
-            <% end %>
+      <% else %>
+        <% if params[:query].present? %>
+          <!-- No clients found from search, but clients exist in the system -->
+          <div class="hero min-h-96">
+            <div class="hero-content text-center">
+              <div class="max-w-md">
+                <p class="text-lg mb-6">No such client</p>
+                <p class="text-sm text-gray-600 mb-6">
+                  Try adjusting your search terms.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        <% elsif @clients_count == 0 %>
+          <!-- No clients exist in the system at all -->
+          <div class="hero min-h-96">
+            <div class="hero-content text-center">
+              <div class="max-w-md">
+                <p class="text-lg mb-6">No clients have been created<br/>Why not to create one?</p>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <!-- Edge case: clients exist but none returned (shouldn't normally happen) -->
+          <div class="hero min-h-96">
+            <div class="hero-content text-center">
+              <div class="max-w-md">
+                <p class="text-lg mb-6">No clients to display</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>

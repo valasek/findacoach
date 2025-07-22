@@ -5,14 +5,15 @@ class ClientsController < ApplicationController
   # GET /clients or /clients.json
   def index
     @clients = current_user.clients.order(created_at: :desc)
+    @clients_count = @clients.count
     respond_to do |format|
       format.html do
         if params[:query].present?
           query = "%#{params[:query].downcase}%"
-          @clients = @clients.where("LOWER(name) LIKE ? OR LOWER(email) LIKE ?", query, query)
+          @clients = @clients.where("LOWER(name) LIKE ? OR LOWER(email) LIKE ?", query, query).page(params[:page])
+        else
+          @clients = @clients.page(params[:page])
         end
-        @clients = @clients.page(params[:page])
-        @clients_count = current_user.clients.count
       end
       format.xlsx do
         template_path = "#{Rails.root}/app/assets/templates/ICFClientCoachingLogTemplate-20-1.xlsx"
@@ -71,7 +72,7 @@ class ClientsController < ApplicationController
   # POST /clients or /clients.json
   def create
     @client = Client.new(client_params)
-    @client.user_id = current_user.id
+    @client.user = current_user
 
     respond_to do |format|
       if @client.save
