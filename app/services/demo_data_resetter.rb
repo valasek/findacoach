@@ -46,7 +46,7 @@ class DemoDataResetter
         Session.create!(
           client_id: client.id,
           date: Faker::Date.between(from: 30.days.ago, to: Time.now),
-          duration: Faker::Number.between(from: 0, to: 2.0),
+          duration: 1 + [ 0, 0.5 ].sample,
           group: group,
           group_size: group ? Faker::Number.between(from: 2, to: 15) : nil,
           notes: Faker::Lorem.paragraph(sentence_count: 12),
