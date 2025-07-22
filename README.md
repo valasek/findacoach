@@ -24,7 +24,7 @@ Focus on coaching and Find a Coach will manage all what you need: your coaching 
 `kamal deploy`
 
 And optional:
-kamal reset_demo_user
+kamal reset_demo
 kamal logs
 kamal console
 
