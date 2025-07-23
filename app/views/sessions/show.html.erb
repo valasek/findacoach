@@ -16,12 +16,12 @@
       <% end %>
     </span>
     <h1 class="text-center"><%= @session.date %>
-    <% if @session.paid? %>
-              <div class="badge badge-success badge-sm">Paid</div>
-            <% else %>
-            <div class="badge badge-error badge-sm">Free</div>
-            <% end %>
-          </h1>
+      <% if @session.paid? %>
+        <div class="badge badge-success badge-sm">Paid</div>
+      <% else %>
+      <div class="badge badge-error badge-sm">Free</div>
+      <% end %>
+    </h1>
     <span class="absolute right-0 top-1/2 -translate-y-1/2">
       <details class="dropdown">
         <summary class="btn m-1">

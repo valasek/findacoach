@@ -1,12 +1,16 @@
-<main class="container mx-auto px-5">
-  <h1>Administration</h1>
+<main class="md:w-2/3 w-full mx-auto">
+
+  <h1 class="text-center mb-6">Administration</h1>
+
     <div class="badge badge-primary my-4">Registered users: <%= @users.count %></div>
+
     <div class="hidden md:grid  md:grid-cols-4 bg-gray-100 font-bold p-3 rounded-t-lg">
       <div>Email</div>
       <div>Clients</div>
       <div>Sessions</div>
       <div>Actions</div>
     </div>
+
     <div class="divide-y divide-gray-200">
     <% for user in @users do %>
       <div class="grid grid-cols-1 md:grid-cols-4 md:gap-8 p-3 hover:bg-gray-50">
@@ -50,4 +54,5 @@
       </div>
     <% end %>
     </div>
+
 </main>

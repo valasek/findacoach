@@ -1,37 +1,36 @@
-<%= form_with(model: session, local: true, class: "inline") do |form| %>
+<%= form_with(model: [@client, session], local: true, class: "inline") do |form| %>
+  <%= hidden_field_tag :source, params[:source] %>
   <%= render "partials/show_form_errors", object: session %>
 
-  <div class="my-5">
-    <%= form.label :date %>
-    <%= form.date_field :date, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": session.errors[:date].none?, "border-red-400 focus:outline-red-600": session.errors[:date].any?}] %>
+  <div class="flex flex-row gap-4">
+    <fieldset class="fieldset basis-1/5">
+      <legend class="fieldset-legend"><%= form.label :date %></legend>
+      <%= form.date_field :date, autofocus: true, class: ["input", {"input-error": session.errors[:date].any?}] %>
+    </fieldset>
+    <fieldset class="fieldset basis-1/5">
+      <legend class="fieldset-legend"><%= form.label :duration %></legend>
+      <%= form.number_field :duration, value: "1", class: ["input", {"input-error": session.errors[:duration].any?}] %>
+    </fieldset>
+    <fieldset class="fieldset basis-1/5">
+      <legend class="fieldset-legend"><%= form.label :paid %></legend>
+      <%= form.check_box :paid, checked: "checked", class: ["checkbox", {"input-error": session.errors[:paid].any?}] %>
+    </fieldset>
+    <fieldset class="fieldset basis-1/5">
+      <legend class="fieldset-legend"><%= form.label :group %></legend>
+      <%= form.check_box :group, class: ["checkbox", {"input-error": session.errors[:group].any?}] %>
+    </fieldset>
+    <fieldset class="fieldset basis-1/5">
+      <legend class="fieldset-legend"><%= form.label :group_size %></legend>
+      <%= form.number_field :group_size, class: ["input", {"input-error": session.errors[:group_size].any?}] %>
+    </fieldset>
   </div>
 
-  <div class="my-5">
-    <%= form.label :duration %>
-    <%= form.text_field :duration, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": session.errors[:duration].none?, "border-red-400 focus:outline-red-600": session.errors[:duration].any?}] %>
+  <div class="flex flex-row gap-4 mb-8">
+    <fieldset class="fieldset basis-full">
+      <legend class="fieldset-legend"><%= form.label :notes %></legend>
+      <%= form.text_area :notes, rows: 8, cols: 80, placeholder: "Notes", class: "textarea w-full" %>
+    </fieldset>
   </div>
 
-  <div class="my-5 flex items-center gap-2">
-    <%= form.label :paid %>
-    <%= form.checkbox :paid, class: ["block shadow-sm rounded-md border order-first h-5 w-5", {"border-gray-400 focus:outline-blue-600": session.errors[:paid].none?, "border-red-400 focus:outline-red-600": session.errors[:paid].any?}] %>
-  </div>
-
-  <div class="my-5 flex items-center gap-2">
-    <%= form.label :group %>
-    <%= form.checkbox :group, class: ["block shadow-sm rounded-md border order-first h-5 w-5", {"border-gray-400 focus:outline-blue-600": session.errors[:group].none?, "border-red-400 focus:outline-red-600": session.errors[:group].any?}] %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :group_size %>
-    <%= form.number_field :group_size, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": session.errors[:group_size].none?, "border-red-400 focus:outline-red-600": session.errors[:group_size].any?}] %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :notes %>
-    <%= form.textarea :notes, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": session.errors[:notes].none?, "border-red-400 focus:outline-red-600": session.errors[:notes].any?}] %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit "Save", class: "btn btn-primary" %>
-  </div>
+  <%= form.submit "Save", class: "btn btn-primary" %>
 <% end %>

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_client
+  before_action :set_client, except: [ :create, :index ]  # Don't set client for create and index
   before_action :set_session, only: %i[ show edit update destroy ]
 
   # GET /sessions or /sessions.json
@@ -14,8 +14,7 @@ class SessionsController < ApplicationController
 
   # GET /sessions/new
   def new
-    @session = Session.new
-    @clients = current_user.clients.all
+    @session = @client.sessions.build
   end
 
   # GET /sessions/1/edit
@@ -24,7 +23,15 @@ class SessionsController < ApplicationController
 
   # POST /sessions or /sessions.json
   def create
-    @session = Session.new(session_params)
+    client_id = params[:client_id]
+    @client = current_user.clients.find(client_id) if client_id.present?
+    if @client.nil?
+      @session = Session.new(session_params)
+      flash.now[:alert] = "Please select a client"
+      render :new, status: :unprocessable_entity
+      return
+    end
+    @session = @client.sessions.build(session_params)
 
     respond_to do |format|
       if @session.save

@@ -9,7 +9,7 @@
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <% if user_signed_in? %>
           <li><%= link_to "Dashboard", findacoach_dashboard_path %></li>
-          <li><a>Clients</a></li>
+          <li><%= link_to "Clients", clients_path %></li>
         <% end %>
         <li><%= link_to "Contact", findacoach_contact_path %></li>
       </ul>
@@ -26,7 +26,6 @@
         <li><%= link_to "Clients", clients_path %></li>
       <% end %>
         <li><%= link_to "Contact", findacoach_contact_path %></li>
-      
     </ul>
   </div>
   <div class="navbar-end flex gap-2">
