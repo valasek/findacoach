@@ -103,7 +103,7 @@ class ClientsController < ApplicationController
     @client.destroy!
 
     respond_to do |format|
-      format.html { redirect_to clients_path, status: :see_other, notice: "Client was successfully destroyed." }
+      format.html { redirect_to clients_path, status: :see_other, notice: "Client was successfully removed." }
       format.json { head :no_content }
     end
   end

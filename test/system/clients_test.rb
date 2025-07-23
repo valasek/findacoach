@@ -44,6 +44,6 @@ class ClientsTest < ApplicationSystemTestCase
     visit client_url(@client)
     accept_confirm { click_on "Destroy this client", match: :first }
 
-    assert_text "Client was successfully destroyed"
+    assert_text "Client was successfully removed"
   end
 end

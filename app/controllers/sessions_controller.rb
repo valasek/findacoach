@@ -62,7 +62,7 @@ class SessionsController < ApplicationController
     @session.destroy!
 
     respond_to do |format|
-      format.html { redirect_to sessions_path, status: :see_other, notice: "Session was successfully destroyed." }
+      format.html { redirect_to client_path(@client), status: :see_other, notice: "Session was successfully removed." }
       format.json { head :no_content }
     end
   end
@@ -74,7 +74,7 @@ class SessionsController < ApplicationController
     end
 
     def set_session
-      @session = @client.sessions.find(params.expect(:id))
+      @session = @client.sessions.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

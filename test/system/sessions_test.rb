@@ -48,6 +48,6 @@ class SessionsTest < ApplicationSystemTestCase
     visit session_url(@session)
     accept_confirm { click_on "Destroy this session", match: :first }
 
-    assert_text "Session was successfully destroyed"
+    assert_text "Session was successfully removed"
   end
 end
