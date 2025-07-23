@@ -18,17 +18,17 @@ class FindacoachController < ApplicationController
     @sessions_count = current_user.sessions.count
   end
 
-   def changelog
+  def changelog
     @changelog_entries = [
       {
         version: "0.3",
-        date: "November 4, 2024",
+        date: "Jul 23, 2025",
         changes: {
           "New" => [
             "Full demo version available"
           ],
           "Changed" => [
-            "Upgrade the underlying technology to Rails 8.0.0"
+            "Upgrade the underlying technology to Rails 8.0.2"
           ]
           # "Fixed" => [
           #   "",
