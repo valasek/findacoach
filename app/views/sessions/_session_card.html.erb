@@ -1,0 +1,36 @@
+<!-- Session Card 1 -->
+<div id="<%= dom_id client_session %>" class="card bg-base-100 shadow-md border border-base-300">
+    <div class="card-body p-4">
+        <div class="flex justify-between items-start mb-3">
+            <%= link_to client_session.date, client_session_path(@client, client_session), class: "text-sm text-base-content/70 link text-blue-600"  %>
+            <% if client_session.paid? %>
+              <div class="badge badge-success badge-sm">Paid</div>
+            <% else %>
+            <div class="badge badge-error badge-sm">Free</div>
+            <% end %>
+        </div>
+        
+        <div class="stats stats-vertical shadow-xs bg-base-100 mb-3">
+            <div class="stat py-2 px-3">
+                <div class="stat-title text-xs">Duration</div>
+                <div class="stat-value text-lg"><%= client_session.duration %><span class="stat-value text-sm"> h</span></div>
+            </div>
+            <div class="stat py-2 px-3">
+                <div class="stat-title text-xs">Type</div>
+                <% if client_session.group? %>
+                  <div class="stat-desc">Group, <%= client_session.group_size %> members</div>
+                <% else %>
+                  <div class="stat-desc">Individual</div>
+                <% end %>
+            </div>
+        </div>
+        
+        <div class="collapse collapse-arrow bg-base-200">
+            <input type="checkbox" />
+            <div class="collapse-title text-sm font-medium">Notes</div>
+            <div class="collapse-content text-xs">
+                <p class="text-base-content/80"><%= client_session.notes %></p>
+            </div>
+        </div>
+    </div>
+</div>

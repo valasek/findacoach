@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_client
   before_action :set_session, only: %i[ show edit update destroy ]
 
   # GET /sessions or /sessions.json
@@ -14,7 +16,6 @@ class SessionsController < ApplicationController
   def new
     @session = Session.new
     @clients = current_user.clients.all
-    @new_client = Client.new
   end
 
   # GET /sessions/1/edit
@@ -30,8 +31,6 @@ class SessionsController < ApplicationController
         format.html { redirect_to clients_path, notice: "Session was successfully created." }
         format.json { render :show, status: :created, location: clients_path }
       else
-        @clients = Client.all
-        @new_client = Client.new
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @session.errors, status: :unprocessable_entity }
       end
@@ -62,9 +61,13 @@ class SessionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def set_client
+      @client = current_user.clients.find(params[:client_id])
+    end
+
     def set_session
-      @session = Session.find(params.expect(:id))
+      @session = @client.sessions.find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.
