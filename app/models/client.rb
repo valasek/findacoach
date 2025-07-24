@@ -2,6 +2,8 @@ class Client < ApplicationRecord
   belongs_to :user
   has_many :sessions, dependent: :destroy
 
+  default_scope { order(:name) }
+
   validates :user, :name, presence: true
   validates :email, uniqueness: true, if: :email_present?
   validates :phone, uniqueness: true, if: :phone_present?
