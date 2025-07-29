@@ -6,6 +6,17 @@ Focus on coaching and Find a Coach will manage all what you need: your coaching 
 
 [Roadmap](https://github.com/users/valasek/projects/2/views/1?layout=board)
 
+## License
+
+All source code in this repository is released under the **[CC BY‑NC 4.0](https://creativecommons.org/licenses/by‑nc/4.0/)** license.
+
+- ❌ **Commercial use is not permitted**
+- 🔒 No patent rights are granted
+- 📝 Attribution and copyright notice must be included
+- ⚠️ No liability and no warranty
+
+If you'd like to use this software commercially, please [contact me](https://www.stanislavvalasek.com/en/contact/) to discuss a commercial license.
+
 # ToDo
 
 - export also group sessions
