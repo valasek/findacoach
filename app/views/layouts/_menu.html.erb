@@ -1,12 +1,12 @@
-<div class="navbar bg-base-100 ">
+<div class="navbar bg-base-100">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> 
+        </svg>
       </div>
-      <ul
-        tabindex="0"
-        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+      <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow-lg border border-base-300">
         <% if user_signed_in? %>
           <li><%= link_to "Dashboard", findacoach_dashboard_path %></li>
           <li><%= link_to "Clients", clients_path %></li>
@@ -15,9 +15,9 @@
       </ul>
     </div>
     <%= link_to "/" do%>
-      <%= image_tag "favicon.ico", class: "inline" %>
+      <%= image_tag "favicon.ico", class: "inline w-6 h-6" %>
     <% end %>
-    <%= link_to "Find a Coach", "/", class: "hover:underline px-2 text-xl" %>
+    <%= link_to "Find a Coach", "/", class: "hover:underline px-2 text-lg sm:text-xl" %>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -28,23 +28,16 @@
         <li><%= link_to "Contact", findacoach_contact_path %></li>
     </ul>
   </div>
-  <div class="navbar-end flex gap-2">
+  <div class="navbar-end flex gap-1 sm:gap-2">
     <% if user_signed_in? %>
-      <!-- Add session>-->
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-        <div class="w-10 rounded-full">
-          <img
-            alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+        <div class="w-8 sm:w-10 rounded-full">
+          <img alt="User avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         </div>
       </div>
-      <ul
-        tabindex="0"
-        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li>
-          <li><%= link_to "Profile", edit_user_registration_path %></li>
-        </li>
+      <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow-lg border border-base-300">
+        <li><%= link_to "Profile", edit_user_registration_path %></li>
         <% if current_user&.email == "valasek@gmail.com" %>
           <li><%= link_to "Administration", findacoach_admin_path %></li>
         <% end %>
@@ -52,8 +45,8 @@
       </ul>
     </div>
     <% else %>
-    <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline mr-4" %>
-    <%= link_to "Sign up free", new_user_registration_path, class: "btn btn-primary" %>
+    <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline btn-sm sm:btn-md" %>
+    <%= link_to "Sign up free", new_user_registration_path, class: "btn btn-primary btn-sm sm:btn-md" %>
     <% end %>
   </div>
 </div>

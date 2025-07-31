@@ -1,54 +1,43 @@
 <div>
-
- <!-- Hero Section -->
-  <div class="hero min-h-[60vh] bg-gradient-to-br from-base-100 to-base-200">
-    <div class="hero-content text-center">
+  <!-- Hero Section -->
+  <div class="hero min-h-[50vh] sm:min-h-[60vh] bg-gradient-to-br from-base-100 to-base-200">
+    <div class="hero-content text-center px-4 sm:px-6">
       <div class="max-w-4xl">
-        <h1 class="text-5xl font-bold text-base-content mb-4">Find a Coach</h1>
-        <h2 class="text-3xl font-semibold text-primary mb-6">Your Coaching Journey, Simplified</h2>
-        <p class="text-xl text-base-content/80 mb-8 max-w-2xl mx-auto">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-base-content mb-4">Find a Coach</h1>
+        <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary mb-6">Your Coaching Journey, Simplified</h2>
+        <p class="text-lg sm:text-xl text-base-content/80 mb-8 max-w-2xl mx-auto leading-relaxed">
           Effortless Client & Session Management Built for Coaches, Mentors and Guides
         </p>
-        <div class="flex flex-wrap gap-4 justify-center">
-          <%= link_to "Try demo", new_user_session_path, class: "btn btn-primary btn-lg" %>
-          <%= link_to "Changelog", findacoach_changelog_path, class: "link" %>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <%= link_to "Try demo", new_user_session_path, class: "btn btn-primary btn-lg w-full sm:w-auto" %>
+          <%= link_to "Changelog", findacoach_changelog_path, class: "link text-lg" %>
         </div>
       </div>
     </div>
   </div>
 
-<!-- Stats Section -->
-  <section class="pt-16">
-    <div class="container mx-auto px-6">
+  <!-- Stats Section -->
+  <section class="pt-12 sm:pt-16">
+    <div class="container mx-auto px-4 sm:px-6">
       <div class="flex justify-center">
-        <div class="stats shadow">
-          <div class="stat">
+        <div class="stats stats-vertical sm:stats-horizontal shadow">
+          <div class="stat text-center">
             <div class="stat-figure text-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-8 w-8 stroke-current">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                ></path>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
               </svg>
             </div>
-            <div class="stat-title">Active coaches</div>
-            <div class="stat-value text-primary"><%= @total_users %></div>
+            <div class="stat-title text-sm sm:text-base">Active coaches</div>
+            <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl"><%= @total_users %></div>
           </div>
-          <div class="stat">
+          <div class="stat text-center">
             <div class="stat-figure text-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-8 w-8 stroke-current">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                ></path>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
               </svg>
             </div>
-            <div class="stat-title">Total Hours Tracked</div>
-            <div class="stat-value text-primary"><%= @total_hours.to_i %></div>
+            <div class="stat-title text-sm sm:text-base">Total Hours Tracked</div>
+            <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl"><%= @total_hours.to_i %></div>
           </div>
         </div>
       </div>
@@ -56,20 +45,20 @@
   </section>
 
   <!-- Value Proposition Section -->
-  <section class="py-16 bg-base-100">
-    <div class="container mx-auto px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-base-content mb-4">Focus on Growth, Not Paperwork</h2>
+  <section class="py-12 sm:py-16 bg-base-100">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8 sm:mb-12">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-base-content mb-4">Focus on Growth, Not Paperwork</h2>
         <div class="divider max-w-xs mx-auto"></div>
       </div>
       
       <div class="max-w-4xl mx-auto">
         <div class="card bg-base-200 shadow-sm">
-          <div class="card-body text-center">
-            <h3 class="card-title text-2xl justify-center mb-4 text-primary">
+          <div class="card-body text-center p-6 sm:p-8">
+            <h3 class="card-title text-xl sm:text-2xl justify-center mb-4 text-primary leading-tight">
               Empowering coaches to build stronger client relationships through simplified practice management.
             </h3>
-            <p class="text-lg text-base-content/80 leading-relaxed">
+            <p class="text-base sm:text-lg text-base-content/80 leading-relaxed">
               Whether you're a life coach, business mentor, or wellness guide, managing your practice shouldn't be complicated. 
               Our intuitive platform helps you focus on what matters most – empowering your clients to achieve their goals.
             </p>
@@ -80,18 +69,21 @@
   </section>
 
   <!-- Personal Journey Message -->
-  <div class="max-w-4xl mx-auto mb-16">
-    <div class="card bg-base-200 shadow-sm">
-      <div class="card-body text-center">
-        <h3 class="text-2xl font-bold mt-4">Built During My ACC Journey</h3>
-        <p class="text-lg text-base-content/80 leading-relaxed">
-          "I created this tool while pursuing my ICF ACC certification, ensuring it includes everything
-          I wished I had when starting my coaching practice. Every feature is built from real experience
-          and aligned with <a href="https://coachingfederation.org" class="link">ICF</a> requirements."
-        </p>
-        <div class="text-sm opacity-70">- Stanislav Valasek</div>
+  <section class="pb-12 sm:pb-16">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="card bg-base-200 shadow-sm">
+          <div class="card-body text-center p-6 sm:p-8">
+            <h3 class="text-xl sm:text-2xl font-bold mb-4">Built During My ACC Journey</h3>
+            <p class="text-base sm:text-lg text-base-content/80 leading-relaxed mb-4">
+              "I created this tool while pursuing my ICF ACC certification, ensuring it includes everything
+              I wished I had when starting my coaching practice. Every feature is built from real experience
+              and aligned with <a href="https://coachingfederation.org" class="link">ICF</a> requirements."
+            </p>
+            <div class="text-sm opacity-70">- Stanislav Valasek</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
+  </section>
 </div>

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+return if Rails.env.development? || Rails.env.test?
+
 APP_VERSION = File.read(Rails.root.join("VERSION")).strip rescue "0.0.0"
 RELEASE_VERSION = "#{Rails.application.class.module_parent_name.downcase}@#{APP_VERSION}"
 
