@@ -54,10 +54,10 @@ Clean all assets `rails assets:clobber`
 
 Include into precommit hook:
 
-` rubocop` 
-` rails db:test:prepare test test:system` 
+`rubocop` 
+`rails db:test:prepare test test:system`
 
-Reset demo user ` rails demo_user:reset` 
+Reset demo user `rails demo_user:reset` 
 
  ## Upgrate gems
 
