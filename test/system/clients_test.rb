@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ClientsTest < ApplicationSystemTestCase
   setup do
-    @client = clients(:one)
+    @client = clients(:oneC)
   end
 
   test "visiting the index" do
