@@ -1,19 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  client: one
+oneS:
+  client: oneC
   date: 2025-07-20
-  duration: 9.99
+  duration: 1.0
   paid: false
   group: false
-  group_size: 1
-  notes: MyText
+  group_size: 
+  notes: Session notes for one
 
-two:
-  client: two
+twoS:
+  client: twoC
   date: 2025-07-20
-  duration: 9.99
-  paid: false
-  group: false
-  group_size: 1
-  notes: MyText
+  duration: 1.1
+  paid: true
+  group: true
+  group_size: 5
+  notes: Session notes for two
