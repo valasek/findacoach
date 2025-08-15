@@ -59,11 +59,17 @@ Include into precommit hook:
 
 Reset demo user `rails demo_user:reset` 
 
- ## Upgrate gems
+ ## Update
+ 
+ ### Gems
 
 `bundle outdated`
  
 `bundle update`
+
+### Daisyui
+
+curl -sLo app/assets/tailwind/daisyui.js https://github.com/saadeghi/daisyui/releases/latest/download/daisyui.js
 
 ### Backup and restore DB
 
