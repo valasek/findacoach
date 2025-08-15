@@ -52,6 +52,11 @@ Build Tailwind `bin/rails tailwindcss:build`
 
 Clean all assets `rails assets:clobber` 
 
+See test emails:
+
+- in folder `tmp/mail/`
+- see previews in the browser: `http://localhost:3000/rails/mailers`
+
 Include into precommit hook:
 
 `rubocop` 

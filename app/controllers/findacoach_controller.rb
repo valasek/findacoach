@@ -21,7 +21,23 @@ class FindacoachController < ApplicationController
   def changelog
     @changelog_entries = [
       {
-        version: "0.3",
+        version: "0.4.0",
+        date: "Aug 15, 2025",
+        changes: {
+          "New" => [
+            "Welcome email after new registration"
+          ],
+          "Changed" => [
+            "Upgrade the system to the latest and more secure packages"
+          ]
+          # "Fixed" => [
+          #   "",
+          #   ""
+          # ]
+        }
+      },
+      {
+        version: "0.3.0",
         date: "Jul 23, 2025",
         changes: {
           "New" => [
@@ -37,7 +53,7 @@ class FindacoachController < ApplicationController
         }
       },
       {
-        version: "0.2",
+        version: "0.2.0",
         date: "October 31, 2024",
         changes: {
           "New" => [
@@ -54,7 +70,7 @@ class FindacoachController < ApplicationController
         }
       },
       {
-        version: "0.1",
+        version: "0.1.0",
         date: "October 23, 2024",
         changes: {
           "New" => [
