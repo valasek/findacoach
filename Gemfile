@@ -43,7 +43,10 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 # My inserted gems
-gem "devise"
+gem "devise"         # User authorization
+gem "omniauth"       # SSO
+gem "omniauth-google-oauth2" # Google SSO
+gem "omniauth-rails_csrf_protection" # Google SSO
 gem "kaminari"      # Pagination
 gem "faker"         # Seeding data
 gem "rubyXL"        # Export to MS Excel using template

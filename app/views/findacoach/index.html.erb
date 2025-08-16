@@ -9,7 +9,15 @@
           Effortless Client & Session Management Built for Coaches, Mentors and Guides
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <%= link_to "Try demo", new_user_session_path, class: "btn btn-primary btn-lg w-full sm:w-auto" %>
+          <%= button_to "Enter demo", session_path(:user),
+            method: :post,
+            params: {
+                user: {
+                  email: "demo@example.com",
+                  password: "demo123"
+                }
+            },
+            class: "btn btn-primary btn-lg w-full sm:w-auto" %>
           <%= link_to "Changelog", findacoach_changelog_path, class: "link text-lg" %>
         </div>
       </div>

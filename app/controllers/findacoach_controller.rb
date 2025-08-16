@@ -25,7 +25,9 @@ class FindacoachController < ApplicationController
         date: "Aug 15, 2025",
         changes: {
           "New" => [
-            "Welcome email after new registration"
+            "When registered, welcome email will be sent",
+            "Sign in now supports Google SSO",
+            "Enter the demo account using one click"
           ],
           "Changed" => [
             "Upgrade the system to the latest and more secure packages"

@@ -64,6 +64,8 @@ Include into precommit hook:
 
 Reset demo user `rails demo_user:reset` 
 
+Edit rails credentials `VISUAL="code --wait" bin/rails credentials:edit`
+
  ## Update
  
  ### Gems
