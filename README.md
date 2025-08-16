@@ -52,7 +52,7 @@ Build Tailwind `bin/rails tailwindcss:build`
 
 Clean all assets `rails assets:clobber` 
 
-See test emails:
+See test emails (email integration is done via resend.com):
 
 - in folder `tmp/mail/`
 - see previews in the browser: `http://localhost:3000/rails/mailers`
