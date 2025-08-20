@@ -1,120 +1,183 @@
-<div class="min-h-screen flex items-center justify-center">
+<div class="min-h-screen flex items-center justify-center p-4">
   <div class="max-w-md w-full">
+    <h2 class="text-2xl font-semibold mb-6">Profile</h2>
 
-  <h2 class="pb-4">Profile</h2>
+    <div class="tabs tabs-lift">
+      <!-- Settings Tab -->
+      <input type="radio" name="profile_tabs" id="settings_tab" class="tab" aria-label="Settings" checked="checked" />
+      <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "settings_form" }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          
+          <div class="space-y-6">
+            <%= f.fields_for :user_profile, @profile do |profile_form| %>
+              <!-- Photo -->
+              <div class="text-center">
+                <div class="avatar placeholder">
+                  <div class="w-24 bg-neutral text-neutral-content rounded-full">
+                    <% if @profile.photo_attached? %>
+                      <%= image_tag @profile.photo, alt: "Profile photo", class: "w-full h-full object-cover" %>
+                    <% else %>
+                      <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                      </svg>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="grid gap-4">
+              <!-- Full Name -->
+              <fieldset class="fieldset w-full">
+                <legend class="fieldset-legend">Full name</legend>
+                <label class="input w-full">
+                  <%= profile_form.text_field :full_name, autocomplete: "full-name", placeholder: @profile.display_name %>
+                </label>
+              </fieldset>
 
-      <label class="input">
-        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <g
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-width="2.5"
-            fill="none"
-            stroke="currentColor"
-          >
-            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-          </g>
-        </svg>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "mail@site.com", class: "" %>
-      </label>
+              <!-- Phone -->
+              <fieldset class="fieldset w-full">
+                <legend class="fieldset-legend">WhatsApp number</legend>
+                <label class="input w-full">
+                  <%= profile_form.text_field :phone, autocomplete: "phone" %>
+                </label>
+              </fieldset>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <!-- Website -->
+              <fieldset class="fieldset w-full">
+                <legend class="fieldset-legend">Website</legend>
+                <label class="input w-full">
+                  <%= profile_form.text_field :website %>
+                </label>
+              </fieldset>
+
+              <!-- Bio -->
+              <fieldset class="fieldset w-full">
+                <legend class="fieldset-legend">Your bio</legend>
+                <%= profile_form.text_area :bio, placeholder: "Enter your bio", class: "textarea w-full", rows: 4 %>
+              </fieldset>
+            <% end %>
+
+            <div class="pt-4">
+              <%= f.submit "Save", class: "btn btn-primary w-full" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Change Password Tab (only show if user doesn't use SSO) -->
+      <% unless current_user.sso_user? %>
+        <input type="radio" name="profile_tabs" id="password_tab" class="tab" aria-label="Change Password" />
+        <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "password_form" }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            
+            <div class="space-y-6">
+              <fieldset class="fieldset w-full">
+                <legend class="fieldset-legend">New password</legend>
+                <p class="label text-sm opacity-70">(leave blank if you don't want to change it)</p>
+                <label class="input w-full">
+                  <%= f.password_field :password, autocomplete: "new-password" %>
+                </label>
+                <% if @minimum_password_length %>
+                  <p class="label text-sm opacity-70"><%= @minimum_password_length %> characters minimum</p>
+                <% end %>
+              </fieldset>
+
+              <fieldset class="fieldset w-full">
+                <legend class="fieldset-legend">Confirm new password</legend>
+                <label class="input w-full">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                </label>
+              </fieldset>
+
+              <fieldset class="fieldset w-full">
+                <legend class="fieldset-legend">Current Password</legend>
+                <p class="label text-sm opacity-70">(required to confirm password change)</p>
+                <label class="input w-full">
+                  <%= f.password_field :current_password, autocomplete: "current-password" %>
+                </label>
+              </fieldset>
+
+              <div class="pt-4">
+                <%= f.submit "Update Password", class: "btn btn-primary w-full" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <!-- SSO User Message -->
+        <input type="radio" name="profile_tabs" id="password_tab" class="tab" aria-label="Change Password" />
+        <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
+          <div class="alert alert-info">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div>
+              <h4 class="font-semibold">Password Management</h4>
+              <p class="text-sm">You signed in using SSO (Google, Apple, Facebook, etc.). To change your password, please visit your SSO provider:</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <% current_user.providers.each do |provider| %>
+                  <% case provider %>
+                  <% when 'google_oauth2' %>
+                    <a href="https://myaccount.google.com/security" target="_blank" class="btn btn-outline btn-sm">Google Account Security</a>
+                  <% when 'apple' %>
+                    <a href="https://appleid.apple.com/account/manage" target="_blank" class="btn btn-outline btn-sm">Apple ID Security</a>
+                  <% when 'facebook' %>
+                    <a href="https://www.facebook.com/settings?tab=security" target="_blank" class="btn btn-outline btn-sm">Facebook Security Settings</a>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
 
-      <fieldset class="fieldset">
-        <legend class="fieldset-legend">
-          <%= f.label :current_password %>
-        </legend>
-        <label class="input">
-          <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <g
-              stroke-linejoin="round"
-              stroke-linecap="round"
-              stroke-width="2.5"
-              fill="none"
-              stroke="currentColor"
-            >
-              <path
-                d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
-              ></path>
-              <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
-            </g>
-          </svg>
-          <%= f.password_field :passcurrent_passwordword, autocomplete: "current-password", class: "" %>
-        </label>
-      </fieldset>
+      <!-- Cancel Account Tab -->
+      <input type="radio" name="profile_tabs" id="cancel_tab" class="tab" aria-label="Cancel Account" />
+      <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
+        <div class="space-y-6">          
+          <div class="alert alert-warning">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+            </svg>
+            <div>
+              <h3 class="font-bold mb-2">Warning!</h3>
+              <div class="text-xs">This will permanently delete your account and all associated data. This action cannot be undone.</div>
+            </div>
+          </div>
 
-      <div class="divider"></div>
+          <div class="card bg-base-200">
+            <div class="card-body p-4">
+              <p class="text-sm font-medium mb-2">When you cancel your account:</p>
+              <ul class="text-sm space-y-1 list-disc list-inside opacity-80">
+                <li>All your profile data will be permanently deleted</li>
+                <li>Your coaching sessions history will be removed</li>
+                <li>You will lose access to all premium features</li>
+                <li>This action cannot be reversed</li>
+              </ul>
+            </div>
+          </div>
 
-      <fieldset class="fieldset">
-        <legend class="fieldset-legend">
-          <%= f.label :password, "New password"%>
-        </legend>
-        <span class="label">(leave blank if you don't want to change it)</span>
-        <label class="input">
-          <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <g
-              stroke-linejoin="round"
-              stroke-linecap="round"
-              stroke-width="2.5"
-              fill="none"
-              stroke="currentColor"
-            >
-              <path
-                d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
-              ></path>
-              <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
-            </g>
-          </svg>
-          <%= f.password_field :password, autocomplete: "new-password", class: "" %>
-        </label>
-        <% if @minimum_password_length %>
-          <p class="label"><%= @minimum_password_length %> characters minimum</p>
-        <% end %>
-      </fieldset>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :delete, id: "cancel_form" }) do |f| %>
+            <fieldset class="fieldset w-full">
+              <legend class="fieldset-legend">Current Password</legend>
+              <p class="label text-sm opacity-70">(required to confirm account cancellation)</p>
+              <label class="input w-full">
+                <%= f.password_field :current_password, autocomplete: "current-password" %>
+              </label>
+            </fieldset>
 
-      <fieldset class="fieldset">
-        <legend class="fieldset-legend">
-          <%= f.label :password_confirmation, "Confirm new password" %><br />
-        </legend>
-        <label class="input">
-          <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <g
-              stroke-linejoin="round"
-              stroke-linecap="round"
-              stroke-width="2.5"
-              fill="none"
-              stroke="currentColor"
-            >
-              <path
-                d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
-              ></path>
-              <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
-            </g>
-          </svg>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "" %>
-        </label>
-      </fieldset>
-
-      <div>
-        <%= f.submit "Update", class: "btn btn-primary " %>
+            <div class="pt-4">
+              <%= f.submit "Cancel my account", 
+                  data: { confirm: "Are you absolutely sure? This action cannot be undone!", turbo_confirm: "Are you absolutely sure? This action cannot be undone!" }, 
+                  class: "btn btn-error w-full" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-  <% end %>
 
-  <h3 class="pt-8">Cancel my account</h3>
-
-  Unhappy?
-  <div class="flex flex-row gap-4 pt-4">
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-error" %>
+    <div class="divider my-6"></div>
     <%= link_to "Back", :back, class: "btn" %>
-  </div>
-
   </div>
 </div>

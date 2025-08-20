@@ -8,6 +8,14 @@ class User < ApplicationRecord
 
   has_many :clients, dependent: :destroy
   has_many :sessions, through: :clients
+  has_one :user_profile, dependent: :destroy
+  accepts_nested_attributes_for :user_profile, update_only: true
+
+  # create a profile after user creation
+  after_create :create_user_profile
+
+  # Delegate common methods for convenience
+  # delegate :full_name, :website, :bio, :photo, to: :user_profile, allow_nil: true
 
   def total_coaching_hours
     sessions.sum(:duration)
@@ -20,6 +28,17 @@ class User < ApplicationRecord
     return 0 if duration_total_sessions == 0
 
     (duration_paid_sessions.to_f / duration_total_sessions * 100).round(0)
+  end
+
+  def sso_user?
+    # Adjust based on your SSO implementation
+    encrypted_password.blank? || providers.present?
+  end
+
+  def providers
+    # Return array of connected providers
+    # This depends on your SSO setup
+    [ self.provider ] if self.provider
   end
 
   def self.from_omniauth(auth)
@@ -46,5 +65,11 @@ class User < ApplicationRecord
       provider: auth.provider,
       uid: auth.uid
     )
+  end
+
+  private
+
+  def create_user_profile
+    build_user_profile.save!
   end
 end

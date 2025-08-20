@@ -17,16 +17,6 @@ All source code in this repository is released under the **[CC BY‑NC 4.0](
 
 If you'd like to use this software commercially, please [contact me](https://www.stanislavvalasek.com/en/contact/) to discuss a commercial license.
 
-# ToDo
-
-- export also group sessions
-- show add new session
-- add font awesome so I can use fab fav ...
-- admin
-- welcome email
-- auto expire notice alerts
-- add backups 
-
 ## How to deploy
 
 `export KAMAL_REGISTRY_PASSWORD=<pwd>`
@@ -41,6 +31,8 @@ kamal console
 ```
 
 ## Technical notes
+
+SVG Icons: https://heroicons.com
 
 Start app with `bin/dev`
 
