@@ -8,6 +8,16 @@ class FindacoachController < ApplicationController
     @demo_usage_count = ApplicationData.first_or_create(login_to_demo_count: 0).login_to_demo_count
   end
 
+  def coach_homepage
+    @profile = UserProfile.find_by(username: params[:username])
+
+    if @profile.nil?
+      redirect_to root_path, alert: "Coach you are looking for was not found"
+      return
+    end
+    render layout: "application_coach"
+  end
+
   def increment_demo_count
     login_to_demo_count_record = ApplicationData.first_or_create(login_to_demo_count: 0)
     login_to_demo_count_record.increment!(:login_to_demo_count)
@@ -39,6 +49,7 @@ class FindacoachController < ApplicationController
           "New" => [
             "When registered, welcome email will be sent",
             "Sign in now supports Google SSO",
+            "Home page for coaches and user settings",
             "Enter the demo account using one click"
           ],
           "Changed" => [

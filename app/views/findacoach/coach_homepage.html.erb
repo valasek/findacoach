@@ -1,0 +1,87 @@
+<% content_for :title, @profile.full_name %>
+
+<!-- Hero Section -->
+<div class="hero min-h-screen bg-gradient-to-br from-base-300 to-base-100">
+  <div class="hero-content text-center max-w-4xl px-4">
+    <div>
+      <div class="avatar mb-8 animate-fade-in">
+        <div class="w-32 h-32 lg:w-40 lg:h-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 hover:ring-offset-4 transition-all duration-300">
+          <% if @profile.photo.attached? %>
+            <%= image_tag @profile.photo, alt: @profile.full_name, class: "rounded-full object-cover w-full h-full" %>
+          <% else %>
+            <div class="rounded-full bg-primary text-primary-content w-full h-full flex items-center justify-center text-2xl lg:text-4xl font-bold">
+              <%= @profile.full_name.present? ? @profile.full_name.split.map(&:first).join.upcase : "?" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl lg:text-6xl font-bold text-base-content mb-2 animate-fade-in-up">
+          <%= @profile.full_name %>
+        </h1>
+        
+        <!-- Bio -->
+        <p class="text-base sm:text-lg lg:text-xl text-base-content/80 max-w-2xl mx-auto mb-8 leading-relaxed px-4">
+          <%= @profile.bio %>
+        </p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats stats-vertical lg:stats-horizontal shadow-lg mb-8 bg-base-100">
+        <div class="stat">
+          <div class="stat-figure text-primary">
+            <i class="fas fa-clock text-2xl"></i>
+          </div>
+          <div class="stat-title">Total Hours</div>
+          <div class="stat-value text-primary"><%= @profile.user.total_coaching_hours.to_i %></div>
+          <div class="stat-desc">Coaching Experience</div>
+        </div>
+      </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <%= link_to "https://wa.me/#{@profile.phone.gsub(/[^\\d]/, '')}", 
+                  class: "btn btn-primary btn-lg gap-2 text-white w-full sm:w-auto hover:scale-105 transition-transform", 
+                  target: "_blank" do %>
+        <i class="fab fa-whatsapp text-xl"></i>
+        Book My Session
+      <% end %>
+      
+      <button class="btn btn-outline btn-lg gap-2 w-full sm:w-auto" onclick="my_modal.showModal()">
+        <i class="fas fa-info-circle"></i>
+        Learn More
+      </button>
+    </div>
+
+    <!-- Modal for additional info -->
+    <dialog id="my_modal" class="modal">
+      <div class="modal-box">
+        <h3 class="font-bold text-lg mb-4">What to Expect</h3>
+        <ul class="list-disc list-inside space-y-2 text-base-content/80">
+          <li>Free 15-minute consultation</li>
+          <li>Personalized coaching approach</li>
+          <li>Flexible scheduling options</li>
+          <li>Results-focused sessions</li>
+        </ul>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+          <%= link_to "https://wa.me/#{@profile.phone.gsub(/[^\\d]/, '')}", 
+                      class: "btn btn-primary", 
+                      target: "_blank" do %>
+            <i class="fab fa-whatsapp"></i>
+            Book Now
+          <% end %>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="pt-16">
+      <%= link_to @profile.website, class: "underline gap-2 w-full sm:w-auto", target: "_blank" do %>
+        Visit my Website
+      <% end %>
+    </div>
+
+  </div>
+</div>

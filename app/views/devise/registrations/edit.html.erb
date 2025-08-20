@@ -55,6 +55,16 @@
                 <legend class="fieldset-legend">Your bio</legend>
                 <%= profile_form.text_area :bio, placeholder: "Enter your bio", class: "textarea w-full", rows: 4 %>
               </fieldset>
+
+              <!-- Username -->
+              <fieldset class="fieldset w-full">
+                <legend class="fieldset-legend">Username</legend>
+                <label class="input w-full">
+                  <%= profile_form.text_field :username, placeholder: "Enter your username", class: "input w-full", autocomplete: "username" %>
+                </label>
+                <p class="label text-sm opacity-70">Your public page: <span class="font-semibold"><%= @profile.full_coach_url(request) %></span></p>
+              </fieldset>
+
             <% end %>
 
             <div class="pt-4">
