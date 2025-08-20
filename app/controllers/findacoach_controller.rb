@@ -5,6 +5,18 @@ class FindacoachController < ApplicationController
     @total_users = User.all.count # for now lets count demo user as well
     # demo_users_hours = User.find_by(email: "demo@example.com").sessions.sum(:duration)
     @total_hours = Session.sum(:duration) # for now lets count demo_users_hours as well
+    @demo_usage_count = ApplicationData.first_or_create(login_to_demo_count: 0).login_to_demo_count
+  end
+
+  def increment_demo_count
+    login_to_demo_count_record = ApplicationData.first_or_create(login_to_demo_count: 0)
+    login_to_demo_count_record.increment!(:login_to_demo_count)
+    puts "XXXXXXXX Incremented demo login count to #{login_to_demo_count_record.login_to_demo_count}"
+
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.action(:increment_complete, "") }
+      format.json { render json: { status: "success", count: login_to_demo_count_record.login_to_demo_count } }
+    end
   end
 
   def admin

@@ -9,15 +9,20 @@
           Effortless Client & Session Management Built for Coaches, Mentors and Guides
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <%= button_to "Enter demo", session_path(:user),
-            method: :post,
-            params: {
-                user: {
-                  email: "demo@example.com",
-                  password: "demo123"
-                }
-            },
-            class: "btn btn-primary btn-lg w-full sm:w-auto" %>
+          <div data-controller="demo-login-increment" data-demo-login-increment-increment-url-value="<%= increment_demo_count_path %>">
+            <%= button_to "Enter demo", session_path(:user),
+              method: :post,
+              params: {
+                  user: {
+                    email: "demo@example.com",
+                    password: "demo123"
+                  }
+              },
+            class: "btn btn-primary btn-lg w-full sm:w-auto",
+            form: { data: { demo_login_increment_target: "loginForm" } },
+            data: { action: "click->demo-login-increment#interceptLogin" }
+            %>
+          </div>
           <%= link_to "Changelog", findacoach_changelog_path, class: "link text-lg" %>
         </div>
       </div>
@@ -32,20 +37,29 @@
           <div class="stat text-center">
             <div class="stat-figure text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
               </svg>
             </div>
-            <div class="stat-title text-sm sm:text-base">Active coaches</div>
+            <div class="stat-title text-sm sm:text-base">Active Coaches</div>
             <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl"><%= @total_users %></div>
           </div>
           <div class="stat text-center">
             <div class="stat-figure text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
             </div>
             <div class="stat-title text-sm sm:text-base">Total Hours Tracked</div>
             <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl"><%= @total_hours.to_i %></div>
+          </div>
+          <div class="stat text-center">
+            <div class="stat-figure text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+              </svg>
+            </div>
+            <div class="stat-title text-sm sm:text-base">Demo Usage</div>
+            <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl"><%= @demo_usage_count.to_i %></div>
           </div>
         </div>
       </div>

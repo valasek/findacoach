@@ -1,0 +1,2 @@
+class ApplicationData < ApplicationRecord
+end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "findacoach/changelog"
   get "findacoach/admin"
   get "findacoach/contact"
+  post "increment_demo_count", to: "findacoach#increment_demo_count"
 
   # app pages
   resources :clients do
