@@ -47,6 +47,7 @@ gem "devise"         # User authorization
 gem "omniauth"       # SSO
 gem "omniauth-google-oauth2" # Google SSO
 gem "omniauth-rails_csrf_protection" # Google SSO
+gem "avo"           # Admin panel
 gem "kaminari"      # Pagination
 gem "faker"         # Seeding data
 gem "rubyXL"        # Export to MS Excel using template

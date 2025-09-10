@@ -1,5 +1,5 @@
 class FindacoachController < ApplicationController
-  before_action :authenticate_user!, only: [ :admin, :dashboard ]
+  before_action :authenticate_user!, only: [ :dashboard ]
 
   def index
     @total_users = User.all.count # for now lets count demo user as well
@@ -27,10 +27,6 @@ class FindacoachController < ApplicationController
       format.turbo_stream { render turbo_stream: turbo_stream.action(:increment_complete, "") }
       format.json { render json: { status: "success", count: login_to_demo_count_record.login_to_demo_count } }
     end
-  end
-
-  def admin
-    @users = User.all
   end
 
   def dashboard

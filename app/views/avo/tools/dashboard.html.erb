@@ -1,0 +1,43 @@
+<div class="flex flex-col">
+  <%= render Avo::PanelComponent.new(name: 'Dashboard', display_breadcrumbs: true) do |c| %>
+    <% c.with_tools do %>
+      <div class="text-sm italic">This is the panels tools section.</div>
+    <% end %>
+
+    <% c.with_body do %>
+      <div class="badge badge-primary p-4">Registered users: <%= @users.count %></div>
+
+      <div class="hidden md:grid  md:grid-cols-4 bg-gray-100 font-bold p-3 rounded-t-lg">
+        <div>Email</div>
+        <div>Clients</div>
+        <div>Sessions</div>
+        <div>Actions</div>
+      </div>
+
+      <div class="divide-y divide-gray-200">
+        <% for user in @users do %>
+          <div class="grid grid-cols-1 md:grid-cols-4 md:gap-8 p-3 hover:bg-gray-50">
+            <div class="md:hidden space-y-2">
+              <div class="grid grid-cols-2 gap-4">
+                <span class="font-bold">Email:</span>
+                <span><%= user.email %></span>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <span class="font-bold">Clients:</span>
+                <span><%= user.clients.count %></span>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <span class="font-bold">Sessions:</span>
+                <span><%= user.sessions.count %></span>
+              </div>
+            </div>
+            <!-- Desktop View -->
+            <div class="hidden md:block"><%= user.email %></div>
+            <div class="hidden md:block"><%= user.clients.count %></div>
+            <div class="hidden md:block"><%= user.sessions.count %></div>
+          </div>
+        <% end %>
+        </div>
+    <% end %>
+  <% end %>
+</div>

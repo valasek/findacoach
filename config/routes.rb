@@ -3,11 +3,20 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks",
     registrations: "users/registrations"
   }
+  # mount_avo
+  authenticate :user, ->(user) { user.email == "valasek@gmail.com" } do
+    mount Avo::Engine, at: "/admin"
+  end
+
+  if defined? ::Avo
+    Avo::Engine.routes.draw do
+      get "dashboard", to: "tools#dashboard", as: :dashboard
+  end
+  end
 
   # public pages
   get "findacoach/index"
   get "findacoach/changelog"
-  get "findacoach/admin"
   get "findacoach/contact"
   post "increment_demo_count", to: "findacoach#increment_demo_count"
 
