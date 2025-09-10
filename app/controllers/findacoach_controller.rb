@@ -38,6 +38,7 @@ class FindacoachController < ApplicationController
     @hours_count = current_user.total_coaching_hours
     @sessions_paid = current_user.percentage_paid_seesions
     @sessions_count = current_user.sessions.count
+    @coach_url = UserProfile.find_by(user: current_user)&.coach_url
   end
 
   def changelog
