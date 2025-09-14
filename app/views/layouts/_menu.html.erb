@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 ">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -6,10 +6,13 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> 
         </svg>
       </div>
-      <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow-lg border border-base-300">
+      <ul tabindex="0" class="menu menu-lg dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow-lg border border-base-300">
         <% if user_signed_in? %>
           <li><%= link_to "Dashboard", findacoach_dashboard_path %></li>
           <li><%= link_to "Clients", clients_path %></li>
+        <% else %>
+          <li><%= link_to "Pricing", findacoach_pricing_path %></li>
+          <li><%= link_to "Blog", findacoach_blog_path %></li>
         <% end %>
         <li><%= link_to "Contact", findacoach_contact_path %></li>
       </ul>
@@ -20,10 +23,13 @@
     <%= link_to "Find a Coach", "/", class: "hover:underline px-2 text-lg sm:text-xl" %>
   </div>
   <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
+    <ul class="menu menu-lg menu-horizontal px-1">
       <% if user_signed_in? %>
         <li><%= link_to "Dashboard", findacoach_dashboard_path %></li>
         <li><%= link_to "Clients", clients_path %></li>
+      <% else %>
+        <li><%= link_to "Pricing", findacoach_pricing_path %></li>
+        <li><%= link_to "Blog", findacoach_blog_path %></li>
       <% end %>
         <li><%= link_to "Contact", findacoach_contact_path %></li>
     </ul>
@@ -36,7 +42,7 @@
           <img alt="User avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         </div>
       </div>
-      <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow-lg border border-base-300">
+      <ul tabindex="0" class="menu menu-lg dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow-lg border border-base-300">
         <li><%= link_to "Profile", edit_user_registration_path %></li>
         <% if current_user&.email == "valasek@gmail.com" %>
           <li><%= link_to "Administration", "/admin" %></li>

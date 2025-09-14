@@ -37,6 +37,9 @@ class FindacoachController < ApplicationController
     @coach_url = UserProfile.find_by(user: current_user)&.coach_url
   end
 
+  def pricing
+  end
+
   def changelog
     @changelog_entries = [
       {

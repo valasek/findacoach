@@ -1,11 +1,14 @@
 <% content_for :title, "Contact" %>
 
-<div class="md:w-2/3 w-full mx-auto">
+<section class="md:w-2/3 w-full mx-auto text-center mb-16 prose ">
     <h1 class="text-center mb-6">Contact</h1>
-    Author: <%= link_to "Stanislav Valasek", "https://www.stanislavvalasek.com/en", class: "link" %>
-    <br/>
-    <br/>
-    <p>Your Opinion Matters. Check the
-    <a href="https://github.com/users/valasek/projects/2/views/1?layout=board" class="link">Roadmap</a>
-    or <%= link_to "Leave a Feedback", "https://forms.gle/rMP5FwtpPDMgSn337", class: "link" %>.</p>
-</div>
+    Hi, do you want to say hi, need a support or want to share a must have feature which would help you?<br/>
+
+    <div class="mb-8 mt-8">Your Opinion Matter. Check the
+        <a href="https://github.com/users/valasek/projects/2/views/1?layout=board" class="link">Roadmap</a>
+        or <%= link_to "Leave a Feedback", "https://forms.gle/rMP5FwtpPDMgSn337", class: "link" %>.
+    </div>
+
+    Contact me / <%= link_to "Stanislav Valasek", "https://www.stanislavvalasek.com/en", class: "link" %>
+    <%= image_tag "profil.jpg", class:"mx-auto rounded-lg max-w-xs h-auto shadow-md mt-8"%>
+</section>

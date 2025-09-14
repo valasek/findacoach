@@ -1,0 +1,53 @@
+<% content_for :title, "Pricing" %>
+        
+<section class="md:w-2/3 w-full mx-auto mb-16">
+    <h1 class="mb-6 text-center">Pricing</h2>
+    <div class="max-w-4xl mx-auto text-center mb-12">
+        <p class="mt-2 text-base-content">Get 20% off with yearly</p>
+        <div class="join mt-6">
+            <button class="btn join-item btn-sm">Monthly</button>
+            <button class="btn join-item btn-sm btn-primary">Yearly <span class="ml-1 text-xs">(Save 20%)</span></button>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <!-- Free Plan -->
+        <div class="card bg-base-200 shadow-md border-2 border-primary">
+            <div class="card-body">
+                <h3 class="card-title text-2xl">Free</h3>
+                <p class="text-base-content/70">Perfect for individuals just starting out</p>
+                <p class="text-3xl font-bold mt-4">$0<span class="text-lg font-normal"></span></p>
+                <ul class="mt-6 space-y-2 text-left">
+                    <li>✔ Efficient client cards and note management</li>
+                    <li>✔ Elegant coach home page</li>
+                    <li>✔ Booking powered by WhatsApp notifications</li>
+                    <li>✔ Up to 300 coaching hours, no other limits</li>
+                </ul>
+                <div class="card-actions mt-8">
+                    <%= link_to "Sign up",  new_user_registration_path, class:"btn btn-primary btn-block" %>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plus Plan -->
+        <div class="card bg-base-200 shadow-lg">
+            <div class="card-body">
+                <h3 class="card-title text-2xl">Plus</h3>
+                <p class="text-base-content/70">Best for professionals</p>
+                <p class="text-3xl font-bold mt-4">
+                    $19.99<span class="text-lg font-normal">/month</span>
+                </p>
+                <p class="text-sm text-base-content/60">or $15.99/month when billed yearly</p>
+                <ul class="mt-6 space-y-2 text-left">
+                    <li>All in free +</li>
+                    <li>✔ Billing</li>
+                    <li>✔ Invoicing</li>
+                    <li>✔ Unlimited data</li>
+                </ul>
+                <div class="card-actions mt-8">
+                    <button class="btn btn-outline-disabled btn-block">Not available yet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
