@@ -393,4 +393,21 @@
       </div>
     </div>
   </section>
+  <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+    <%= link_to "Sign up free", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+    <div data-controller="demo-login-increment" data-demo-login-increment-increment-url-value="<%= increment_demo_count_path %>">
+      <%= button_to "Enter demo", session_path(:user),
+        method: :post,
+        params: {
+            user: {
+              email: "demo@example.com",
+              password: "demo123"
+            }
+        },
+      class: "btn btn-lg btn-outline w-full sm:w-auto",
+      form: { data: { demo_login_increment_target: "loginForm" } },
+      data: { action: "click->demo-login-increment#interceptLogin" }
+      %>
+    </div>
+  </div>
 </div>
