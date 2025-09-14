@@ -32,6 +32,8 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= Sentry.get_trace_propagation_meta.html_safe %>
+
+    <meta name="turbo-refresh-method" content="morph">
   </head>
 
   <body class="min-h-screen font-serif flex flex-col bg-base-100">

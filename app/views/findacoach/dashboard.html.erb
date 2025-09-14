@@ -1,4 +1,4 @@
-<div class="w-full text-center">
+<div class="w-full text-center mb-8">
   <% content_for :title, "Dashboard" %>
     <h1 class="mb-6">Welcome back <%= @current_user.user_profile.full_name if @current_user.user_profile.full_name.present? %></h1>
     Great progress! You're making a positive impact

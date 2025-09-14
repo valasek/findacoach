@@ -1,7 +1,7 @@
 <% content_for :title, @profile.full_name %>
 
 <!-- Hero Section -->
-<div class="hero min-h-screen bg-gradient-to-br from-base-300 to-base-100">
+<div class="hero min-h-screen bg-gradient-to-br from-base-300 to-base-100 mb-8 rounded-lg shadow-lg">
   <div class="hero-content text-center max-w-4xl px-4">
     <div>
       <div class="avatar mb-8 animate-fade-in">
@@ -77,7 +77,7 @@
       </div>
     </dialog>
 
-    <div class="pt-16">
+    <div class="pt-8">
       <%= link_to @profile.website, class: "underline gap-2 w-full sm:w-auto", target: "_blank" do %>
         Visit my Website
       <% end %>
