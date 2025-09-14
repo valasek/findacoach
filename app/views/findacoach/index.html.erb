@@ -6,7 +6,7 @@
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-base-content mb-4">Your Coaching Journey, Simplified</h1>
         <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary mb-6">Client cards / Bookings / Notes / ...</h2>
         <p class="text-lg sm:text-xl text-base-content/80 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Effortless Client & Session Management Built for Coaches, Mentors and Guides
+          Effortless client & session management built for coaches, mentors, and guides
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <div data-controller="demo-login-increment" data-demo-login-increment-increment-url-value="<%= increment_demo_count_path %>">
@@ -121,8 +121,8 @@
           <div>
             <h3 class="text-xl sm:text-2xl font-bold mb-4">Client Management</h3>
             <p class="text-base-content/80 mb-6 leading-relaxed">
-              Build deeper relationships with comprehensive client profiles. Track goals, 
-              session notes, and progress all while maintaining complete confidentiality.
+              Build deeper relationships with comprehensive client profiles. 
+              Track goals, session notes, and progress — all while maintaining full confidentiality.
             </p>
             <ul class="space-y-2">
               <li class="flex items-center gap-2">
@@ -280,13 +280,21 @@
           <div class="collapse collapse-arrow bg-base-100">
             <input type="radio" name="faq-accordion" checked="checked" />
             <div class="collapse-title text-lg font-medium">
-              Is Find a Coach suitable for new coaches?
+              Why did you create Find a Coach, and why do you maintain it?
             </div>
             <div class="collapse-content">
               <p class="text-base-content/80">
-                Absolutely! Find a Coach was specifically designed with new coaches in mind. Built during an ICF ACC certification journey, 
-                it includes everything you need to start your practice professionally, including ICF-aligned session tracking and client management features.
-              </p>
+                I ❤️ coaching. There's nothing like seeing that spark in someone's eyes when they realize they have the power to change their life. Suddenly, things that felt impossible become possible.<br/>
+                <br/>
+                I ❤️ <a href="https://rubyonrails.org/" class="link">Ruby on Rails</a> and how its changing SW developement for over 20+ years.
+                I wanted to have a real hands on experience with this framework.<br/>
+                <br/>
+                It started during my ACC certification as I wanted to know how many pro bono and how many paid hours of coaching I have provided.
+                So I decided to join my two passions and create Find a Coach.<br/>
+                <br/>
+                I maintain it because I want to have a tool that I would like to use myself and I want to share it with other coaches.<br/>
+                <br/>
+                Simple, barebone but effective.
             </div>
           </div>
 
@@ -297,8 +305,15 @@
             </div>
             <div class="collapse-content">
               <p class="text-base-content/80">
-                Client confidentiality is our top priority. All data is encrypted in transit and at rest, and we follow industry best practices 
-                for data protection. Your client information is stored securely and is only accessible to you.
+                Your personal data is encrypted in our database using the same methods banks rely on.<br/>
+                <br/>
+                All passwords are safely hashed with bcrypt, so they can never be read or stolen in plain text.<br/>
+                <br/>
+                Every connection runs over HTTPS, keeping your information safe while it travels online.<br/>
+                <br/>
+                Rails automatically protects you from common attacks such as fake form submissions (CSRF) and malicious scripts (XSS).<br/>
+                <br/>
+                These protections work silently in the background, so you can use our service with confidence.
               </p>
             </div>
           </div>
@@ -310,8 +325,11 @@
             </div>
             <div class="collapse-content">
               <p class="text-base-content/80">
-                Yes! You can create a professional coach profile with your bio, credentials, specialties, and contact information. 
-                This gives you a professional online presence that potential clients can visit to learn about your services.
+                No, not at the moment.<br/>
+                <br/>
+                If you have a particular idea that would help you, please <%= link_to "contact me", findacoach_contact_path, class:"link" %>.<br/>
+                <br/>
+                I promise I will consider your proposal.
               </p>
             </div>
           </div>
@@ -319,25 +337,19 @@
           <div class="collapse collapse-arrow bg-base-100">
             <input type="radio" name="faq-accordion" />
             <div class="collapse-title text-lg font-medium">
-              Does it work on mobile devices?
+              When will the paid plan be available, and how will it affect the free plan?
             </div>
             <div class="collapse-content">
               <p class="text-base-content/80">
-                Yes, Find a Coach is fully responsive and works seamlessly on desktop, tablet, and mobile devices. 
-                You can manage your practice and conduct sessions from anywhere.
-              </p>
-            </div>
-          </div>
-
-          <div class="collapse collapse-arrow bg-base-100">
-            <input type="radio" name="faq-accordion" />
-            <div class="collapse-title text-lg font-medium">
-              Is there a free trial available?
-            </div>
-            <div class="collapse-content">
-              <p class="text-base-content/80">
-                You can explore all features using our demo account. Simply click "Enter demo" above to see how Find a Coach 
-                can streamline your coaching practice. No signup required for the demo!
+                Not decided yet when the paid plan will be launched.
+                Find a Coach needs to have enough users before I can start considering a paid version.<br/>
+                <br/>
+                When paid version will be available, free version will stay.
+                Users will not lose access to any free plan features <br/>
+                <br/>
+                All new features (unless too costly) will be available in a free plan so everybody can benefit from those.<br/>
+                <br/>
+                The paid plan will be for coaches who already have an established practice and can afford to pay.
               </p>
             </div>
           </div>
@@ -349,7 +361,11 @@
             </div>
             <div class="collapse-content">
               <p class="text-base-content/80">
-                Find a Coach is designed for all types of professional coaching including life coaching, business coaching, 
+                Find a Coach is designed with pure <a href="https://coachingfederation.org" class="link">ICF</a> based coaching in mind.<br/>
+                <br/>
+                 In spirit, this means no prepaid programs — just pure coaching, guiding clients, and helping them achieve the goals they define.<br/>
+                <br/>
+                But it can be used for all types of professional coaching including life coaching, business coaching, 
                 executive coaching, career coaching, wellness coaching, and more.
               </p>
             </div>
