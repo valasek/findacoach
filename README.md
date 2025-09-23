@@ -63,8 +63,10 @@ Edit rails credentials `VISUAL="code --wait" bin/rails credentials:edit`
  ### Gems
 
 `bundle outdated`
- 
 `bundle update`
+
+upodate bundler
+`bundle update --bundler`
 
 ### Daisyui
 
