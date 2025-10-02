@@ -1,13 +1,19 @@
-<footer class="footer footer-center sm:footer-horizontal bg-primary-content p-4 sm:p-6 border-t border-base-300">
-  <aside class="text-center sm:text-left">
-    <p class="text-sm sm:text-base">
-      <%= image_tag "favicon.ico", class: "inline w-4 h-4 sm:w-5 sm:h-5" %>
-      Find a Coach is designed, built, and backed by 
-      <%= link_to "Stanislav Valasek", "https://www.stanislavvalasek.com/en", class: "link" %>,
-      <span class="block sm:inline">created with ❤️ in <%= link_to "Slovakia", "https://slovakia.travel/en", class: "link" %></span>
-    </p>
-  </aside>
-  <aside class="text-center sm:text-right">
-    <p class="text-sm sm:text-base">© <%= Date.current.year %> Stanislav Valasek</p>
-  </aside>
+<footer class="footer bg-primary-content border-t border-base-300 p-4 sm:p-6">
+  <div class="w-full flex flex-wrap items-center justify-between gap-y-3">
+    <!-- left -->
+    <aside class="min-w-0 text-left">
+      <p class="text-sm sm:text-base">
+        <%= image_tag "favicon.ico", class: "inline w-4 h-4 sm:w-5 sm:h-5" %>
+        Find a Coach is designed, built, and backed by 
+        <%= link_to "Stanislav Valasek", "https://www.stanislavvalasek.com/en", class: "link" %>,
+        <span class="block sm:inline">created with ❤️ in <%= link_to "Slovakia", "https://slovakia.travel/en", class: "link" %></span>
+      </p>
+    </aside>
+
+    <!-- right -->
+    <aside class="text-left sm:text-right">
+      <%= link_to "Status", "https://stats.uptimerobot.com/tjN875xKdi", class: "text-sm sm:text-base link" %>
+      <span class="text-sm sm:text-base">© <%= Date.current.year %> Stanislav Valasek</span>
+    </aside>
+  </div>
 </footer>
