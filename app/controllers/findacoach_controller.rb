@@ -8,6 +8,10 @@ class FindacoachController < ApplicationController
     @demo_usage_count = ApplicationData.first_or_create(login_to_demo_count: 0).login_to_demo_count
   end
 
+  def ai_coach
+
+  end
+
   def coach_homepage
     @profile = UserProfile.find_by(username: params[:username])
 
@@ -42,6 +46,22 @@ class FindacoachController < ApplicationController
 
   def changelog
     @changelog_entries = [
+      {
+        version: "0.5.0",
+        date: "Oct 20, 2025",
+        changes: {
+          "New" => [
+            "AI Coach added as an experiment"
+          ],
+          "Changed" => [
+            "Upgrade the system to the latest and more secure packages"
+          ]
+          # "Fixed" => [
+          #   "",
+          #   ""
+          # ]
+        }
+      },
       {
         version: "0.4.0",
         date: "Aug 15, 2025",

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   # public pages
   get "findacoach/index"
+  get "findacoach/ai_coach"
   get "findacoach/changelog"
   get "findacoach/contact"
   get "findacoach/pricing"
