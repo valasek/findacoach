@@ -25,11 +25,12 @@ RUN apt-get update -qq && \
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
-    DEBIAN_FRONTEND=noninteractive
+    BUNDLE_WITHOUT="development" 
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
