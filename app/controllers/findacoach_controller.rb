@@ -9,7 +9,6 @@ class FindacoachController < ApplicationController
   end
 
   def ai_coach
-
   end
 
   def coach_homepage

@@ -11,7 +11,7 @@ class UserProfile < ApplicationRecord
                  allow_blank: true  # Optional field
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :username, format: {
-                  with: /\A[a-zA-Z0-9_-]+\z/, 
+                  with: /\A[a-zA-Z0-9_-]+\z/,
                   message: "can only contain letters, numbers, hyphens, and underscores" }
   validates :username, length: { minimum: 3, maximum: 30 }
 

@@ -36,6 +36,8 @@ SVG Icons: https://heroicons.com
 
 Start app with `bin/dev`
 
+Runn local ci: `bin/ci`
+
 Run tests `bin/rails test`
 
 Precompile rails assets: `rails assets:clean assets:precompile` 
@@ -65,12 +67,17 @@ Edit rails credentials `VISUAL="code --wait" bin/rails credentials:edit`
 `bundle outdated`
 `bundle update`
 
-upodate bundler
+update bundler
 `bundle update --bundler`
 
 ### Daisyui
 
 curl -sLo app/assets/tailwind/daisyui.js https://github.com/saadeghi/daisyui/releases/latest/download/daisyui.js
+
+### Show list of rake tasks
+
+bin/rails -T
+
 
 ### Backup and restore DB
 
