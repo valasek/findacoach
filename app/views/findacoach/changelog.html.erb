@@ -7,7 +7,7 @@
     or <%= link_to "Leave a Feedback", "https://forms.gle/rMP5FwtpPDMgSn337", class: "link" %>.</div>
     <% @changelog_entries.each_with_index do |entry, index| %>
         <div class="collapse collapse-arrow bg-base-100 border border-base-300 mt-8">
-            <input type="radio" name="my-accordion-1" <%= "checked" if index == 0 %> />
+            <input type="radio" name="my-accordion-1" <%= "checked" if index == 0 %> >
             <div class="collapse-title font-semibold text-xl">Version <%= entry[:version] %> <span class="badge text-sm font-normal"><%= entry[:date] %></span></div>
             <div class="collapse-content text-sm">
                 <div class="p-4">

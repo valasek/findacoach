@@ -47,14 +47,29 @@ class FindacoachController < ApplicationController
   def changelog
     @changelog_entries = [
       {
+        version: "0.5.1",
+        date: "Jan 03, 2026",
+        changes: {
+          # "New" => [
+          #   "AI Coach added as an experiment"
+          # ],
+          "Changed" => [
+            "Number of total sessions shown on home page"
+          ],
+          "Fixed" => [
+            "Security - all packages updated to latest versions"
+          ]
+        }
+      },
+      {
         version: "0.5.0",
         date: "Oct 20, 2025",
         changes: {
           "New" => [
             "AI Coach added as an experiment"
           ],
-          "Changed" => [
-            "Upgrade the system to the latest and more secure packages"
+          "Fixed" => [
+            "Security - all packages updated to latest versions"
           ]
           # "Fixed" => [
           #   "",
@@ -72,8 +87,8 @@ class FindacoachController < ApplicationController
             "Home page for coaches and user settings",
             "Enter the demo account using one click"
           ],
-          "Changed" => [
-            "Upgrade the system to the latest and more secure packages"
+          "Fixed" => [
+            "Security - all packages updated to latest versions"
           ]
           # "Fixed" => [
           #   "",
@@ -88,8 +103,8 @@ class FindacoachController < ApplicationController
           "New" => [
             "Full demo version available"
           ],
-          "Changed" => [
-            "Upgrade the underlying technology to Rails 8.0.2"
+          "Fixed" => [
+            "Security - all packages updated to latest versions"
           ]
           # "Fixed" => [
           #   "",
