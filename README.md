@@ -65,7 +65,7 @@ Edit rails credentials `VISUAL="code --wait" bin/rails credentials:edit`
  ### Gems
 
 `bundle outdated`
-`bundle update`
+`bundle update --all`
 
 update bundler
 `bundle update --bundler`
@@ -77,7 +77,6 @@ curl -sLo app/assets/tailwind/daisyui.js https://github.com/saadeghi/daisyui/rel
 ### Show list of rake tasks
 
 bin/rails -T
-
 
 ### Backup and restore DB
 

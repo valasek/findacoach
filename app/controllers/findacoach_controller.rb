@@ -4,6 +4,7 @@ class FindacoachController < ApplicationController
   def index
     @total_users = User.all.count # for now lets count demo user as well
     # demo_users_hours = User.find_by(email: "demo@example.com").sessions.sum(:duration)
+    @total_sessions = Session.count() # for now lets count demo_users sessions as well
     @total_hours = Session.sum(:duration) # for now lets count demo_users_hours as well
     @demo_usage_count = ApplicationData.first_or_create(login_to_demo_count: 0).login_to_demo_count
   end

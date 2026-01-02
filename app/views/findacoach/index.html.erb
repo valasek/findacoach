@@ -35,31 +35,40 @@
       <div class="flex justify-center">
         <div class="stats stats-vertical sm:stats-horizontal shadow">
           <div class="stat text-center">
-            <div class="stat-figure text-primary">
+            <div class="stat-title text-sm sm:text-base">Registered Coaches</div>
+            <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl">
+              <%= @total_users %>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
               </svg>
             </div>
-            <div class="stat-title text-sm sm:text-base">Active Coaches</div>
-            <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl"><%= @total_users %></div>
           </div>
           <div class="stat text-center">
-            <div class="stat-figure text-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-              </svg>
-            </div>
             <div class="stat-title text-sm sm:text-base">Total Hours Tracked</div>
-            <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl"><%= @total_hours.to_i %></div>
-          </div>
-          <div class="stat text-center">
-            <div class="stat-figure text-primary">
+            <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl">
+              <%= @total_hours.to_i %>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
             </div>
+          </div>
+          <div class="stat text-center">
+            <div class="stat-title text-sm sm:text-base">Total Recorded Sessions</div>
+            <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl">
+              <%= @total_sessions.to_i %>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+              </svg>
+            </div>
+          </div>
+          <div class="stat text-center">
             <div class="stat-title text-sm sm:text-base">Demo Usage</div>
-            <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl"><%= @demo_usage_count.to_i %></div>
+            <div class="stat-value text-primary text-2xl sm:text-3xl lg:text-4xl">
+              <%= @demo_usage_count.to_i %>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -228,12 +237,12 @@
             </ul>
           </div>
           <div>
-            <div class="mockup-phone">
-              <div class="camera"></div>
-              <div class="display">
-                <div class="bg-base-100 p-4">
-                  <%= image_tag "feat-homepage.png", alt: "Coach Homepage" %>
-                </div>
+            <div class="mockup-browser bg-base-100 border">
+              <div class="mockup-browser-toolbar">
+                <div class="input">https://findacoach.eu/your-name</div>
+              </div>
+              <div class="bg-base-100 p-6">
+                <%= image_tag "feat-homepage.png", alt: "Coach Homepage" %>
               </div>
             </div>
           </div>
@@ -278,93 +287,94 @@
         <div class="space-y-4">
           <!-- FAQ Items -->
           <div class="collapse collapse-arrow bg-base-100">
-            <input type="radio" name="faq-accordion" checked="checked" />
+            <input type="radio" name="faq-accordion" checked>
             <div class="collapse-title text-lg font-medium">
               Why did you create Find a Coach, and why do you maintain it?
             </div>
             <div class="collapse-content">
               <p class="text-base-content/80">
-                I ❤️ coaching. There's nothing like seeing that spark in someone's eyes when they realize they have the power to change their life. Suddenly, things that felt impossible become possible.<br/>
-                <br/>
+                I ❤️ coaching. There's nothing like seeing that spark in someone's eyes when they realize they have the power to change their life. Suddenly, things that felt impossible become possible.<br>
+                <br>
                 I ❤️ <a href="https://rubyonrails.org/" class="link">Ruby on Rails</a> and how its changing SW developement for over 20+ years.
-                I wanted to have a real hands on experience with this framework.<br/>
-                <br/>
+                I wanted to have a real hands on experience with this framework.<br>
+                <br>
                 It started during my ACC certification as I wanted to know how many pro bono and how many paid hours of coaching I have provided.
-                So I decided to join my two passions and create Find a Coach.<br/>
-                <br/>
-                I maintain it because I want to have a tool that I would like to use myself and I want to share it with other coaches.<br/>
-                <br/>
+                So I decided to join my two passions and create Find a Coach.<br>
+                <br>
+                I maintain it because I want to have a tool that I would like to use myself and I want to share it with other coaches.<br>
+                <br>
                 Simple, barebone but effective.
+              </p>
             </div>
           </div>
 
           <div class="collapse collapse-arrow bg-base-100">
-            <input type="radio" name="faq-accordion" />
+            <input type="radio" name="faq-accordion">
             <div class="collapse-title text-lg font-medium">
               How secure is my client data?
             </div>
             <div class="collapse-content">
               <p class="text-base-content/80">
-                Your personal data is encrypted in our database using the same methods banks rely on.<br/>
-                <br/>
-                All passwords are safely hashed with bcrypt, so they can never be read or stolen in plain text.<br/>
-                <br/>
-                Every connection runs over HTTPS, keeping your information safe while it travels online.<br/>
-                <br/>
-                Rails automatically protects you from common attacks such as fake form submissions (CSRF) and malicious scripts (XSS).<br/>
-                <br/>
+                Your personal data is encrypted in our database using the same methods banks rely on.<br>
+                <br>
+                All passwords are safely hashed with bcrypt, so they can never be read or stolen in plain text.<br>
+                <br>
+                Every connection runs over HTTPS, keeping your information safe while it travels online.<br>
+                <br>
+                Rails automatically protects you from common attacks such as fake form submissions (CSRF) and malicious scripts (XSS).<br>
+                <br>
                 These protections work silently in the background, so you can use our service with confidence.
               </p>
             </div>
           </div>
 
           <div class="collapse collapse-arrow bg-base-100">
-            <input type="radio" name="faq-accordion" />
+            <input type="radio" name="faq-accordion">
             <div class="collapse-title text-lg font-medium">
               Can I customize my coach profile page?
             </div>
             <div class="collapse-content">
               <p class="text-base-content/80">
-                No, not at the moment.<br/>
-                <br/>
-                If you have a particular idea that would help you, please <%= link_to "contact me", findacoach_contact_path, class:"link" %>.<br/>
-                <br/>
+                No, not at the moment.<br>
+                <br>
+                If you have a particular idea that would help you, please <%= link_to "contact me", findacoach_contact_path, class:"link" %>.<br>
+                <br>
                 I promise I will consider your proposal.
               </p>
             </div>
           </div>
 
           <div class="collapse collapse-arrow bg-base-100">
-            <input type="radio" name="faq-accordion" />
+            <input type="radio" name="faq-accordion">
             <div class="collapse-title text-lg font-medium">
               When will the paid plan be available, and how will it affect the free plan?
             </div>
             <div class="collapse-content">
               <p class="text-base-content/80">
                 Not decided yet when the paid plan will be launched.
-                Find a Coach needs to have enough users before I can start considering a paid version.<br/>
-                <br/>
+                Find a Coach needs to have enough users before I can start considering a paid version.<br>
+                <br>
                 When paid version will be available, free version will stay.
-                Users will not lose access to any free plan features <br/>
-                <br/>
-                All new features (unless too costly) will be available in a free plan so everybody can benefit from those.<br/>
-                <br/>
+                Users will not lose access to any free plan features <br>
+                <br>
+                All new features (unless too costly) will be available in a free plan so everybody can benefit from those.<br>
+                <br>
                 The paid plan will be for coaches who already have an established practice and can afford to pay.
               </p>
             </div>
           </div>
 
           <div class="collapse collapse-arrow bg-base-100">
-            <input type="radio" name="faq-accordion" />
+            <input type="radio" name="faq-accordion">
             <div class="collapse-title text-lg font-medium">
               What types of coaching does it support?
             </div>
             <div class="collapse-content">
               <p class="text-base-content/80">
-                Find a Coach is designed with pure <a href="https://coachingfederation.org" class="link">ICF</a> based coaching in mind.<br/>
-                <br/>
-                 In spirit, this means no prepaid programs — just pure coaching, guiding clients, and helping them achieve the goals they define.<br/>
-                <br/>
+                Find a Coach is designed with pure <a href="https://coachingfederation.org" class="link">ICF</a> based coaching in mind.<br>
+                <br>
+                 In spirit, this means no prepaid programs — just pure coaching, guiding clients, and helping them achieve the goals they define.<br>
+                <br>
                 But it can be used for all types of professional coaching including life coaching, business coaching, 
                 executive coaching, career coaching, wellness coaching, and more.
               </p>
