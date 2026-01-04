@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "findacoach/changelog"
   get "findacoach/contact"
   get "findacoach/pricing"
+  get "findacoach/license"
   get "findacoach/blog", to: redirect("findacoach/changelog")
   post "increment_demo_count", to: "findacoach#increment_demo_count"
 

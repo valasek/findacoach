@@ -8,14 +8,12 @@ Focus on coaching and Find a Coach will manage all what you need: your coaching 
 
 ## License
 
-All source code in this repository is released under the **[CC BY‑NC 4.0](https://creativecommons.org/licenses/by‑nc/4.0/)** license.
+All source code in this repository is released under the **[O'Saasy](https://osaasy.dev/)** license.
 
-- ❌ **Commercial use is not permitted**
-- 🔒 No patent rights are granted
+- ✅ **Commercial use is permitted** (with restrictions)
+- 🚫 Cannot offer as competing SaaS/hosted service
 - 📝 Attribution and copyright notice must be included
 - ⚠️ No liability and no warranty
-
-If you'd like to use this software commercially, please [contact me](https://www.stanislavvalasek.com/en/contact/) to discuss a commercial license.
 
 ## How to deploy
 

@@ -45,6 +45,9 @@ class FindacoachController < ApplicationController
   def pricing
   end
 
+  def license
+  end
+
   def changelog
     @changelog_entries = [
       {
