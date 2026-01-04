@@ -7,25 +7,26 @@
     <div class="card bg-base-200 shadow-sm">
       <div class="card-body p-4 text-center">
         <div class="text-3xl font-semibold text-primary"><%= @clients_count %></div>
-        <div class="text-sm text-base-content">Lives Touched</div>
+        <div class="text-lg text-base-content">Lives Touched</div>
       </div>
     </div>
     <div class="card bg-base-200 shadow-sm">
       <div class="card-body p-4 text-center">
         <div class="text-3xl font-semibold text-primary"><%= @hours_count %></div>
-        <div class="text-sm text-base-content">Coaching Hours</div>
+        <div class="text-lg text-base-content">Coaching Hours</div>
       </div>
     </div>
     <div class="card bg-base-200 shadow-sm">
       <div class="card-body p-4 text-center">
         <div class="text-3xl font-semibold text-primary"><%= @sessions_count %></div>
-        <div class="text-sm text-base-content">Sessions</div>
+        <div class="text-lg text-base-content">Sessions</div>
+        <div class="text-sm text-base-content"><%= @sessions_count - @group_sessions_count %> individual and <%= @group_sessions_count %> group session</div>
       </div>
     </div>
     <div class="card bg-base-200 shadow-sm">
       <div class="card-body p-4 text-center">
         <div class="text-3xl font-semibold text-primary"><%= @sessions_paid %>%</div>
-        <div class="text-sm text-base-content">Time Compensated</div>
+        <div class="text-lg text-base-content">Time Compensated</div>
       </div>
     </div>
   </div>
