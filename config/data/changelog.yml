@@ -1,0 +1,38 @@
+2026:
+  - date: 2026-02-06
+    items:
+      - "Fixed: Export to IFC template now contains correct group and individual records"
+      - "Security: All packages updated to latest versions"
+  - date: 2026-01-03
+    items:
+      - "Total number of sessions now shown on home page"
+      - "Security: All packages updated to latest versions"
+
+2025:
+  - date: 2025-10-20
+    items:
+      - "AI Coach added as an experiment"
+      - "Security: All packages updated to latest versions"
+  - date: 2025-08-15
+    items:
+      - "Welcome email now sent upon registration"
+      - "Sign in now supports Google SSO"
+      - "Home page for coaches and user settings added"
+      - "Demo account can now be accessed with one click"
+      - "Security: All packages updated to latest versions"
+  - date: 2025-07-23
+    items:
+      - "Full demo version now available"
+      - "Security: All packages updated to latest versions"
+
+2024:
+  - date: 2024-10-31
+    items:
+      - "Export to MS Excel, compliant with ICF requirements"
+      - "New statistics added to the dashboard"
+      - "Security: Hardening and new security section added to home page"
+  - date: 2024-10-23
+    items:
+      - "Find a Coach - alpha version. First release to gather initial feedback"
+      - "Available to all users without restrictions"
+      - "Users can now manage clients and coaching hours per client"
