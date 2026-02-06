@@ -65,12 +65,20 @@ Edit rails credentials `VISUAL="code --wait" bin/rails credentials:edit`
 `bundle outdated`
 `bundle update --all`
 
-update bundler
+### Bundler
 `bundle update --bundler`
 
 ### Daisyui
 
 curl -sLo app/assets/tailwind/daisyui.js https://github.com/saadeghi/daisyui/releases/latest/download/daisyui.js
+
+### Kamal
+
+`gem update kamal`
+`kamal proxy upgrade`
+
+Clean up unused images and containers
+`kamal prune`
 
 ### Show list of rake tasks
 
