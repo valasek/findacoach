@@ -22,17 +22,18 @@ class ClientsController < ApplicationController
         current_row = 2
         @clients.each do |client|
           sessions = client.sessions
-          first_session = sessions.order(date: :asc).first
+          first_session = sessions.order(date: :asc).last
           start_month = first_session&.date&.strftime("%B %Y") || "No sessions"
-          last_session = sessions.order(date: :desc).first
+          last_session = sessions.order(date: :asc).first
           end_month = last_session&.date&.strftime("%B %Y") || "No sessions"
+          max_group_size = sessions.maximum(:group_size) || 0
           paid_duration = sessions.where(paid: true).sum(:duration)
           unpaid_duration = sessions.where(paid: false).sum(:duration)
           data = [
             client.name,
-            client.phone + ", " + client.email,
-            "Individual",
-            1,
+            [ client.phone.presence, client.email.presence ].compact.join(", "),
+            max_group_size > 1 ? "Group" : "Individual",
+            max_group_size > 1 ? max_group_size : "",
             start_month,
             end_month,
             paid_duration,
