@@ -17,7 +17,6 @@ All source code in this repository is released under the **[O'Saasy](https://osa
 
 ## How to deploy
 
-`export KAMAL_REGISTRY_PASSWORD=<pwd>`
 `kamal deploy`
 
 And optional:

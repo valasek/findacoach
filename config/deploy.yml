@@ -23,7 +23,6 @@ proxy:
     - www.findacoach.eu
     - findacoach.eu
 
-
 # Credentials for your image host.
 registry:
   server: localhost:5555
