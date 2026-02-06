@@ -5,39 +5,86 @@
     <% end %>
 
     <% c.with_body do %>
-      <div class="badge badge-primary p-4">Registered users: <%= @users.count %></div>
+      <div class="p-6 space-y-6">
+        <div>
+          <span class="inline-block px-3 py-1 text-sm font-medium bg-gray-200 text-gray-800 rounded">
+            Registered users: <%= @users.count %>
+          </span>
+        </div>
 
-      <div class="hidden md:grid  md:grid-cols-4 bg-gray-100 font-bold p-3 rounded-t-lg">
-        <div>Email</div>
-        <div>Clients</div>
-        <div>Sessions</div>
-        <div>Actions</div>
-      </div>
-
-      <div class="divide-y divide-gray-200">
-        <% for user in @users do %>
-          <div class="grid grid-cols-1 md:grid-cols-4 md:gap-8 p-3 hover:bg-gray-50">
-            <div class="md:hidden space-y-2">
-              <div class="grid grid-cols-2 gap-4">
-                <span class="font-bold">Email:</span>
-                <span><%= user.email %></span>
-              </div>
-              <div class="grid grid-cols-2 gap-4">
-                <span class="font-bold">Clients:</span>
-                <span><%= user.clients.count %></span>
-              </div>
-              <div class="grid grid-cols-2 gap-4">
-                <span class="font-bold">Sessions:</span>
-                <span><%= user.sessions.count %></span>
+        <!-- Mobile: Cards -->
+        <div class="sm:hidden space-y-3">
+          <% @users.each do |user| %>
+            <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+              <div class="p-4 space-y-3 text-sm">
+                <div class="flex justify-between gap-4">
+                  <span class="font-medium text-gray-600">Email:</span>
+                  <span class="text-right break-all"><%= user.email %></span>
+                </div>
+                <div class="border-t border-gray-200"></div>
+                <div class="flex justify-between">
+                  <span class="font-medium text-gray-600">Clients:</span>
+                  <span><%= user.clients.count %></span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-medium text-gray-600">Sessions:</span>
+                  <span><%= user.sessions.count %></span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-medium text-gray-600">Ragistered:</span>
+                  <span><%= user.sessions.count %></span>
+                </div>
               </div>
             </div>
-            <!-- Desktop View -->
-            <div class="hidden md:block"><%= user.email %></div>
-            <div class="hidden md:block"><%= user.clients.count %></div>
-            <div class="hidden md:block"><%= user.sessions.count %></div>
-          </div>
-        <% end %>
+          <% end %>
         </div>
+
+        <!-- Desktop: Table -->
+        <div class="hidden sm:block overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Email
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Clients
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Sessions
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Registered
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <% @users.each do |user| %>
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <%= user.email %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <%= user.clients.count %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <%= user.sessions.count %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <%= user.created_at.strftime("%Y-%m-%d") %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <!-- Action buttons placeholder -->
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     <% end %>
   <% end %>
 </div>
