@@ -3,14 +3,14 @@
   <div class="card-body">
     <div class="flex justify-between">
     <h4>
-        <%= link_to client.name, client_path(client), title: "Edit client", class: "link text-blue-700", data: { turbo_frame: "_top" } %>
+        <%= link_to client.name, client_path(client), title: "Edit client", class: "link link-primary", data: { turbo_frame: "_top" } %>
     </h4>
     </div>
-    <span class="badge badge-outline badge-neutral badge-sm">
+    <span class="badge badge-outline badge-sm">
         <%= sessions.count %> sessions | <%= sessions.sum(&:duration) %> hours
     </span>
-    <div class="text-gray-600 truncate text-xs"><%= client.email %></div>
-    <div class="text-gray-600 justify-self-start sm:justify-self-left md:justify-self-center text-xs"><%= client.phone %></div>
+    <div class="text-base-content/70 truncate text-xs"><%= client.email %></div>
+    <div class="text-base-content/70 justify-self-start sm:justify-self-left md:justify-self-center text-xs"><%= client.phone %></div>
     <div class="card-actions justify-end">
         <%= link_to new_client_session_path(client, source: 'index'), title: "Add session", class: "btn btn-primary btn-outline", data: { turbo_frame: "_top" } do %>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">

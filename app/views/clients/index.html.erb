@@ -9,12 +9,12 @@
         </svg>
         New client
       <% end %>
-      <div class="badge badge-neutral badge-outline">
+      <div class="badge badge-outline">
         Total: <%= @clients_count %>
       </div>
     </div>
     
-    <h1>Clients</h1>
+    <h1 class="text-base-content">Clients</h1>
     
     <div class="w-full lg:w-auto lg:min-w-80">
       <%= form_with url: clients_path, method: :get, class: "w-full", data: { controller: "search-client", turbo_frame: "clients-list" } do |f| %>
@@ -34,7 +34,7 @@
     <%= turbo_frame_tag "clients-list" do %>
       <% if @clients.any? %>
         <div class="flex flex-row justify-center items-center mt-0 mb-4">
-          <p><%= page_entries_info @clients %></p>
+          <p class="text-base-content"><%= page_entries_info @clients %></p>
         </div>
         <div class="flex flex-row flex-wrap justify-center gap-8">
           <% @clients.each do |client| %>
@@ -42,7 +42,7 @@
           <% end %>
         </div>
         <div class="flex flex-row justify-center items-center my-8">
-          <p><%= paginate @clients %></p>
+          <p class="text-base-content"><%= paginate @clients %></p>
         </div>
       <% else %>
         <% if params[:query].present? %>
@@ -50,8 +50,8 @@
           <div class="hero min-h-96">
             <div class="hero-content text-center">
               <div class="max-w-md">
-                <p class="text-lg mb-6">No such client</p>
-                <p class="text-sm text-gray-600 mb-6">
+                <p class="text-lg mb-6 text-base-content">No such client</p>
+                <p class="text-sm text-base-content/70 mb-6">
                   Try adjusting your search terms.
                 </p>
               </div>
@@ -62,7 +62,7 @@
           <div class="hero min-h-96">
             <div class="hero-content text-center">
               <div class="max-w-md">
-                <p class="text-lg mb-6">No clients have been created<br>Why not to create one?</p>
+                <p class="text-lg mb-6 text-base-content">No clients have been created<br>Why not to create one?</p>
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@
           <div class="hero min-h-96">
             <div class="hero-content text-center">
               <div class="max-w-md">
-                <p class="text-lg mb-6">No clients to display</p>
+                <p class="text-lg mb-6 text-base-content">No clients to display</p>
               </div>
             </div>
           </div>

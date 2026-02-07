@@ -47,7 +47,7 @@
 
   <div class="relative mb-8">
     <h2 class="text-center">Sessions</h2>
-    <span class="badge badge-outline badge-neutral badge-sm absolute left-0 top-1/2 -translate-y-1/2">
+    <span class="badge badge-outline badge-sm absolute left-0 top-1/2 -translate-y-1/2">
       <%= @client.sessions.count %> sessions | <%= @client.sessions.sum(&:duration) %> hours
     </span>
   </div>
@@ -61,8 +61,8 @@
     <% else %>
       <div class="hero">
         <div class="hero-content text-center">
-          <div class="">
-            <p class="text-lg mb-6">No sessions?<br/>Create one</p>
+          <div>
+            <p class="text-lg mb-6">No sessions?<br>Create one</p>
             <%= link_to new_client_session_path(@client, source: 'edit'), class: "btn btn-primary", data: { turbo_frame: "_top" } do %>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

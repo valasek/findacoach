@@ -1,4 +1,4 @@
-<div class="navbar bg-primary-content ">
+<div class="navbar bg-base-100">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -18,10 +18,10 @@
         <li><%= link_to "Try AI coach", findacoach_ai_coach_path, class: "btn btn-outline btn-primary" %></li>
       </ul>
     </div>
-    <%= link_to "/" do%>
+    <%= link_to "/" do %>
       <%= image_tag "favicon.ico", class: "inline w-6 h-6" %>
     <% end %>
-    <%= link_to "Find a Coach", "/", class: "hover:underline px-2 text-lg sm:text-xl" %>
+    <%= link_to "Find a Coach", "/", class: "hover:underline px-2 text-lg sm:text-xl text-base-content" %>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-lg menu-horizontal px-1">
@@ -41,7 +41,7 @@
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
         <div class="w-8 sm:w-10 rounded-full">
-          <img alt="User avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+          <img alt="User avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp">
         </div>
       </div>
       <ul tabindex="0" class="menu menu-lg dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow-lg border border-base-300">
