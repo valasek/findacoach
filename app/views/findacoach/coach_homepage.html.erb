@@ -39,6 +39,7 @@
         </div>
       </div>
 
+    <% if @profile.phone.present? %>
     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
       <%= link_to "https://wa.me/#{@profile.phone.gsub(/[^\\d]/, '')}", 
                   class: "btn btn-primary btn-lg gap-2 text-white w-full sm:w-auto hover:scale-105 transition-transform", 
@@ -46,36 +47,8 @@
         <i class="fab fa-whatsapp text-xl"></i>
         Book My Session
       <% end %>
-      
-      <button class="btn btn-outline btn-lg gap-2 w-full sm:w-auto" onclick="my_modal.showModal()">
-        <i class="fas fa-info-circle"></i>
-        Learn More
-      </button>
     </div>
-
-    <!-- Modal for additional info -->
-    <dialog id="my_modal" class="modal">
-      <div class="modal-box">
-        <h3 class="font-bold text-lg mb-4">What to Expect</h3>
-        <ul class="list-disc list-inside space-y-2 text-base-content/80">
-          <li>Free 15-minute consultation</li>
-          <li>Personalized coaching approach</li>
-          <li>Flexible scheduling options</li>
-          <li>Results-focused sessions</li>
-        </ul>
-        <div class="modal-action">
-          <form method="dialog">
-            <button class="btn">Close</button>
-          </form>
-          <%= link_to "https://wa.me/#{@profile.phone.gsub(/[^\\d]/, '')}", 
-                      class: "btn btn-primary", 
-                      target: "_blank" do %>
-            <i class="fab fa-whatsapp"></i>
-            Book Now
-          <% end %>
-        </div>
-      </div>
-    </dialog>
+    <% end %>
 
     <div class="pt-8">
       <%= link_to @profile.website, class: "underline gap-2 w-full sm:w-auto", target: "_blank" do %>
