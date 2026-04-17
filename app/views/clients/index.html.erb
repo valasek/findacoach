@@ -1,6 +1,6 @@
 <div class="md:w-2/3 w-full mx-auto">
   <% content_for :title, "Clients" %>
-  
+
   <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
     <div class="flex items-center gap-4">
       <%= link_to new_client_path, class: "btn btn-primary" do %>
@@ -13,9 +13,9 @@
         Total: <%= @clients_count %>
       </div>
     </div>
-    
+
     <h1 class="text-base-content">Clients</h1>
-    
+
     <div class="w-full lg:w-auto lg:min-w-80">
       <%= form_with url: clients_path, method: :get, class: "w-full", data: { controller: "search-client", turbo_frame: "clients-list" } do |f| %>
         <%= f.text_field :query,

@@ -42,7 +42,7 @@
       </details>
     </span>
   </div>
-  
+
   <%= render @client %>
 
   <div class="relative mb-8">
@@ -52,26 +52,26 @@
     </span>
   </div>
 
-    <% if @client.sessions.any? %>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <% @client.sessions.each do |client_session| %>
-          <%= render "sessions/session_card", client: @client, client_session: client_session %>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="hero">
-        <div class="hero-content text-center">
-          <div>
-            <p class="text-lg mb-6">No sessions?<br>Create one</p>
-            <%= link_to new_client_session_path(@client, source: 'edit'), class: "btn btn-primary", data: { turbo_frame: "_top" } do %>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-              Add session
-            <% end %>
-          </div>
+  <% if @client.sessions.any? %>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <% @client.sessions.each do |client_session| %>
+        <%= render "sessions/session_card", client: @client, client_session: client_session %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="hero">
+      <div class="hero-content text-center">
+        <div>
+          <p class="text-lg mb-6">No sessions?<br>Create one</p>
+          <%= link_to new_client_session_path(@client, source: 'edit'), class: "btn btn-primary", data: { turbo_frame: "_top" } do %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            Add session
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 
 </div>

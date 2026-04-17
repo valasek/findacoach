@@ -1,7 +1,7 @@
 <% if object.errors.any? %>
     <div role="alert" class="alert alert-error alert-outline py-8">
         <span>
-            <h3 class="font-bold pb-4">Fix these <%= pluralize(object.errors.count, "error") %> so <%= object.class.model_name.human.downcase %> can be saved:</h4>
+            <h3 class="font-bold pb-4">Fix these <%= pluralize(object.errors.count, "error") %> so <%= object.class.model_name.human.downcase %> can be saved:</h3>
             <ul>
                 <% object.errors.each do |error| %>
                 <li class="text-sm"><%= error.full_message %></li>

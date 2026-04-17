@@ -32,27 +32,28 @@
   </div>
   Keep up the fantastic work! Every session brings you closer to your goals.
   <div class="grid grid-cols-1 gap-6 lg:grid-cols-2  mt-8">
-  <div class="card bg-base-200 shadow-xs h-full">
-    <div class="card-body inline p-6 h-full">
-      <h3 class="text-lg mb-2">
-        <a href="<%= @coach_url %>" class="link link-primary">Your homepage</a>
-      </h3>
-      Feel free to share it.
-      <div class="mt-2">You can always update it in your <a href="<%= edit_user_registration_path %>" class="link link-primary">profile settings</a>.</div>
+    <div class="card bg-base-200 shadow-xs h-full">
+      <div class="card-body inline p-6 h-full">
+        <h3 class="text-lg mb-2">
+          <a href="<%= @coach_url %>" class="link link-primary">Your homepage</a>
+        </h3>
+        Feel free to share it.
+        <div class="mt-2">You can always update it in your <a href="<%= edit_user_registration_path %>" class="link link-primary">profile settings</a>.</div>
+      </div>
     </div>
-  </div>
 
-  <div class="card bg-base-200 shadow-xs h-full">
-    <div class="card-body p-6 h-full flex flex-col">
-      <h3 class="text-lg mb-2">Ready for ICF Certification?</h3>
-      <p class="text-base-content mb-4">Export your ICF-compatible coaching log template</p>
-      <div class="mt-auto">
-        <%= button_to clients_path(format: :xlsx), method: :get, class: "btn btn-primary" do %>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
-          Download Excel Template
-        <% end %>
+    <div class="card bg-base-200 shadow-xs h-full">
+      <div class="card-body p-6 h-full flex flex-col">
+        <h3 class="text-lg mb-2">Ready for ICF Certification?</h3>
+        <p class="text-base-content mb-4">Export your ICF-compatible coaching log template</p>
+        <div class="mt-auto">
+          <%= button_to clients_path(format: :xlsx), method: :get, class: "btn btn-primary" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download Excel Template
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

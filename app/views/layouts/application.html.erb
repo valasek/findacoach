@@ -31,7 +31,7 @@
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= Sentry.get_trace_propagation_meta.html_safe %>
+    <%= Sentry.get_trace_propagation_meta %>
 
     <meta name="turbo-refresh-method" content="morph">
   </head>
@@ -39,7 +39,7 @@
   <body class="min-h-screen font-serif flex flex-col bg-base-100">
     <%= render "layouts/menu" %>
     <main class="flex-1 w-full max-w-7xl mx-auto mt-4 px-5">
-      <%= render "layouts/messages" %>  
+      <%= render "layouts/messages" %>
       <%= yield %>
     </main>
     <%= render "layouts/footer" %>

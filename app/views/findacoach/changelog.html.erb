@@ -5,7 +5,7 @@
     <div class="text-center">Your Opinion Matters. Check the
     <a href="https://github.com/users/valasek/projects/2/views/1?layout=board" class="link">Roadmap</a>
     or <%= link_to "Leave a Feedback", "https://forms.gle/rMP5FwtpPDMgSn337", class: "link" %>.</div>
-    
+
     <% @changelog.each do |year, entries| %>
         <h2 class="text-2xl font-bold mt-8 mb-4">Changes in <%= year %></h2>
         <% entries.each_with_index do |entry, index| %>
@@ -18,7 +18,7 @@
                                 <li class="text-sm text-gray-600"><%= raw item %></li>
                             <% end %>
                         </ul>
-                    </div>    
+                    </div>
                 </div>
             </div>
         <% end %>
