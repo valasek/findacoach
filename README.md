@@ -37,7 +37,7 @@ Runn local ci: `bin/ci`
 
 Run tests `bin/rails test`
 
-Precompile rails assets: `rails assets:clean assets:precompile` 
+Precompile rails assets: `rails assets:clean assets:precompile`
 
 Build Tailwind `bin/rails tailwindcss:build` 
 
