@@ -7,12 +7,14 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [ :google_oauth2 ]
 
   has_many :clients, dependent: :destroy
+  has_many :services, dependent: :destroy
   has_many :sessions, through: :clients
   has_one :user_profile, dependent: :destroy
   accepts_nested_attributes_for :user_profile, update_only: true
 
   # create a profile after user creation
   after_create :create_user_profile
+  after_create :create_default_service
 
   # Delegate common methods for convenience
   # delegate :full_name, :website, :bio, :photo, to: :user_profile, allow_nil: true
@@ -71,5 +73,9 @@ class User < ApplicationRecord
 
   def create_user_profile
     build_user_profile.save!
+  end
+
+  def create_default_service
+    services.create!(name: "Coaching", default: true)
   end
 end

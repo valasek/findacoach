@@ -79,6 +79,6 @@ class SessionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def session_params
-      params.expect(session: [ :client_id, :date, :duration, :paid, :group, :group_size, :notes ])
+      params.expect(session: [ :client_id, :service_id, :date, :duration, :paid, :group, :group_size, :notes ])
     end
 end

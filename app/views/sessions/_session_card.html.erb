@@ -1,29 +1,29 @@
-<!-- Session Card 1 -->
 <div id="<%= dom_id client_session %>" class="card bg-base-100 shadow-md border border-base-300">
   <div class="card-body p-4">
+
     <div class="flex justify-between items-start mb-3">
-      <%= link_to client_session.date, client_session_path(@client, client_session), class: "text-xl text-base-content/70 link text-blue-600" %>
+      <%= link_to client_session.date, client_session_path(@client, client_session), class: "text-xl link text-blue-600" %>
       <% if client_session.paid? %>
         <div class="badge badge-success badge-sm">Paid</div>
       <% else %>
-        <div class="badge badge-error badge-sm">Free</div>
+        <div class="badge badge-error badge-sm">Unpaid</div>
       <% end %>
     </div>
 
-    <div class="stats stats-vertical shadow-xs bg-base-100 mb-3">
-      <div class="stat py-2 px-3">
-        <div class="stat-title text-xs">Duration</div>
-        <div class="stat-value text-lg"><%= client_session.duration %><span class="stat-value text-sm"> h</span></div>
+    <div class="grid grid-cols-2 gap-x-6 gap-y-2 mb-3">
+      <div>
+        <p class="text-xs text-base-content/50 mb-0.5">Duration</p>
+        <p class="text-sm font-semibold"><%= client_session.duration %> h</p>
       </div>
-      <div class="stat py-2 px-3">
-        <div class="stat-title text-xs">Type</div>
-        <div class="stat-desc">
-          <% if client_session.group? %>
-            Group, <%= client_session.group_size %> members
-          <% else %>
-            Individual
-          <% end %>
-        </div>
+      <div>
+        <p class="text-xs text-base-content/50 mb-0.5">Service</p>
+        <p class="text-sm font-semibold"><%= client_session.service.name %></p>
+      </div>
+      <div class="col-span-2 border-t border-base-300 pt-4 mt-4">
+        <p class="text-xs text-base-content/50 mb-0.5">Type</p>
+        <p class="text-sm font-semibold">
+          <%= client_session.group? ? "Group · #{client_session.group_size} members" : "Individual" %>
+        </p>
       </div>
     </div>
 
@@ -34,5 +34,6 @@
         <p class="text-base-content/80"><%= client_session.notes %></p>
       </div>
     </div>
+
   </div>
 </div>

@@ -3,6 +3,9 @@
         <legend class="fieldset-legend">Duration</legend><%= session.duration %> h
     </fieldset>
     <fieldset class="fieldset basis-1/3">
+        <legend class="fieldset-legend">Service</legend><%= session.service.name %>
+    </fieldset>
+    <fieldset class="fieldset basis-1/3">
         <legend class="fieldset-legend">Type</legend>
         <% if session.group? %>
             Group, <%= session.group_size %> members

@@ -3,23 +3,38 @@
   <%= render "partials/show_form_errors", object: session %>
 
   <div class="flex flex-row gap-4">
-    <fieldset class="fieldset basis-1/5">
+    <fieldset class="fieldset ">
       <legend class="fieldset-legend"><%= form.label :date %></legend>
       <%= form.date_field :date, autofocus: true, class: ["input", {"input-error": session.errors[:date].any?}] %>
     </fieldset>
-    <fieldset class="fieldset basis-1/5">
+    <fieldset class="fieldset ">
       <legend class="fieldset-legend"><%= form.label :duration %>(hrs)</legend>
       <%= form.number_field :duration, value: "1", step: 0.5, min: 0, class: ["input", {"input-error": session.errors[:duration].any?}] %>
     </fieldset>
-    <fieldset class="fieldset basis-1/5">
+    <fieldset class="fieldset ">
+      <legend class="fieldset-legend"><%= form.label :service %></legend>
+      <%= form.collection_select :service_id,
+          @client.user.services,
+          :id,
+          :name,
+          {
+            prompt: "Select a service",
+            selected: @client.user.services.find_by(default: true)&.id
+          },
+          {
+            class: ["select", {"select-error": session.errors[:service_id].any?}]
+          }
+      %>
+    </fieldset>
+    <fieldset class="fieldset ">
       <legend class="fieldset-legend"><%= form.label :paid %></legend>
       <%= form.check_box :paid, checked: "checked", class: ["checkbox", {"input-error": session.errors[:paid].any?}] %>
     </fieldset>
-    <fieldset class="fieldset basis-1/5">
+    <fieldset class="fieldset ">
       <legend class="fieldset-legend"><%= form.label :group %></legend>
       <%= form.check_box :group, class: ["checkbox", {"input-error": session.errors[:group].any?}] %>
     </fieldset>
-    <fieldset class="fieldset basis-1/5">
+    <fieldset class="fieldset ">
       <legend class="fieldset-legend"><%= form.label :group_size %></legend>
       <%= form.number_field :group_size, class: ["input", {"input-error": session.errors[:group_size].any?}] %>
     </fieldset>

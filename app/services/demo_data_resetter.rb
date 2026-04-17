@@ -45,6 +45,7 @@ class DemoDataResetter
         group = Random.rand < 0.4 # 40% chance of being a group session
         Session.create!(
           client_id: client.id,
+          service_id: @user.services.find_by(default: true).id,
           date: Faker::Date.between(from: 30.days.ago, to: Time.now),
           duration: 1 + [ 0, 0.5 ].sample,
           group: group,
