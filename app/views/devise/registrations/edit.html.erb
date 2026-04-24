@@ -4,11 +4,10 @@
 
     <div class="tabs tabs-lift">
       <!-- Settings Tab -->
-      <input type="radio" name="profile_tabs" id="settings_tab" class="tab" aria-label="Settings" checked="checked" />
+      <input type="radio" name="profile_tabs" id="settings_tab" class="tab" aria-label="Settings" checked>
       <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "settings_form", multipart: true }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
-          
           <div class="space-y-6">
             <%= f.fields_for :user_profile, @profile do |profile_form| %>
               <%= profile_form.hidden_field :id %>
@@ -19,9 +18,7 @@
                     <% if @profile.photo_attached? %>
                       <%= image_tag @profile.photo, alt: "Profile photo", class: "w-full h-full object-cover" %>
                     <% else %>
-                      <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                      </svg>
+                      <img alt="User avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp">
                     <% end %>
                   </div>
                 </div>
@@ -83,11 +80,11 @@
 
       <!-- Change Password Tab (only show if user doesn't use SSO) -->
       <% unless current_user.sso_user? %>
-        <input type="radio" name="profile_tabs" id="password_tab" class="tab" aria-label="Change Password" />
+        <input type="radio" name="profile_tabs" id="password_tab" class="tab" aria-label="Change Password">
         <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "password_form" }) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
-            
+
             <div class="space-y-6">
               <fieldset class="fieldset w-full">
                 <legend class="fieldset-legend">New password</legend>
@@ -123,36 +120,30 @@
         </div>
       <% else %>
         <!-- SSO User Message -->
-        <input type="radio" name="profile_tabs" id="password_tab" class="tab" aria-label="Change Password" />
+        <input type="radio" name="profile_tabs" id="password_tab" class="tab" aria-label="Change Password">
         <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
-          <div class="alert alert-info">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            <div>
-              <h4 class="font-semibold">Password Management</h4>
-              <p class="text-sm">You signed in using SSO (Google, Apple, Facebook, etc.). To change your password, please visit your SSO provider:</p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <% current_user.providers.each do |provider| %>
-                  <% case provider %>
-                  <% when 'google_oauth2' %>
-                    <a href="https://myaccount.google.com/security" target="_blank" class="btn btn-outline btn-sm">Google Account Security</a>
-                  <% when 'apple' %>
-                    <a href="https://appleid.apple.com/account/manage" target="_blank" class="btn btn-outline btn-sm">Apple ID Security</a>
-                  <% when 'facebook' %>
-                    <a href="https://www.facebook.com/settings?tab=security" target="_blank" class="btn btn-outline btn-sm">Facebook Security Settings</a>
-                  <% end %>
+          <div>
+            <p class="text-sm">You signed in using SSO (Google, Apple, Facebook, etc.). To change your password, please visit your SSO provider:</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <% current_user.providers.each do |provider| %>
+                <% case provider %>
+                <% when 'google_oauth2' %>
+                  <a href="https://myaccount.google.com/security" target="_blank" class="btn btn-primary">Google Account Security</a>
+                <% when 'apple' %>
+                  <a href="https://appleid.apple.com/account/manage" target="_blank" class="btn btn-primary">Apple ID Security</a>
+                <% when 'facebook' %>
+                  <a href="https://www.facebook.com/settings?tab=security" target="_blank" class="btn btn-primary">Facebook Security Settings</a>
                 <% end %>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>
       <% end %>
 
       <!-- Cancel Account Tab -->
-      <input type="radio" name="profile_tabs" id="cancel_tab" class="tab" aria-label="Cancel Account" />
+      <input type="radio" name="profile_tabs" id="cancel_tab" class="tab" aria-label="Cancel Account">
       <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
-        <div class="space-y-6">          
+        <div class="space-y-6">
           <div class="alert alert-warning">
             <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
@@ -167,11 +158,10 @@
             <div class="card-body p-4">
               <p class="text-sm font-medium mb-2">When you cancel your account:</p>
               <ul class="text-sm space-y-1 list-disc list-inside opacity-80">
-                <li>All your profile data will be permanently deleted</li>
-                <li>Your coaching sessions history will be removed</li>
-                <li>You will lose access to all premium features</li>
+                <li>All your data will be permanently deleted</li>
                 <li>This action cannot be reversed</li>
               </ul>
+              <p>Recommended is to <%= link_to "download", clients_path(format: :xlsx), method: :get, class: "link link-primary" %> your coaching data before canceling.</p>
             </div>
           </div>
 

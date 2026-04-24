@@ -1,4 +1,8 @@
 2026:
+  - date: 2026-04-24
+    items:
+      - "Fixes: Avatar logo shown as profile image in user settings"
+      - "Fixes: User can export data before deleting account"
   - date: 2026-04-17
     items:
       - "Security: All packages updated to latest versions"

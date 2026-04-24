@@ -41,7 +41,11 @@
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
         <div class="w-8 sm:w-10 rounded-full">
-          <img alt="User avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp">
+          <% if current_user&.user_profile.photo_attached? %>
+            <%= image_tag current_user.user_profile.photo, alt: "Profile photo", class: "w-full h-full object-cover" %>
+          <% else %>
+              <img alt="User avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp">
+          <% end %>
         </div>
       </div>
       <ul tabindex="0" class="menu menu-lg dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow-lg border border-base-300">
