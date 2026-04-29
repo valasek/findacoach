@@ -14,12 +14,14 @@ class DemoDataResetter
   private
 
   def cleanup_existing_data
-    @user.clients.destroy
+    @user.clients.destroy_all
+    @user.services.destroy_all
   end
 
   def seed_fresh_demo_data
     seed_clients
-    seed_seesions
+    seed_services
+    seed_sessions
   end
 
   def seed_clients
@@ -36,8 +38,23 @@ class DemoDataResetter
     end
   end
 
-  def seed_seesions
-    @user.clients.each do |client|
+  def seed_services
+    names = [ "Coaching", "Mentoring" ]
+
+    names.each.with_index do |name, i|
+      Service.create!(
+        user_id: @user.id,
+        name: name,
+        default: i == 0, # Make the first service the default one
+        created_at: Faker::Time.between(from: 2.years.ago, to: Time.now),
+        updated_at: Faker::Time.between(from: 1.year.ago, to: Time.now)
+      )
+    end
+  end
+
+  def seed_sessions
+    services = @user.services.reload.to_a
+    @user.clients.reload.each do |client|
       session_count = rand(1..20)
       paid_values = ([ true ] * (session_count * 0.8).round + [ false ] * (session_count * 0.2).round).shuffle
 
@@ -45,7 +62,7 @@ class DemoDataResetter
         group = Random.rand < 0.4 # 40% chance of being a group session
         Session.create!(
           client_id: client.id,
-          service_id: @user.services.find_by(default: true).id,
+          service_id: services.rotate![0].id,
           date: Faker::Date.between(from: 30.days.ago, to: Time.now),
           duration: 1 + [ 0, 0.5 ].sample,
           group: group,

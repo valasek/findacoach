@@ -1,0 +1,37 @@
+<turbo_frame id="services">
+  <div class="mb-2">Manage your services:</div>
+
+  <% current_user.services.each do |service| %>
+    <div class="flex items-center gap-2 mb-1"
+         data-controller="inline-edit"
+         data-inline-edit-url-value="<%= user_service_path(current_user, service) %>">
+
+      <span data-inline-edit-target="display"
+            data-action="click->inline-edit#edit"
+            class="cursor-pointer hover:underline min-w-16">
+        <%= service.name %>
+      </span>
+
+      <input data-inline-edit-target="input"
+             data-action="blur->inline-edit#save keydown->inline-edit#handleKeydown"
+             type="text"
+             value="<%= service.name %>"
+             class="input input-bordered input-sm hidden" />
+
+      <%= link_to user_service_path(current_user, service),
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="inline" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+        </svg>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= form_with url: user_services_path(current_user), scope: :service,
+        class: "flex items-center gap-2 mt-3" do |f| %>
+    <%= f.text_field :name, placeholder: "New service name...",
+          class: "input input-bordered input-sm", required: true %>
+    <%= f.submit "Add service", class: "btn btn-primary btn-sm" %>
+  <% end %>
+</turbo_frame>

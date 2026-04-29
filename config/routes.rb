@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   if defined? ::Avo
     Avo::Engine.routes.draw do
       get "dashboard", to: "tools#dashboard", as: :dashboard
-  end
+    end
   end
 
   # public pages
@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   # app pages
   resources :clients do
     resources :sessions
+  end
+
+  resources :users do
+    resources :services
   end
 
   # Standalone session routes for starting a session without a client

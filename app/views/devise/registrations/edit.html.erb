@@ -1,10 +1,10 @@
 <div class="min-h-screen flex items-center justify-center p-4">
   <div class="max-w-md w-full">
-    <h2 class="text-2xl font-semibold mb-6">Profile</h2>
+    <h2 class="text-2xl font-semibold mb-6">Settings</h2>
 
     <div class="tabs tabs-lift">
       <!-- Settings Tab -->
-      <input type="radio" name="profile_tabs" id="settings_tab" class="tab" aria-label="Settings" checked>
+      <input type="radio" name="profile_tabs" id="settings_tab" class="tab" aria-label="Profile" checked>
       <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "settings_form", multipart: true }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
@@ -76,6 +76,14 @@
             </div>
           </div>
         <% end %>
+      </div>
+
+      <!-- Services Tab -->
+      <input type="radio" name="profile_tabs" id="services_tab" class="tab" aria-label="Services">
+      <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
+        <div class="space-y-6">
+          <%= render "services/index" %>
+        </div>
       </div>
 
       <!-- Change Password Tab (only show if user doesn't use SSO) -->
