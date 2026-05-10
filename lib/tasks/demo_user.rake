@@ -11,6 +11,12 @@ namespace :demo_user do
         password: "demo123",
         demo_user: true
       )
+      demo_user.user_profile.update!(
+        full_name: "Stanislav Valasek",
+        phone: "421949888634",
+        website: "https://www.stanislavvalasek.com/en/",
+        bio: "Helping managers and team leaders to be more effective."
+      )
       DemoDataResetter.new(demo_user).reset!
       def green(text) = "\e[32m#{text}\e[0m"
       puts <<~MSG

@@ -50,7 +50,7 @@ class UserProfile < ApplicationRecord
     return unless phone.present?
 
     self.phone = phone.strip.gsub(/\D/, "") # Remove all non-digit characters
-    self.phone = "+#{phone}" unless phone.start_with?("+") # Ensure it starts with +
+    # self.phone = "+#{phone}" unless phone.start_with?("+") # Ensure it starts with +
   end
 
   def normalize_username
