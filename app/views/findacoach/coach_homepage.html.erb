@@ -1,7 +1,7 @@
 <% content_for :title, @profile.full_name %>
 
 <!-- Hero Section -->
-<div class="hero min-h-screen bg-gradient-to-br from-base-300 to-base-100 mb-8 rounded-lg shadow-lg">
+<div class="hero min-h-screen mb-8">
   <div class="hero-content text-center max-w-4xl px-4">
     <div>
       <div class="avatar mb-8 animate-fade-in">
@@ -28,14 +28,22 @@
       </div>
 
       <!-- Stats -->
-      <div class="stats stats-vertical lg:stats-horizontal shadow-lg mb-8 bg-base-100">
+      <div class="stats stats-vertical lg:stats-horizontal shadow-lg mb-8 bg-base-200">
         <div class="stat">
           <div class="stat-figure text-primary">
             <i class="fas fa-clock text-2xl"></i>
           </div>
-          <div class="stat-title">Total Hours</div>
+          <div class="stat-title">Hours</div>
           <div class="stat-value text-primary"><%= @profile.user.total_coaching_hours %></div>
-          <div class="stat-desc">Coaching Experience</div>
+          <div class="stat-desc"><%= @hours_per_service %></div>
+        </div>
+        <div class="stat">
+          <div class="stat-figure text-primary">
+            <i class="fas fa-clock text-2xl"></i>
+          </div>
+          <div class="stat-title">Sessions</div>
+          <div class="stat-value text-primary"><%= @sessions_count %></div>
+          <div class="stat-desc"><%= @sessions_count - @group_sessions_count %> individual and <%= @group_sessions_count %> group session</div>
         </div>
       </div>
 

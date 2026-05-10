@@ -15,6 +15,10 @@ class FindacoachController < ApplicationController
   def coach_homepage
     @profile = UserProfile.find_by(username: params[:username])
 
+    @sessions_count = current_user.sessions.count
+    @group_sessions_count = current_user.sessions.where(group: true).count
+    @hours_per_service = get_hours_per_service
+
     if @profile.nil?
       redirect_to root_path, alert: "Coach you are looking for was not found"
       return
@@ -25,7 +29,6 @@ class FindacoachController < ApplicationController
   def increment_demo_count
     login_to_demo_count_record = ApplicationData.first_or_create(login_to_demo_count: 0)
     login_to_demo_count_record.increment!(:login_to_demo_count)
-    puts "XXXXXXXX Incremented demo login count to #{login_to_demo_count_record.login_to_demo_count}"
 
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.action(:increment_complete, "") }
@@ -39,13 +42,7 @@ class FindacoachController < ApplicationController
     @sessions_paid = current_user.percentage_paid_seesions
     @sessions_count = current_user.sessions.count
     @group_sessions_count = current_user.sessions.where(group: true).count
-    @hours_per_service = ""
-    if current_user.services.count > 1
-      @hours_per_service = current_user.services.map do |service|
-        hours = current_user.sessions.where(service: service).sum(:duration)
-        "#{hours} hours #{service.name}"
-      end.join(", ")
-    end
+    @hours_per_service = get_hours_per_service
     @coach_url = UserProfile.find_by(user: current_user)&.coach_url
   end
 
@@ -57,5 +54,18 @@ class FindacoachController < ApplicationController
 
   def changelog
     @changelog = Changelog.all
+  end
+
+  private
+
+  def get_hours_per_service
+    if current_user.services.count > 1
+      current_user.services.map do |service|
+        hours = current_user.sessions.where(service: service).sum(:duration)
+        "#{hours} hours #{service.name}"
+      end.join(", ")
+    else
+      ""
+    end
   end
 end

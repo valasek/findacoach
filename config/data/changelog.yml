@@ -1,6 +1,7 @@
 2026:
   - date: 2026-05-10
     items:
+      - "Fixed: Session editing now shows correct duration and service type"
       - "Security: All packages updated to latest versions"
   - date: 2026-04-29
     items:
