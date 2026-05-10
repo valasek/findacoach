@@ -35,6 +35,27 @@ Build Tailwind `bin/rails tailwindcss:build`
 
 Reset demo user `rails demo_user:reset`
 
+Update credentials run
+
+`VISUAL="code --wait" bin/rails credentials:edit`
+
+if missing, it will create RAILS_MASTER_KEY
+
+When moving repo to another machine, copy config/master.key 
+
+and set in credentials file:
+
+```yml
+secret_key_base:  xxx
+
+# Transactional email provider / RESEND
+resend_api_key: xxx
+
+google:
+  client_id: xxx
+  client_secret: xxx
+```
+
 Start app with `bin/dev`
 
 ### Other Notes
@@ -58,8 +79,6 @@ Include into precommit hook:
 
 `rubocop` 
 `rails db:test:prepare test test:system`
-
-Edit rails credentials `VISUAL="code --wait" bin/rails credentials:edit`
 
  ## Update
  
@@ -126,9 +145,6 @@ ssh:
   user: kamal
   keys: [ "~/.ssh/id_ed25519" ]
 ```
-
-Create private docker repository e.h. on DockerHub
-add access token (Read, Write, Delete) and store it in `./kamal/secrets` in variable `KAMAL_REGISTRY_PASSWORD` or set as en environment variable export `KAMAL_REGISTRY_PASSWORD=password`
 
 Create e.f. Hetzner machine with ssh
 Add identity to ssh

@@ -1,4 +1,7 @@
 2026:
+  - date: 2026-05-10
+    items:
+      - "Security: All packages updated to latest versions"
   - date: 2026-04-29
     items:
       - "Support for more services, not just coaching"
