@@ -7,7 +7,6 @@ class Avo::Resources::UserProfile < Avo::BaseResource
 
   def fields
     field :id, as: :id
-    field :user_id, as: :number
     field :full_name, as: :text
     field :website, as: :text
     field :bio, as: :textarea

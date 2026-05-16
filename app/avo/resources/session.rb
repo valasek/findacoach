@@ -7,7 +7,6 @@ class Avo::Resources::Session < Avo::BaseResource
 
   def fields
     field :id, as: :id
-    field :client_id, as: :number
     field :date, as: :date
     field :duration, as: :number
     field :paid, as: :boolean
