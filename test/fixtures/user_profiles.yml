@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
+  user: oneU
   full_name: Stanislav Valasek
+  username: stanislav
   website: MyString
   bio: MyText
 
 two:
-  user: two
+  user: twoU
   full_name: MyString
+  username: myuser
   website: MyString
   bio: MyText

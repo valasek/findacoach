@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
+  user: oneU
   name: MyString
   default: false
 
 two:
-  user: two
+  user: twoU
   name: MyString
   default: false

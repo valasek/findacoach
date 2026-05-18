@@ -1,4 +1,9 @@
 2026:
+  - date: 2026-05-18
+    items:
+      - "Fixed: coach home page moved to /coach/<coach-username>"
+      - "Fixed: Session editing now shows correct duration and service type"
+      - "Security: All packages updated to latest versions"
   - date: 2026-05-10
     items:
       - "Fixed: Session editing now shows correct duration and service type"

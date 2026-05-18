@@ -15,14 +15,16 @@ class FindacoachController < ApplicationController
   def coach_homepage
     @profile = UserProfile.find_by(username: params[:username])
 
-    @sessions_count = current_user.sessions.count
-    @group_sessions_count = current_user.sessions.where(group: true).count
-    @hours_per_service = get_hours_per_service
-
     if @profile.nil?
       redirect_to root_path, alert: "Coach you are looking for was not found"
       return
     end
+
+    coach = @profile.user
+    @sessions_count = coach.sessions.count
+    @group_sessions_count = coach.sessions.where(group: true).count
+    @hours_per_service = get_hours_per_service(coach)
+
     render layout: "application_coach"
   end
 
@@ -42,7 +44,7 @@ class FindacoachController < ApplicationController
     @sessions_paid = current_user.percentage_paid_seesions
     @sessions_count = current_user.sessions.count
     @group_sessions_count = current_user.sessions.where(group: true).count
-    @hours_per_service = get_hours_per_service
+    @hours_per_service = get_hours_per_service(current_user)
     @coach_url = UserProfile.find_by(user: current_user)&.coach_url
   end
 
@@ -58,10 +60,10 @@ class FindacoachController < ApplicationController
 
   private
 
-  def get_hours_per_service
-    if current_user.services.count > 1
-      current_user.services.map do |service|
-        hours = current_user.sessions.where(service: service).sum(:duration)
+  def get_hours_per_service(user)
+    if user.services.count > 1
+      user.services.map do |service|
+        hours = user.sessions.where(service: service).sum(:duration)
         "#{hours} hours #{service.name}"
       end.join(", ")
     else
