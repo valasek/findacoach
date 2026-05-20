@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   include UserObserver
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable, :trackable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [ :google_oauth2 ]
 
@@ -60,13 +58,20 @@ class User < ApplicationRecord
       return user
     end
 
-    # Create new user
-    User.create!(
+    # Create new user — skip confirmation since Google has already verified the address
+    user = User.new(
       email: auth.info.email,
       password: Devise.friendly_token[0, 20],
       provider: auth.provider,
       uid: auth.uid
     )
+    user.skip_confirmation!
+    user.save!
+    user
+  end
+
+  def after_confirmation
+    UserMailer.welcome_email(self).deliver_later
   end
 
   private

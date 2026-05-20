@@ -1,4 +1,8 @@
 2026:
+  - date: 2026-05-20
+    items:
+      - "Security: Better registration protection agains bots"
+      - "Security: All SW packages updated to latest versions"
   - date: 2026-05-18
     items:
       - "Fixed: coach home page moved to /coach/<coach-username>"

@@ -54,6 +54,7 @@ gem "rubyXL"        # Export to MS Excel using template
 gem "stackprof"     # Sentry
 gem "sentry-ruby"   # Sentry
 gem "sentry-rails"  # Sentry
+gem "rack-attack"   # Rate limiting and bot blocking
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

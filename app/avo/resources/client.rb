@@ -12,7 +12,7 @@ class Avo::Resources::Client < Avo::BaseResource
     field :name, as: :text
     field :email, as: :text
     field :phone, as: :text
-    field :notes, as: :text
+    field :notes, as: :text, hide_on: :index
     field :sessions, as: :has_many
   end
 end

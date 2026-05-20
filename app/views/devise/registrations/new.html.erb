@@ -1,6 +1,12 @@
+<% if Rails.application.credentials.cloudflare&.dig(:turnstile_site_key).present? %>
+  <% content_for :head do %>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <% end %>
+<% end %>
+
 <div class="min-h-screen flex items-center justify-center">
   <div class="max-w-md w-full">
-    
+
     <h2 class="pb-8">Sign up for free</h2>
 
     <%= button_to user_google_oauth2_omniauth_authorize_path, 
@@ -78,8 +84,22 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "repeat password", class: "" %>
         </label>
 
+        <%# Cloudflare Turnstile — only rendered when credentials are configured %>
+        <% if Rails.application.credentials.cloudflare&.dig(:turnstile_site_key).present? %>
+          <div class="cf-turnstile mt-2"
+               data-sitekey="<%= Rails.application.credentials.cloudflare[:turnstile_site_key] %>"
+               data-theme="light"
+               data-size="flexible">
+          </div>
+        <% end %>
+
         <div class="actions">
-          <%= f.submit "Sign up for free", class: "btn btn-primary"  %>
+          <%= f.submit "Sign up for free", class: "btn btn-primary" %>
+        </div>
+
+        <%# Honeypot: positioned off-screen so humans never see it; bots fill it and get silently dropped %>
+        <div class="absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden" aria-hidden="true">
+          <input type="text" name="user[website_url]" id="user_website_url" autocomplete="off" tabindex="-1">
         </div>
       </div>
     <% end %>
