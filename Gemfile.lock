@@ -552,7 +552,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   propshaft
   puma
-  rack-attack (~> 6.8)
+  rack-attack
   rails
   rubocop-rails-omakase
   rubyXL

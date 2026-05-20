@@ -15,6 +15,13 @@ All source code in this repository is released under the **[O'Saasy](https://osa
 - 📝 Attribution and copyright notice must be included
 - ⚠️ No liability and no warranty
 
+## ToDo
+
+Solve Sentry warnings - Missing controller
+Migrate backups to R2
+Add button on Dashboard - Add session
+Fix delete user without cascading deleting service
+
 ## How to deploy
 
 `kamal deploy`
