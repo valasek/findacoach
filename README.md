@@ -18,11 +18,10 @@ All source code in this repository is released under the **[O'Saasy](https://osa
 ## ToDo
 
 Solve Sentry warnings - Missing controller
-Migrate backups to R2
 Add button on Dashboard - Add session
 Fix delete user without cascading deleting service
 
-## How to deploy
+## Deploy
 
 `kamal deploy`
 
@@ -33,6 +32,49 @@ kamal reset_demo
 kamal logs
 kamal console
 ```
+
+## Update
+
+### Gems
+
+`bundle outdated`
+`bundle update --all`
+
+### Bundler
+`bundle update --bundler`
+
+### Daisyui
+
+curl -sLo app/assets/tailwind/daisyui.js https://github.com/saadeghi/daisyui/releases/latest/download/daisyui.js
+
+### Kamal
+
+`gem update kamal`
+`kamal proxy upgrade`
+
+Clean up unused images and containers
+`kamal prune`
+
+## Infrastructure
+
+Hetzner VPS
+Google Analytics
+
+# DB Backup
+Uses litestream
+
+config file: /etc/litestream.yml service file: /usr/lib/systemd/system/litestream.service
+
+Show status litestream status sudo systemctl status litestream
+
+Stop service sudo systemctl stop litestream
+
+Start service sudo systemctl start litestream
+
+Show logs sudo journalctl -u ensemble --since "100 hours ago"
+
+DB Restore
+litestream restore -config /etc/litestream.yml -o production.sqlite3 /var/lib/docker/volumes/ensemble_storage/_data/production.sqlite3 sqlite production.sqlite3 "PRAGMA integrity_check;" cp production.sqlite3/var/lib/docker/volumes/ensemble_storage/_data/production.sqlite3
 
 ## Technical notes
 
@@ -86,28 +128,6 @@ Include into precommit hook:
 
 `rubocop` 
 `rails db:test:prepare test test:system`
-
- ## Update
- 
- ### Gems
-
-`bundle outdated`
-`bundle update --all`
-
-### Bundler
-`bundle update --bundler`
-
-### Daisyui
-
-curl -sLo app/assets/tailwind/daisyui.js https://github.com/saadeghi/daisyui/releases/latest/download/daisyui.js
-
-### Kamal
-
-`gem update kamal`
-`kamal proxy upgrade`
-
-Clean up unused images and containers
-`kamal prune`
 
 ### Show list of rake tasks
 
