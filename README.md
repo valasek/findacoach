@@ -57,11 +57,12 @@ Clean up unused images and containers
 
 ## Infrastructure
 
-Hetzner VPS
+Hosting - [Hetzner VPS](https://www.hetzner.com/)
+
 Google Analytics
 
 # DB Backup
-Uses litestream
+Uses [Litestream](https://litestream.io/) onto [Claudfare R2](https://dash.cloudflare.com/)
 
 config file: /etc/litestream.yml service file: /usr/lib/systemd/system/litestream.service
 

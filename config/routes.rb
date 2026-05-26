@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :sessions
   end
 
-  resources :users do
+  resources :users, only: [] do
     resources :services
   end
 
