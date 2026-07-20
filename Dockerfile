@@ -7,8 +7,9 @@
 
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
-# Ruby version is injected at build time from .ruby-version
-ARG RUBY_VERSION
+# Ruby version is injected at build time from .ruby-version.
+# Keep a default so BuildKit lint can always resolve the FROM image.
+ARG RUBY_VERSION=4.0.5
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
