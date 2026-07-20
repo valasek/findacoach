@@ -5,6 +5,8 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
+      args:
+        RUBY_VERSION: ${RUBY_VERSION:?Set RUBY_VERSION from .ruby-version before building the devcontainer}
 
     volumes:
     - ../..:/workspaces:cached

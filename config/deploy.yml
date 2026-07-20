@@ -84,13 +84,15 @@ asset_path: /rails/public/assets
 builder:
   arch: amd64
   driver: docker
+  args:
+    RUBY_VERSION: <%= File.read(".ruby-version").strip.sub(/^ruby-/, "") %>
 
   # # Build image via remote server (useful for faster amd64 builds on arm64 computers)
   # remote: ssh://docker@docker-builder-server
   #
   # # Pass arguments and secrets to the Docker build process
   # args:
-  #   RUBY_VERSION: ruby-3.3.4
+  #   RUBY_VERSION: 3.3.4
   # secrets:
   #   - GITHUB_TOKEN
   #   - RAILS_MASTER_KEY

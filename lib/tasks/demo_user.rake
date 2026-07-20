@@ -11,6 +11,7 @@ namespace :demo_user do
         password: "demo123",
         demo_user: true
       )
+      demo_user.confirm
       demo_user.user_profile.update!(
         full_name: "Stanislav Valasek",
         phone: "421949888634",

@@ -35,6 +35,12 @@ kamal console
 
 ## Update
 
+### Ruby
+
+Update file .ruby-version
+Run mise install ruby@version
+Rebuild dev container or deploy to prod
+
 ### Gems
 
 `bundle outdated`

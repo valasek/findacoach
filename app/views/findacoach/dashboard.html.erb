@@ -1,6 +1,6 @@
 <% content_for :title, "Dashboard" %>
 
-<div class="w-full text-center mb-8">
+<div class="w-full text-center mb-8 text-base-content">
   <h1 class="mb-6">Welcome <%= @current_user.user_profile.full_name if @current_user.user_profile.full_name.present? %></h1>
   Great progress! You're making a positive impact
   <div class="w-fit mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 my-16">
@@ -24,9 +24,9 @@
     </div>
   </div>
   Keep up the fantastic work! Every session brings you closer to your goals.
-  <div class="grid grid-cols-1 gap-6 lg:grid-cols-2  mt-8">
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mt-8">
     <div class="card bg-base-200 shadow-xs h-full">
-      <div class="card-body inline p-6 h-full">
+      <div class="card-body w-full p-6 h-full flex flex-col items-center justify-center text-center">
         <h3 class="text-lg mb-2">
           <a href="<%= @coach_url %>" class="link link-primary">Your homepage</a>
         </h3>
@@ -36,10 +36,10 @@
     </div>
 
     <div class="card bg-base-200 shadow-xs h-full">
-      <div class="card-body p-6 h-full flex flex-col">
+      <div class="card-body w-full p-6 h-full flex flex-col items-center justify-center text-center">
         <h3 class="text-lg mb-2">Ready for ICF Certification?</h3>
         <p class="text-base-content mb-4">Export your ICF-compatible coaching log template</p>
-        <div class="mt-auto">
+        <div class="mt-2">
           <%= button_to clients_path(format: :xlsx), method: :get, class: "btn btn-primary" do %>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />

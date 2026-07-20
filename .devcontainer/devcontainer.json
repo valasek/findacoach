@@ -5,6 +5,7 @@
   "dockerComposeFile": "compose.yaml",
   "service": "rails-app",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "initializeCommand": "sh -c 'printf \"RUBY_VERSION=%s\\n\" \"$(sed \"s/^ruby-//\" .ruby-version)\" > .devcontainer/.env'",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {

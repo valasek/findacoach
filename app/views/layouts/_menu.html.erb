@@ -8,13 +8,13 @@
       </div>
       <ul tabindex="0" class="menu menu-lg dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow-lg border border-base-300">
         <% if user_signed_in? %>
-          <li><%= link_to "Dashboard", findacoach_dashboard_path %></li>
-          <li><%= link_to "Clients", clients_path %></li>
+          <li><%= link_to "Dashboard", findacoach_dashboard_path, class: "text-base-content" %></li>
+          <li><%= link_to "Clients", clients_path, class: "text-base-content" %></li>
         <% else %>
-          <li><%= link_to "Pricing", findacoach_pricing_path %></li>
-          <li><%= link_to "Blog", findacoach_blog_path %></li>
+          <li><%= link_to "Pricing", findacoach_pricing_path, class: "text-base-content" %></li>
+          <li><%= link_to "Blog", findacoach_blog_path, class: "text-base-content" %></li>
         <% end %>
-        <li><%= link_to "Contact", findacoach_contact_path %></li>
+        <li><%= link_to "Contact", findacoach_contact_path, class: "text-base-content" %></li>
         <li><%= link_to "Try AI coach", findacoach_ai_coach_path, class: "btn btn-outline btn-primary" %></li>
       </ul>
     </div>
@@ -26,13 +26,13 @@
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-lg menu-horizontal px-1">
       <% if user_signed_in? %>
-        <li><%= link_to "Dashboard", findacoach_dashboard_path %></li>
-        <li><%= link_to "Clients", clients_path %></li>
+        <li><%= link_to "Dashboard", findacoach_dashboard_path, class: "text-base-content" %></li>
+        <li><%= link_to "Clients", clients_path, class: "text-base-content" %></li>
       <% else %>
-        <li><%= link_to "Pricing", findacoach_pricing_path %></li>
-        <li><%= link_to "Blog", findacoach_blog_path %></li>
+        <li><%= link_to "Pricing", findacoach_pricing_path, class: "text-base-content" %></li>
+        <li><%= link_to "Blog", findacoach_blog_path, class: "text-base-content" %></li>
       <% end %>
-        <li><%= link_to "Contact", findacoach_contact_path %></li>
+        <li><%= link_to "Contact", findacoach_contact_path, class: "text-base-content" %></li>
         <li><%= link_to "Try AI coach", findacoach_ai_coach_path, class: "btn btn-outline btn-primary" %></li>
     </ul>
   </div>

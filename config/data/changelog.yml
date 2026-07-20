@@ -1,4 +1,7 @@
 2026:
+  - date: 2026-07-20
+    items:
+      - "Security: All SW packages updated to latest versions"
   - date: 2026-05-20
     items:
       - "Security: Better registration protection agains bots"
