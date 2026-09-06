@@ -3,6 +3,16 @@
 <div class="w-full text-center mb-8 text-base-content">
   <h1 class="mb-6">Welcome <%= @current_user.user_profile.full_name if @current_user.user_profile.full_name.present? %></h1>
   Great progress! You're making a positive impact
+
+  <div class="mt-8">
+    <%= link_to start_session_path, class: "btn btn-primary btn-lg" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      </svg>
+      Add new session
+    <% end %>
+  </div>
+
   <div class="w-fit mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 my-16">
     <div class="stat bg-base-200 shadow-sm rounded-box text-center">
       <div class="stat-title">Clients</div>

@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   # public pages
   get "findacoach/index"
-  get "findacoach/ai_coach"
   get "findacoach/changelog"
   get "findacoach/contact"
   get "findacoach/pricing"
@@ -36,7 +35,7 @@ Rails.application.routes.draw do
 
   # Standalone session routes for starting a session without a client
   resources :sessions, only: [ :new, :create ]
-  get "session/start", to: "sessions#new", as: :start_session
+  get "session/start", to: "sessions#select_client", as: :start_session
 
   get "findacoach/dashboard"
 

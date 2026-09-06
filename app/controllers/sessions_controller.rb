@@ -1,11 +1,23 @@
 class SessionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_client, except: [ :create, :index ]  # Don't set client for create and index
+  before_action :set_client, except: [ :create, :index, :select_client ]  # Don't set client for create, index and select_client
   before_action :set_session, only: %i[ show edit update destroy ]
 
   # GET /sessions or /sessions.json
   def index
     @sessions = current_user.sessions.all
+  end
+
+  # GET /session/start
+  def select_client
+    @clients = current_user.clients.order(:name)
+
+    if params[:query].present?
+      query = "%#{params[:query].downcase}%"
+      @clients = @clients.where("LOWER(name) LIKE ? OR LOWER(email) LIKE ?", query, query)
+    end
+
+    @clients = @clients.page(params[:page])
   end
 
   # GET /sessions/1 or /sessions/1.json

@@ -4,8 +4,10 @@ oneU:
   email: valasek@gmail.com
   encrypted_password: password
   demo_user: false
+  confirmed_at: <%= Time.current %>
 
 twoU:
   email: valasek+user2@gmail.com
   encrypted_password: password
   demo_user: false
+  confirmed_at: <%= Time.current %>

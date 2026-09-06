@@ -9,9 +9,6 @@ class FindacoachController < ApplicationController
     @demo_usage_count = ApplicationData.first_or_create(login_to_demo_count: 0).login_to_demo_count
   end
 
-  def ai_coach
-  end
-
   def coach_homepage
     @profile = UserProfile.find_by(username: params[:username])
 

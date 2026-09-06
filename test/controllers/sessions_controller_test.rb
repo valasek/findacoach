@@ -7,6 +7,32 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     @session = sessions(:oneS)
   end
 
+  test "should get select_client" do
+    sign_in @user
+    get start_session_url
+    assert_response :success
+    assert_select "a[href=?]", new_client_session_path(@client, source: "select_client")
+  end
+
+  test "should filter clients on select_client by query" do
+    sign_in @user
+    get start_session_url, params: { query: "no-such-client" }
+    assert_response :success
+    assert_select "a[href=?]", new_client_session_path(@client, source: "select_client"), count: 0
+  end
+
+  test "should not list other users clients on select_client" do
+    sign_in @user
+    get start_session_url
+    assert_response :success
+    assert_select "a[href=?]", new_client_session_path(clients(:twoC), source: "select_client"), count: 0
+  end
+
+  test "should redirect select_client when not signed in" do
+    get start_session_url
+    assert_redirected_to new_user_session_url
+  end
+
   # test "should get index" do
   #   sign_in @user
   #   get client_sessions_url(@client)
