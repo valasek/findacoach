@@ -1,4 +1,8 @@
 2026:
+  - date: 2026-09-06
+    items:
+      - "Fixed: Rare error page shown to visitors when automated bots probed the site"
+      - "Security: All SW packages updated to latest versions"
   - date: 2026-07-20
     items:
       - "Security: All SW packages updated to latest versions"

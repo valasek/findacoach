@@ -30,6 +30,11 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
 
+  # The app is only reachable through Kamal Proxy, which sets X-Forwarded-For itself.
+  # A client-supplied Client-IP header therefore proves nothing and only raises
+  # ActionDispatch::RemoteIp::IpSpoofAttackError on bot traffic.
+  config.action_dispatch.ip_spoofing_check = false
+
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
 

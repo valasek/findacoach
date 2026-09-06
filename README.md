@@ -17,7 +17,6 @@ All source code in this repository is released under the **[O'Saasy](https://osa
 
 ## ToDo
 
-Solve Sentry warnings - Missing controller
 Add button on Dashboard - Add session
 Fix delete user without cascading deleting service
 
