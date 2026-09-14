@@ -19,25 +19,26 @@
               <div class="p-4 space-y-3 text-sm">
                 <div class="flex justify-between gap-4">
                   <span class="font-medium text-gray-600">Email:</span>
-                  <span class="text-right break-all"><%= user.email %></span>
+                  <span class="text-right break-all text-gray-900"><%= user.email %></span>
                 </div>
                 <div class="border-t border-gray-200"></div>
                 <div class="flex justify-between">
                   <span class="font-medium text-gray-600">Clients:</span>
-                  <span><%= user.clients.count %></span>
+                  <span class="text-gray-900"><%= user.clients.count %></span>
                 </div>
                 <div class="flex justify-between">
                   <span class="font-medium text-gray-600">Sessions:</span>
-                  <span><%= user.sessions.count %></span>
+                  <span class="text-gray-900"><%= user.sessions.count %></span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="font-medium text-gray-600">Ragistered:</span>
-                  <span><%= user.sessions.count %></span>
+                  <span class="font-medium text-gray-600">Registered:</span>
+                  <span class="text-gray-900"><%= user.created_at.strftime("%Y-%m-%d") %></span>
                 </div>
               </div>
             </div>
           <% end %>
         </div>
+
 
         <!-- Desktop: Table -->
         <div class="hidden sm:block overflow-x-auto">

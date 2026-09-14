@@ -48,6 +48,7 @@
       </div>
       <ul tabindex="0" class="menu menu-lg dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow-lg border border-base-300">
         <li><%= link_to "Settings", edit_user_registration_path %></li>
+        <li><%= link_to "Changelog", findacoach_changelog_path %></li>
         <% if current_user&.email == "valasek@gmail.com" %>
           <li><%= link_to "Administration", "/admin" %></li>
         <% end %>

@@ -1,6 +1,8 @@
 2026:
   - date: 2026-09-14
     items:
+      - "Added a Changelog link to the user menu"
+      - "Fixed: Admin dashboard user data was invisible (white text on white background) in mobile view"
       - "Improved the mobile experience across navigation, clients, sessions, dashboard, and settings"
       - "Fixed: Dashboard statistics now wrap correctly on smaller screens"
       - "Fixed: Client pagination controls now have clearer borders"
