@@ -1,12 +1,12 @@
-<div id="<%= dom_id client %>" class="flex flex-row gap-4">
-  <fieldset class="fieldset basis-1/3">
+<div id="<%= dom_id client %>" class="grid grid-cols-1 gap-x-4 sm:grid-cols-2">
+  <fieldset class="fieldset min-w-0">
     <legend class="fieldset-legend">Email</legend><%= client.email %>
   </fieldset>
-  <fieldset class="fieldset basis-1/3">
+  <fieldset class="fieldset min-w-0">
     <legend class="fieldset-legend">Phone</legend><%= client.phone %>
   </fieldset>
-  <div class="justify-end">
-    <%= link_to new_client_session_path(client, source: 'index'), title: "Add session", class: "btn btn-primary", data: { turbo_frame: "_top" } do %>
+  <div class="sm:col-span-2 sm:justify-self-end">
+    <%= link_to new_client_session_path(client, source: 'index'), title: "Add session", class: "btn btn-primary w-full sm:w-auto", data: { turbo_frame: "_top" } do %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
       </svg>
@@ -15,8 +15,8 @@
   </div>
 </div>
 
-<div class="flex flex-row gap-4 mb-8">
-  <fieldset class="fieldset basis-full">
+<div class="mb-8">
+  <fieldset class="fieldset min-w-0">
     <legend class="fieldset-legend">Notes</legend>
     <%= client.notes %>
   </fieldset>

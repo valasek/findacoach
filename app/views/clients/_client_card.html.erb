@@ -1,18 +1,18 @@
 <!-- Client Card -->
-<div class="card bg-base-100 w-63 shadow-xl">
+<div class="card bg-base-100 w-full shadow-xl">
   <div class="card-body">
     <div class="flex justify-between">
     <h4>
         <%= link_to client.name, client_path(client), title: "Edit client", class: "link link-primary", data: { turbo_frame: "_top" } %>
     </h4>
     </div>
-    <span class="badge badge-outline badge-sm">
+    <span class="badge badge-outline badge-sm max-w-full">
         <%= sessions.count %> sessions | <%= sessions.sum(&:duration) %> hours
     </span>
     <div class="text-base-content/70 truncate text-xs"><%= client.email %></div>
     <div class="text-base-content/70 justify-self-start sm:justify-self-left md:justify-self-center text-xs"><%= client.phone %></div>
     <div class="card-actions justify-end">
-        <%= link_to new_client_session_path(client, source: 'index'), title: "Add session", class: "btn btn-primary btn-outline", data: { turbo_frame: "_top" } do %>
+        <%= link_to new_client_session_path(client, source: 'index'), title: "Add session", class: "btn btn-primary btn-outline w-full sm:w-auto", data: { turbo_frame: "_top" } do %>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
             </svg>

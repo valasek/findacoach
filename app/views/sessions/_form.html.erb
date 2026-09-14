@@ -1,17 +1,17 @@
-<%= form_with(model: [@client, session], local: true, class: "inline") do |form| %>
+<%= form_with(model: [@client, session], local: true, class: "block") do |form| %>
   <%= hidden_field_tag :source, params[:source] %>
   <%= render "partials/show_form_errors", object: session %>
 
-  <div class="flex flex-row gap-4">
-    <fieldset class="fieldset ">
+  <div class="grid grid-cols-1 gap-x-4 sm:grid-cols-2 lg:grid-cols-3">
+    <fieldset class="fieldset min-w-0">
       <legend class="fieldset-legend"><%= form.label :date %></legend>
-      <%= form.date_field :date, autofocus: true, class: ["input text-base-content", {"input-error": session.errors[:date].any?}] %>
+      <%= form.date_field :date, autofocus: true, class: ["input w-full text-base-content", {"input-error": session.errors[:date].any?}] %>
     </fieldset>
-    <fieldset class="fieldset ">
+    <fieldset class="fieldset min-w-0">
       <legend class="fieldset-legend"><%= form.label :duration %>(hrs)</legend>
-      <%= form.number_field :duration, value: session.duration || 1, step: 0.5, min: 0, class: ["input text-base-content", {"input-error": session.errors[:duration].any?}] %>
+      <%= form.number_field :duration, value: session.duration || 1, step: 0.5, min: 0, class: ["input w-full text-base-content", {"input-error": session.errors[:duration].any?}] %>
     </fieldset>
-    <fieldset class="fieldset ">
+    <fieldset class="fieldset min-w-0">
       <legend class="fieldset-legend"><%= form.label :service %></legend>
       <%= form.collection_select :service_id,
           @client.user.services,
@@ -22,30 +22,30 @@
             selected: session.service_id || @client.user.services.find_by(default: true)&.id
           },
           {
-            class: ["select text-base-content", {"select-error": session.errors[:service_id].any?}]
+            class: ["select w-full text-base-content", {"select-error": session.errors[:service_id].any?}]
           }
       %>
     </fieldset>
-    <fieldset class="fieldset ">
+    <fieldset class="fieldset min-w-0">
       <legend class="fieldset-legend"><%= form.label :paid %></legend>
       <%= form.check_box :paid, class: ["checkbox", {"input-error": session.errors[:paid].any?}] %>
     </fieldset>
-    <fieldset class="fieldset ">
+    <fieldset class="fieldset min-w-0">
       <legend class="fieldset-legend"><%= form.label :group %></legend>
       <%= form.check_box :group, class: ["checkbox", {"input-error": session.errors[:group].any?}] %>
     </fieldset>
-    <fieldset class="fieldset ">
+    <fieldset class="fieldset min-w-0">
       <legend class="fieldset-legend"><%= form.label :group_size %></legend>
-      <%= form.number_field :group_size, class: ["input text-base-content", {"input-error": session.errors[:group_size].any?}] %>
+      <%= form.number_field :group_size, class: ["input w-full text-base-content", {"input-error": session.errors[:group_size].any?}] %>
     </fieldset>
   </div>
 
-  <div class="flex flex-row gap-4 mb-8">
-    <fieldset class="fieldset basis-full">
+  <div class="mb-8">
+    <fieldset class="fieldset min-w-0">
       <legend class="fieldset-legend"><%= form.label :notes %></legend>
-      <%= form.text_area :notes, rows: 8, cols: 80, placeholder: "Notes", class: "textarea text-base-content w-full" %>
+      <%= form.text_area :notes, rows: 8, placeholder: "Notes", class: "textarea w-full text-base-content" %>
     </fieldset>
   </div>
 
-  <%= form.submit "Save", class: "btn btn-primary" %>
+  <%= form.submit "Save", class: "btn btn-primary w-full sm:w-auto" %>
 <% end %>

@@ -1,4 +1,10 @@
 2026:
+  - date: 2026-09-14
+    items:
+      - "Improved the mobile experience across navigation, clients, sessions, dashboard, and settings"
+      - "Fixed: Dashboard statistics now wrap correctly on smaller screens"
+      - "Fixed: Client pagination controls now have clearer borders"
+      - "Security: All SW packages updated to latest versions"
   - date: 2026-09-06
     items:
       - "Removed the experimental AI Coach feature"

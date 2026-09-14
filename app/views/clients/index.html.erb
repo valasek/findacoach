@@ -1,8 +1,8 @@
 <div class="md:w-2/3 w-full mx-auto">
   <% content_for :title, "Clients" %>
 
-  <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
-    <div class="flex items-center gap-4">
+  <div class="grid grid-cols-1 items-center gap-4 mb-6 lg:grid-cols-[1fr_auto_1fr]">
+    <div class="order-2 flex w-full items-center gap-3 lg:order-1 lg:w-auto">
       <%= link_to new_client_path, class: "btn btn-primary" do %>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -14,9 +14,9 @@
       </div>
     </div>
 
-    <h1 class="text-base-content">Clients</h1>
+    <h1 class="order-1 text-base-content lg:order-2 lg:text-center">Clients</h1>
 
-    <div class="w-full lg:w-auto lg:min-w-80">
+    <div class="order-3 w-full lg:min-w-80 lg:justify-self-end">
       <%= form_with url: clients_path, method: :get, class: "w-full", data: { controller: "search-client", turbo_frame: "clients-list" } do |f| %>
         <%= f.text_field :query,
                         value: params[:query],
@@ -36,7 +36,7 @@
         <div class="flex flex-row justify-center items-center mt-0 mb-4">
           <p class="text-base-content"><%= page_entries_info @clients %></p>
         </div>
-        <div class="flex flex-row flex-wrap justify-center gap-8">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           <% @clients.each do |client| %>
             <%= render "client_card", client: client, sessions: client.sessions %>
           <% end %>

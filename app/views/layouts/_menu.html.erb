@@ -1,5 +1,5 @@
-<div class="navbar bg-base-100">
-  <div class="navbar-start">
+<div class="navbar bg-base-100 px-2 sm:px-4">
+  <div class="navbar-start min-w-0 flex-1">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -17,10 +17,10 @@
         <li><%= link_to "Contact", findacoach_contact_path, class: "text-base-content" %></li>
       </ul>
     </div>
-    <%= link_to "/" do %>
+    <%= link_to "/", class: "hidden sm:block" do %>
       <%= image_tag "favicon.ico", class: "inline w-6 h-6" %>
     <% end %>
-    <%= link_to "Find a Coach", "/", class: "hover:underline px-2 text-lg sm:text-xl text-base-content" %>
+    <%= link_to "Find a Coach", "/", class: "whitespace-nowrap px-1 text-base text-base-content hover:underline sm:px-2 sm:text-xl" %>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-lg menu-horizontal px-1">
@@ -34,7 +34,7 @@
         <li><%= link_to "Contact", findacoach_contact_path, class: "text-base-content" %></li>
     </ul>
   </div>
-  <div class="navbar-end flex gap-1 sm:gap-2">
+  <div class="navbar-end flex w-auto shrink-0 gap-1 sm:gap-2">
     <% if user_signed_in? %>
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -56,7 +56,10 @@
     </div>
     <% else %>
     <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline btn-sm sm:btn-md" %>
-    <%= link_to "Sign up free", new_user_registration_path, class: "btn btn-primary btn-sm sm:btn-md" %>
+    <%= link_to new_user_registration_path, class: "btn btn-primary btn-sm sm:btn-md" do %>
+      <span class="sm:hidden">Sign up</span>
+      <span class="hidden sm:inline">Sign up free</span>
+    <% end %>
     <% end %>
   </div>
 </div>

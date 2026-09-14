@@ -61,12 +61,12 @@
               </fieldset>
 
               <!-- Username -->
-              <fieldset class="fieldset w-full">
+              <fieldset class="fieldset w-full min-w-0">
                 <legend class="fieldset-legend">Username</legend>
-                <label class="input w-full">
-                  <%= profile_form.text_field :username, placeholder: "Enter your username", class: "input w-full", autocomplete: "username" %>
+                <label class="input w-full min-w-0">
+                  <%= profile_form.text_field :username, placeholder: "Enter your username", class: "input w-full min-w-0", autocomplete: "username" %>
                 </label>
-                <p class="label text-sm opacity-70">Your public page: <span class="font-semibold"><%= @profile.full_coach_url(request) %></span></p>
+                <p class="label block min-w-0 whitespace-normal text-sm opacity-70">Your public page: <span class="break-all font-semibold"><%= @profile.full_coach_url(request) %></span></p>
               </fieldset>
 
             <% end %>
