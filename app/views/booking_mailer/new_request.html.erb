@@ -1,0 +1,9 @@
+<p>Hello <%= @coach.user_profile.display_name %>,</p>
+
+<p><strong><%= @booking_request.visitor_name %></strong> requested a <%= @booking_request.duration_minutes %>-minute session.</p>
+
+<p><strong>Your time:</strong> <%= @booking_request.starts_at.in_time_zone(@coach.booking_timezone).to_fs(:long) %> (<%= @coach.booking_timezone %>)</p>
+
+<p><strong>Goal:</strong> <%= @booking_request.goal %></p>
+
+<p><%= link_to "Review request", booking_request_url(@booking_request) %></p>

@@ -1,0 +1,53 @@
+<% content_for :title, "Booking request" %>
+
+<div class="mx-auto max-w-2xl py-8">
+  <%= link_to "Back to requests", booking_requests_path, class: "link link-hover text-sm" %>
+
+  <div class="mt-6 flex items-start justify-between gap-4">
+    <div>
+      <h1 class="text-3xl font-bold"><%= @booking_request.visitor_name %></h1>
+      <p class="mt-1"><%= mail_to @booking_request.visitor_email, @booking_request.visitor_email, class: "link" %></p>
+    </div>
+    <span class="badge <%= @booking_request.pending? ? "badge-warning" : "badge-ghost" %>"><%= @booking_request.status.humanize %></span>
+  </div>
+
+  <dl class="mt-8 grid grid-cols-1 gap-5 border-y border-base-300 py-6 sm:grid-cols-2">
+    <div>
+      <dt class="text-sm text-base-content/65">Your time</dt>
+      <dd class="font-semibold"><%= @booking_request.starts_at.in_time_zone(current_user.booking_timezone).to_fs(:long) %></dd>
+      <dd class="text-sm"><%= current_user.booking_timezone %></dd>
+    </div>
+    <div>
+      <dt class="text-sm text-base-content/65">Client's time</dt>
+      <dd class="font-semibold"><%= @booking_request.starts_at.in_time_zone(@booking_request.visitor_timezone).to_fs(:long) %></dd>
+      <dd class="text-sm"><%= @booking_request.visitor_timezone %></dd>
+    </div>
+    <div>
+      <dt class="text-sm text-base-content/65">Length</dt>
+      <dd class="font-semibold"><%= @booking_request.duration_minutes %> minutes</dd>
+    </div>
+  </dl>
+
+  <section class="py-6">
+    <h2 class="text-lg font-semibold">Coaching goal</h2>
+    <p class="mt-2 whitespace-pre-wrap"><%= @booking_request.goal %></p>
+  </section>
+
+  <% if @booking_request.pending? %>
+    <%= form_with model: @booking_request, url: confirm_booking_request_path(@booking_request), method: :patch, class: "space-y-4 border-t border-base-300 pt-6" do |form| %>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Personal message</legend>
+        <%= form.text_area :coach_message, maxlength: 1000, rows: 4, class: "textarea w-full", placeholder: "Optional note for the client" %>
+      </fieldset>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <%= form.submit "Confirm session", class: "btn btn-primary" %>
+        <%= form.submit "Decline request", formaction: decline_booking_request_path(@booking_request), class: "btn btn-outline btn-error" %>
+      </div>
+    <% end %>
+  <% elsif @booking_request.coach_message.present? %>
+    <section class="border-t border-base-300 py-6">
+      <h2 class="text-lg font-semibold">Your message</h2>
+      <p class="mt-2 whitespace-pre-wrap"><%= @booking_request.coach_message %></p>
+    </section>
+  <% end %>
+</div>

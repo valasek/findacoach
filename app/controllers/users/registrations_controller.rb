@@ -61,6 +61,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def set_profile
     @profile = current_user.user_profile || current_user.create_user_profile!
+    @booking_setting = current_user.booking_setting || current_user.build_booking_setting
   end
 
   def configure_sign_up_params

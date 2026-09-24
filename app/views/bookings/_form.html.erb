@@ -1,0 +1,83 @@
+<section aria-labelledby="booking-heading" data-controller="booking">
+  <header class="mb-8">
+    <h2 id="booking-heading" class="text-2xl font-bold sm:text-3xl">Book a session</h2>
+    <p class="mt-2 text-base-content/70">Choose a time, then tell the coach what you would like to work on.</p>
+  </header>
+
+  <%= form_with url: coach_homepage_path(username: profile.username), method: :get, class: "mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2", data: { controller: "timezone", timezone_auto_submit_value: true, booking_target: "filter", action: "change->booking#refresh", turbo_frame: "booking", turbo_action: "replace" } do |form| %>
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend"><%= form.label :duration, "Session length" %></legend>
+      <%= form.select :duration, booking_setting.duration_options.map { |minutes| [ "#{minutes} minutes", minutes ] }, { selected: booking_request.duration_minutes }, class: "select w-full" %>
+    </fieldset>
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend"><%= form.label :timezone, "Your timezone" %></legend>
+      <%= form.select :timezone,
+        iana_time_zone_options,
+            { selected: booking_request.visitor_timezone },
+            class: "select w-full",
+            data: { timezone_target: "select" } %>
+    </fieldset>
+    <noscript><%= form.submit "Update times", class: "btn btn-outline" %></noscript>
+  <% end %>
+
+  <%= render "partials/show_form_errors", object: booking_request %>
+
+  <% if availability_error %>
+    <div role="alert" class="alert alert-warning"><%= availability_error %></div>
+  <% elsif slots.empty? %>
+    <div role="status" class="alert">No times are available for this session length in the next two weeks.</div>
+  <% else %>
+    <%= form_with model: booking_request, url: coach_bookings_path(username: profile.username), class: "space-y-8", data: { turbo_frame: "_top" } do |form| %>
+      <%= form.hidden_field :duration_minutes %>
+      <%= form.hidden_field :visitor_timezone %>
+      <%= form.hidden_field :idempotency_key %>
+      <%= text_field_tag :website_url, nil, tabindex: -1, autocomplete: "off", class: "absolute -left-[10000px]", aria: { hidden: true } %>
+
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-lg">Available time slots</legend>
+        <div class="divide-y divide-base-300 border-y border-base-300">
+          <% slots.group_by { |slot| slot.visitor_starts_at.to_date }.each_with_index do |(date, date_slots), index| %>
+            <%= tag.details class: "group py-3", open: index.zero? || date_slots.any? { |slot| slot.starts_at.to_i == booking_request.starts_at&.to_i } do %>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-3 marker:content-none">
+                <span class="font-semibold"><%= date.to_fs(:long) %></span>
+                <span class="text-right text-sm text-base-content/70"><%= pluralize(date_slots.size, "time slot") %> | <%= date_slots.first.visitor_starts_at.strftime("%H:%M") %>-<%= date_slots.last.visitor_starts_at.strftime("%H:%M") %> <span aria-hidden="true" class="ml-1">+</span></span>
+              </summary>
+              <div class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+                <% date_slots.each do |slot| %>
+                  <label class="flex min-h-14 cursor-pointer items-center gap-2 border border-base-300 p-2 hover:border-primary">
+                    <%= form.radio_button :starts_at, slot.starts_at.iso8601, class: "radio radio-primary", required: true, data: { action: "change->booking#select" } %>
+                    <span>
+                      <span class="block font-semibold"><%= slot.visitor_starts_at.strftime("%H:%M") %></span>
+                    </span>
+                  </label>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </fieldset>
+
+      <div data-booking-target="contact" class="space-y-4 border-t border-base-300 pt-6">
+        <h3 class="text-xl font-semibold">Your details</h3>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend"><%= form.label :visitor_name, "Your full name" %></legend>
+            <%= form.text_field :visitor_name, required: true, autocomplete: "name", class: "input w-full" %>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend"><%= form.label :visitor_email, "Email" %></legend>
+            <%= form.email_field :visitor_email, required: true, autocomplete: "email", class: "input w-full" %>
+          </fieldset>
+        </div>
+
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend"><%= form.label :goal, "What would you like to achieve?" %></legend>
+          <%= form.text_area :goal, required: true, maxlength: 2000, rows: 5, class: "textarea w-full" %>
+        </fieldset>
+
+        <p class="text-sm text-base-content/70">Your session is booked only after the coach confirms it by email.</p>
+        <%= form.submit "Request this session", class: "btn btn-primary w-full sm:w-auto" %>
+      </div>
+    <% end %>
+  <% end %>
+</section>

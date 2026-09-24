@@ -57,6 +57,8 @@ gem "stackprof"     # Sentry
 gem "sentry-ruby"   # Sentry
 gem "sentry-rails"  # Sentry
 gem "rack-attack"   # Rate limiting and bot blocking
+gem "icalendar-recurrence" # Parse and expand recurring ICS events
+gem "ssrf_filter"   # Safely fetch user-provided calendar URLs
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

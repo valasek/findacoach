@@ -1,0 +1,11 @@
+<p>Hello <%= @booking_request.visitor_name %>,</p>
+
+<p><%= @coach.user_profile.display_name %> confirmed your coaching session.</p>
+
+<p><strong>Your time:</strong> <%= @booking_request.starts_at.in_time_zone(@booking_request.visitor_timezone).to_fs(:long) %> (<%= @booking_request.visitor_timezone %>)</p>
+
+<% if @booking_request.coach_message.present? %>
+  <p><strong>Message from your coach:</strong> <%= @booking_request.coach_message %></p>
+<% end %>
+
+<p>The attached calendar event can be added to Google Calendar, Outlook, or another calendar app.</p>

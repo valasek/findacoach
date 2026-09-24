@@ -26,6 +26,11 @@ class Rack::Attack
     end
   end
 
+  # Limit public booking requests: 10 per IP per hour
+  throttle("booking-request/ip", limit: 10, period: 1.hour) do |req|
+    req.ip if req.post? && req.path.match?(%r{\A/coach/[^/]+/bookings\z})
+  end
+
   # Return a plain 429 with a retry-after header
   self.throttled_responder = lambda do |request|
     match_data = request.env["rack.attack.match_data"]

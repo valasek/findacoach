@@ -1,0 +1,9 @@
+<p>Hello <%= @booking_request.visitor_name %>,</p>
+
+<p><%= @coach.user_profile.display_name %> cannot confirm the requested session time.</p>
+
+<% if @booking_request.coach_message.present? %>
+  <p><strong>Message from your coach:</strong> <%= @booking_request.coach_message %></p>
+<% end %>
+
+<p>You can return to the coach's public page and choose another available time.</p>

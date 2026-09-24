@@ -17,10 +17,9 @@ class FindacoachController < ApplicationController
       return
     end
 
-    coach = @profile.user
-    @sessions_count = coach.sessions.count
-    @group_sessions_count = coach.sessions.where(group: true).count
-    @hours_per_service = get_hours_per_service(coach)
+    @coach = @profile.user
+    @booking_setting = @coach.booking_setting
+    load_booking_form if @booking_setting&.booking_ready?
 
     render layout: "application_coach"
   end
@@ -56,6 +55,31 @@ class FindacoachController < ApplicationController
   end
 
   private
+
+  def load_booking_form
+    @booking_request = @coach.booking_requests.build(
+      duration_minutes: selected_booking_duration,
+      visitor_timezone: selected_booking_timezone,
+      idempotency_key: SecureRandom.uuid
+    )
+    @slots = AvailableSlotFinder.new(@booking_setting).call(
+      duration_minutes: @booking_request.duration_minutes,
+      visitor_timezone: @booking_request.visitor_timezone
+    )
+  rescue CalendarBusyIntervals::Unavailable
+    @slots = []
+    @availability_error = "The coach's calendar is temporarily unavailable. Please try again later."
+  end
+
+  def selected_booking_duration
+    duration = params[:duration].presence&.to_i || @booking_setting.default_duration
+    @booking_setting.duration_options.include?(duration) ? duration : @booking_setting.default_duration
+  end
+
+  def selected_booking_timezone
+    timezone = params[:timezone].presence || "UTC"
+    ActiveSupport::TimeZone[timezone] ? timezone : "UTC"
+  end
 
   def get_hours_per_service(user)
     if user.services.count > 1

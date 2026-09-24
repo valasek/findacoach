@@ -1,69 +1,39 @@
-<% content_for :title, @profile.full_name %>
+<% content_for :title, "Book a session with #{@profile.display_name}" %>
 
-<!-- Hero Section -->
-<div class="hero min-h-screen mb-8">
-  <div class="hero-content text-center max-w-4xl px-4">
-    <div>
-      <div class="avatar mb-8 animate-fade-in">
-        <div class="w-32 h-32 lg:w-40 lg:h-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 hover:ring-offset-4 transition-all duration-300">
-          <% if @profile.photo.attached? %>
-            <%= image_tag @profile.photo, alt: @profile.full_name, class: "rounded-full object-cover w-full h-full" %>
-          <% else %>
-            <div class="rounded-full bg-primary text-primary-content w-full h-full flex items-center justify-center text-2xl lg:text-4xl font-bold">
-              <%= @profile.full_name.present? ? @profile.full_name.split.map(&:first).join.upcase : "?" %>
-            </div>
-          <% end %>
+<main class="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+  <header class="mb-10 border-b border-base-300 pb-8 text-center">
+    <% if @profile.photo.attached? %>
+      <div class="avatar mb-4">
+        <div class="h-24 w-24 rounded-full sm:h-28 sm:w-28">
+          <%= image_tag @profile.photo, alt: @profile.display_name, class: "h-full w-full object-cover" %>
         </div>
       </div>
-
-      <div class="px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl lg:text-6xl font-bold text-base-content mb-2 animate-fade-in-up">
-          <%= @profile.full_name %>
-        </h1>
-
-        <!-- Bio -->
-        <p class="text-base sm:text-lg lg:text-xl text-base-content/80 max-w-2xl mx-auto mb-8 leading-relaxed px-4">
-          <%= @profile.bio %>
-        </p>
-      </div>
-
-      <!-- Stats -->
-      <div class="stats stats-vertical lg:stats-horizontal shadow-lg mb-8 bg-base-200">
-        <div class="stat">
-          <div class="stat-figure text-primary">
-            <i class="fas fa-clock text-2xl"></i>
-          </div>
-          <div class="stat-title">Hours</div>
-          <div class="stat-value text-primary"><%= @profile.user.total_coaching_hours %></div>
-          <div class="stat-desc"><%= @hours_per_service %></div>
-        </div>
-        <div class="stat">
-          <div class="stat-figure text-primary">
-            <i class="fas fa-clock text-2xl"></i>
-          </div>
-          <div class="stat-title">Sessions</div>
-          <div class="stat-value text-primary"><%= @sessions_count %></div>
-          <div class="stat-desc"><%= @sessions_count - @group_sessions_count %> individual and <%= @group_sessions_count %> group session</div>
-        </div>
-      </div>
-
-    <% if @profile.phone.present? %>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-      <%= link_to "https://wa.me/#{@profile.phone.gsub(/[^\d]/, '')}", 
-                  class: "btn btn-primary btn-lg gap-2 text-white w-full sm:w-auto hover:scale-105 transition-transform", 
-                  target: "_blank" do %>
-        <i class="fab fa-whatsapp text-xl"></i>
-        Book My Session
-      <% end %>
-    </div>
     <% end %>
 
-    <div class="pt-8">
-      <%= link_to @profile.website, class: "underline gap-2 w-full sm:w-auto", target: "_blank" do %>
-        Visit my Website
-      <% end %>
-    </div>
+    <h1 class="text-3xl font-bold sm:text-4xl"><%= @profile.display_name %></h1>
 
-  </div>
-</div>
-</div>
+    <% if @profile.bio.present? %>
+      <p class="mx-auto mt-3 max-w-2xl whitespace-pre-line text-base leading-relaxed text-base-content/75"><%= @profile.bio %></p>
+    <% end %>
+
+    <% if @profile.website.present? %>
+      <%= link_to "Visit website", @profile.website, class: "link link-hover mt-3 inline-block text-sm", target: "_blank", rel: "noopener" %>
+    <% end %>
+  </header>
+
+  <%= turbo_frame_tag "booking", class: "block" do %>
+    <% if @booking_setting&.booking_ready? %>
+      <%= render "bookings/form",
+            profile: @profile,
+            booking_setting: @booking_setting,
+            booking_request: @booking_request,
+            slots: @slots,
+            availability_error: @availability_error %>
+    <% else %>
+      <section class="py-8 text-center">
+        <h2 class="text-2xl font-semibold">Online booking is not available</h2>
+        <p class="mt-2 text-base-content/70">This coach is not accepting online booking requests right now.</p>
+      </section>
+    <% end %>
+  <% end %>
+</main>

@@ -2,7 +2,7 @@
   <div class="card-body w-full">
 
     <div class="flex justify-between items-center mb-3">
-      <%= link_to client_session.date, client_session_path(@client, client_session), class: "text-xl link text-blue-600" %>
+      <%= link_to(client_session.starts_at&.to_fs(:long) || client_session.date, client_session_path(@client, client_session), class: "text-xl link text-blue-600") %>
       <% if client_session.paid? %>
         <div class="badge badge-success badge-sm">Paid</div>
       <% else %>

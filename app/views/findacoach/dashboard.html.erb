@@ -38,10 +38,11 @@
     <div class="card bg-base-200 shadow-xs h-full">
       <div class="card-body w-full p-6 h-full flex flex-col items-center justify-center text-center">
         <h3 class="text-lg mb-2">
-          <a href="<%= @coach_url %>" class="link link-primary">Your homepage</a>
+          <a href="<%= @coach_url %>" class="link link-primary">Your booking page</a>
         </h3>
-        Feel free to share it.
-        <div class="mt-2">You can always update it in your <a href="<%= edit_user_registration_path %>" class="link link-primary">profile settings</a>.</div>
+        <p>Share this page with clients so they can choose a time and request a session.</p>
+        <div class="mt-2">Set your availability and turn on booking in <%= link_to "booking settings", edit_user_registration_path(tab: "booking"), class: "link link-primary" %>.</div>
+        <div class="mt-2">Update the name, photo, bio, and website shown on that page in <%= link_to "profile settings", edit_user_registration_path, class: "link link-primary" %>.</div>
       </div>
     </div>
 

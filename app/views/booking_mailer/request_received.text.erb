@@ -1,0 +1,7 @@
+Hello <%= @booking_request.visitor_name %>,
+
+Your request for a <%= @booking_request.duration_minutes %>-minute session with <%= @coach.user_profile.display_name %> has been sent.
+
+Your time: <%= @booking_request.starts_at.in_time_zone(@booking_request.visitor_timezone).to_fs(:long) %> (<%= @booking_request.visitor_timezone %>)
+
+The coach will review the request and email you with a decision.

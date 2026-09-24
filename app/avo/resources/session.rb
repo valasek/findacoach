@@ -8,6 +8,7 @@ class Avo::Resources::Session < Avo::BaseResource
   def fields
     field :id, as: :id
     field :date, as: :date
+    field :starts_at, as: :date_time
     field :duration, as: :number
     field :paid, as: :boolean
     field :group, as: :boolean

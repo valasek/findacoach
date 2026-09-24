@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     resources :services
   end
 
+  resource :booking_setting, only: :update
+
   # Standalone session routes for starting a session without a client
   resources :sessions, only: [ :new, :create ]
   get "session/start", to: "sessions#select_client", as: :start_session
@@ -48,6 +50,17 @@ Rails.application.routes.draw do
   get "manifest", to: redirect("/manifest.json"), format: false
   get "manifest.json" => "rails/pwa#manifest", as: :pwa_manifest, defaults: { format: :json }
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+
+  scope "coach/:username", as: :coach do
+    resources :bookings, only: [ :new, :create ] do
+      get :received, on: :collection
+    end
+  end
+
+  resources :booking_requests, only: [ :index, :show ] do
+    patch :confirm, on: :member
+    patch :decline, on: :member
+  end
 
   # Public coach profile page
   get "coach/:username", to: "findacoach#coach_homepage", as: :coach_homepage, constraints: { username: /[a-zA-Z0-9_-]+/ }

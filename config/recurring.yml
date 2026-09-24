@@ -13,3 +13,9 @@ production:
   clear_solid_queue_finished_jobs:
     command: "SolidQueue::Job.clear_finished_in_batches(sleep_between_batches: 0.3)"
     schedule: every hour at minute 12
+  refresh_booking_calendars:
+    command: "BookingSetting.where(enabled: true).find_each { |setting| CalendarRefreshJob.perform_later(setting.id) }"
+    schedule: every 30 minutes
+  expire_booking_requests:
+    class: BookingRequestExpiryJob
+    schedule: every hour at minute 5

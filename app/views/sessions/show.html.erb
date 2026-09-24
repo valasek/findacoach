@@ -12,7 +12,7 @@
         <span class="hidden sm:inline">Back</span>
       <% end %>
     </span>
-    <h1 class="flex min-w-0 flex-wrap items-center justify-center gap-2 text-center"><%= @session.date %>
+    <h1 class="flex min-w-0 flex-wrap items-center justify-center gap-2 text-center"><%= @session.starts_at&.to_fs(:long) || @session.date %>
       <% if @session.paid? %>
         <div class="badge badge-success badge-sm">Paid</div>
       <% else %>

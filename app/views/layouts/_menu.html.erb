@@ -10,6 +10,7 @@
         <% if user_signed_in? %>
           <li><%= link_to "Dashboard", findacoach_dashboard_path, class: "text-base-content" %></li>
           <li><%= link_to "Clients", clients_path, class: "text-base-content" %></li>
+          <li><%= link_to "Booking requests", booking_requests_path, class: "text-base-content" %></li>
         <% else %>
           <li><%= link_to "Pricing", findacoach_pricing_path, class: "text-base-content" %></li>
           <li><%= link_to "Blog", findacoach_blog_path, class: "text-base-content" %></li>
@@ -27,6 +28,7 @@
       <% if user_signed_in? %>
         <li><%= link_to "Dashboard", findacoach_dashboard_path, class: "text-base-content" %></li>
         <li><%= link_to "Clients", clients_path, class: "text-base-content" %></li>
+        <li><%= link_to "Booking requests", booking_requests_path, class: "text-base-content" %></li>
       <% else %>
         <li><%= link_to "Pricing", findacoach_pricing_path, class: "text-base-content" %></li>
         <li><%= link_to "Blog", findacoach_blog_path, class: "text-base-content" %></li>

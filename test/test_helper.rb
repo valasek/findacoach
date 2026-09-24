@@ -10,7 +10,17 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Add more helper methods to be used by all tests here...
+    def with_available_slots(slots)
+      original_constructor = AvailableSlotFinder.method(:new)
+      stub = Struct.new(:slots) do
+        def call(**) = slots
+        def free?(starts_at:, **) = slots.any? { |slot| slot.starts_at.to_i == starts_at.to_i }
+      end
+      AvailableSlotFinder.define_singleton_method(:new) { |*| stub.new(slots) }
+      yield
+    ensure
+      AvailableSlotFinder.define_singleton_method(:new, original_constructor)
+    end
   end
 
   class ActionDispatch::IntegrationTest

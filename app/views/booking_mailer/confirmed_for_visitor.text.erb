@@ -1,0 +1,9 @@
+Hello <%= @booking_request.visitor_name %>,
+
+<%= @coach.user_profile.display_name %> confirmed your coaching session.
+
+Your time: <%= @booking_request.starts_at.in_time_zone(@booking_request.visitor_timezone).to_fs(:long) %> (<%= @booking_request.visitor_timezone %>)
+
+<% if @booking_request.coach_message.present? %>Message from your coach: <%= @booking_request.coach_message %>
+
+<% end %>The attached calendar event can be added to Google Calendar, Outlook, or another calendar app.

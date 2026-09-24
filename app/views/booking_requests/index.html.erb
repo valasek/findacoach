@@ -1,0 +1,26 @@
+<% content_for :title, "Booking requests" %>
+
+<div class="mx-auto max-w-4xl py-8">
+  <div class="mb-8 flex items-end justify-between gap-4">
+    <div>
+      <h1 class="text-3xl font-bold">Booking requests</h1>
+      <p class="mt-2 text-base-content/70">Review pending requests and recent decisions.</p>
+    </div>
+  </div>
+
+  <% if @booking_requests.empty? %>
+    <div role="status" class="alert">You have no booking requests.</div>
+  <% else %>
+    <div class="divide-y divide-base-300 border-y border-base-300">
+      <% @booking_requests.each do |booking_request| %>
+        <%= link_to booking_request, class: "grid grid-cols-1 gap-2 py-4 hover:bg-base-200 sm:grid-cols-[1fr_auto] sm:px-3" do %>
+          <span>
+            <span class="block font-semibold"><%= booking_request.visitor_name %></span>
+            <span class="block text-sm text-base-content/70"><%= booking_request.starts_at.in_time_zone(current_user.booking_timezone).to_fs(:long) %></span>
+          </span>
+          <span class="badge <%= booking_request.pending? ? "badge-warning" : "badge-ghost" %>"><%= booking_request.status.humanize %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

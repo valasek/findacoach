@@ -1,0 +1,130 @@
+<%= form_with model: booking_setting, url: booking_setting_path, method: :patch, class: "space-y-6" do |form| %>
+  <header class="border-b border-base-300 pb-6">
+    <h2 class="text-xl font-semibold">Online booking</h2>
+    <p class="mt-2 max-w-3xl text-sm text-base-content/70">Visitors choose from your available time slots and send a request. Nothing is added to your sessions until you review and confirm it.</p>
+    <p class="mt-3 break-all text-sm">
+      Public booking page:
+      <%= link_to coach_homepage_url(username: current_user.user_profile.username),
+        coach_homepage_url(username: current_user.user_profile.username),
+            class: "link link-primary font-medium",
+            target: "_blank",
+            rel: "noopener" %>
+    </p>
+  </header>
+
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
+    <section class="space-y-6">
+      <div>
+        <h3 class="font-semibold">Calendar and availability</h3>
+        <p class="mt-1 text-sm text-base-content/70">Connect the calendar you already use. Busy events are hidden from visitors; event names and details are never shown.</p>
+      </div>
+
+      <fieldset class="fieldset">
+        <label class="label cursor-pointer justify-start gap-3">
+          <%= form.checkbox :enabled, class: "toggle toggle-primary" %>
+          <span class="label-text font-medium">Accept booking requests</span>
+        </label>
+        <p class="label whitespace-normal">Turn this on after your calendar and working hours are ready.</p>
+      </fieldset>
+
+      <fieldset class="fieldset" data-controller="timezone">
+        <legend class="fieldset-legend"><%= form.label :timezone, "Your timezone" %></legend>
+        <%= form.select :timezone,
+            iana_time_zone_options,
+              {},
+              class: "select w-full",
+              data: { timezone_target: "select" } %>
+        <p class="label whitespace-normal">Visitors see times converted to their own timezone.</p>
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend"><%= form.label :ics_url, "Google or Outlook calendar link" %></legend>
+        <% if booking_setting.ics_url.present? %>
+          <p class="text-sm text-success">Calendar connected. Paste a new ICS link only to replace it.</p>
+        <% end %>
+        <%= form.url_field :ics_url,
+              value: nil,
+              placeholder: "https://calendar.google.com/.../basic.ics",
+              autocomplete: "off",
+              class: "input w-full" %>
+        <div class="mt-2 text-sm text-base-content/70">
+          <p class="font-medium text-base-content">Google Calendar setup</p>
+          <ol class="mt-1 list-decimal space-y-1 pl-5">
+            <li>Open your calendar's settings.</li>
+            <li>Under <strong>Access permissions for events</strong>, select <strong>Make available to public</strong>.</li>
+            <li>Choose <strong>See only free/busy (hide details)</strong>.</li>
+            <li>Under <strong>Integrate calendar</strong>, copy the <strong>Public address in iCal format</strong> and paste it above.</li>
+          </ol>
+          <p class="mt-2">Only busy times are used. Event names and details are not shown to visitors.</p>
+        </div>
+        <% if booking_setting.last_calendar_sync_at.present? %>
+          <p class="label whitespace-normal">Last checked <%= time_ago_in_words(booking_setting.last_calendar_sync_at) %> ago.</p>
+        <% end %>
+        <% if booking_setting.calendar_sync_error.present? %>
+          <p class="text-sm text-error"><%= booking_setting.calendar_sync_error %></p>
+        <% end %>
+      </fieldset>
+
+      <% if booking_setting.ics_url.present? %>
+        <fieldset class="fieldset">
+          <label class="label cursor-pointer justify-start gap-3 text-error">
+            <%= check_box_tag "booking_setting[disconnect_calendar]", "1", false, class: "checkbox checkbox-error" %>
+            <span class="label-text">Disconnect the linked calendar</span>
+          </label>
+        </fieldset>
+      <% end %>
+    </section>
+
+    <section class="space-y-6">
+      <div>
+        <h3 class="font-semibold">Times visitors can request</h3>
+        <p class="mt-1 text-sm text-base-content/70">Working hours define when sessions may start. Calendar events and confirmed sessions are removed automatically.</p>
+      </div>
+
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Weekly working hours</legend>
+        <div class="space-y-3">
+          <% Date::DAYNAMES.each_with_index.to_a.rotate(1).each do |day_name, weekday| %>
+            <% interval = Array(booking_setting.weekly_hours[weekday.to_s]).first || {} %>
+            <div class="grid grid-cols-[minmax(5rem,1fr)_1fr_1fr] items-center gap-2">
+              <span class="text-sm font-medium"><%= day_name %></span>
+              <%= time_field_tag "booking_setting[weekly_hours][#{weekday}][start]", interval["start"], class: "input w-full min-w-0", aria: { label: "#{day_name} start" } %>
+              <%= time_field_tag "booking_setting[weekly_hours][#{weekday}][end]", interval["end"], class: "input w-full min-w-0", aria: { label: "#{day_name} end" } %>
+            </div>
+          <% end %>
+        </div>
+        <p class="label whitespace-normal">Leave both fields empty for days when you do not work.</p>
+      </fieldset>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend"><%= form.label :duration_options_text, "Session lengths" %></legend>
+          <%= form.text_field :duration_options_text, class: "input w-full", placeholder: "30, 60, 90" %>
+          <p class="label whitespace-normal">Minutes offered to visitors, separated by commas.</p>
+        </fieldset>
+
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend"><%= form.label :default_duration, "Preferred length" %></legend>
+          <%= form.number_field :default_duration, min: 15, max: 180, step: 15, class: "input w-full" %>
+          <p class="label whitespace-normal">Preselected when a visitor opens the page.</p>
+        </fieldset>
+
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend"><%= form.label :minimum_notice_hours, "Minimum notice in hours" %></legend>
+          <%= form.number_field :minimum_notice_hours, min: 0, max: 336, class: "input w-full" %>
+          <p class="label whitespace-normal">How far ahead a visitor must request a session.</p>
+        </fieldset>
+
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend"><%= form.label :buffer_minutes, "Time between sessions" %></legend>
+          <%= form.select :buffer_minutes, [ 0, 15, 30, 45, 60 ].map { |minutes| [ "#{minutes} minutes", minutes ] }, {}, class: "select w-full" %>
+          <p class="label whitespace-normal">Keeps preparation time free around busy events and sessions.</p>
+        </fieldset>
+      </div>
+    </section>
+  </div>
+
+  <div class="flex justify-end border-t border-base-300 pt-6">
+    <%= form.submit "Save booking settings", class: "btn btn-primary w-full sm:w-auto" %>
+  </div>
+<% end %>

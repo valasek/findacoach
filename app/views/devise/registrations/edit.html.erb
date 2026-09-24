@@ -1,11 +1,11 @@
-<div class="min-h-screen flex items-center justify-center p-4">
-  <div class="max-w-md w-full">
+<div class="min-h-screen p-4 sm:p-6 lg:p-8">
+  <div class="mx-auto w-full max-w-5xl">
     <h2 class="text-2xl font-semibold mb-6">Settings</h2>
 
-    <div class="tabs tabs-lift">
+    <div class="tabs tabs-lift overflow-x-auto">
       <!-- Settings Tab -->
-      <input type="radio" name="profile_tabs" id="settings_tab" class="tab" aria-label="Profile" checked>
-      <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
+      <%= tag.input type: "radio", name: "profile_tabs", id: "settings_tab", class: "tab", aria: { label: "Profile" }, checked: params[:tab] != "booking" %>
+      <div class="tab-content min-h-[850px] rounded-b-lg border-base-300 bg-base-100 p-4 sm:p-6 lg:p-8">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "settings_form", multipart: true }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="space-y-6">
@@ -78,18 +78,24 @@
         <% end %>
       </div>
 
+      <!-- Booking Tab -->
+      <%= tag.input type: "radio", name: "profile_tabs", id: "booking_tab", class: "tab", aria: { label: "Booking" }, checked: params[:tab] == "booking" %>
+      <div class="tab-content min-h-[850px] rounded-b-lg border-base-300 bg-base-100 p-4 sm:p-6 lg:p-8">
+        <%= render "booking_settings/form", booking_setting: @booking_setting %>
+      </div>
+
       <!-- Services Tab -->
       <input type="radio" name="profile_tabs" id="services_tab" class="tab" aria-label="Services">
-      <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
+      <div class="tab-content min-h-[850px] rounded-b-lg border-base-300 bg-base-100 p-4 sm:p-6 lg:p-8">
         <div class="space-y-6">
           <%= render "services/index" %>
         </div>
       </div>
 
       <!-- Change Password Tab (only show if user doesn't use SSO) -->
+      <input type="radio" name="profile_tabs" id="password_tab" class="tab" aria-label="Change Password">
       <% unless current_user.sso_user? %>
-        <input type="radio" name="profile_tabs" id="password_tab" class="tab" aria-label="Change Password">
-        <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
+        <div class="tab-content min-h-[850px] rounded-b-lg border-base-300 bg-base-100 p-4 sm:p-6 lg:p-8">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "password_form" }) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -128,8 +134,7 @@
         </div>
       <% else %>
         <!-- SSO User Message -->
-        <input type="radio" name="profile_tabs" id="password_tab" class="tab" aria-label="Change Password">
-        <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
+        <div class="tab-content min-h-[850px] rounded-b-lg border-base-300 bg-base-100 p-4 sm:p-6 lg:p-8">
           <div>
             <p class="text-sm">You signed in using SSO (Google, Apple, Facebook, etc.). To change your password, please visit your SSO provider:</p>
             <div class="mt-4 flex flex-wrap gap-2">
@@ -150,7 +155,7 @@
 
       <!-- Cancel Account Tab -->
       <input type="radio" name="profile_tabs" id="cancel_tab" class="tab" aria-label="Cancel Account">
-      <div class="tab-content bg-base-100 border-base-300 rounded-b-lg p-6 min-h-[850px]">
+      <div class="tab-content min-h-[850px] rounded-b-lg border-base-300 bg-base-100 p-4 sm:p-6 lg:p-8">
         <div class="space-y-6">
           <div class="alert alert-warning">
             <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">

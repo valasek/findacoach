@@ -7,7 +7,9 @@ class User < ApplicationRecord
   has_many :clients, dependent: :destroy
   has_many :services, dependent: :destroy
   has_many :sessions, through: :clients
+  has_many :booking_requests, dependent: :destroy
   has_one :user_profile, dependent: :destroy
+  has_one :booking_setting, dependent: :destroy
   accepts_nested_attributes_for :user_profile, update_only: true
 
   # create a profile after user creation
@@ -19,6 +21,10 @@ class User < ApplicationRecord
 
   def total_coaching_hours
     sessions.sum(:duration)
+  end
+
+  def booking_timezone
+    booking_setting&.timezone || Time.zone.name
   end
 
   def percentage_paid_seesions

@@ -5,7 +5,7 @@ class Session < ApplicationRecord
   default_scope { order(date: :desc) }
 
   validates :date, presence: true
-  validates :duration, presence: true, numericality: { greater_than_or_equal_to: 0.0, less_than_or_equal_to: 12.0, step: 0.5 }
+  validates :duration, presence: true, numericality: { greater_than_or_equal_to: 0.25, less_than_or_equal_to: 12.0, step: 0.25 }
   validates :paid, inclusion: { in: [ true, false ] }
 
   validate :service_belongs_to_client_user

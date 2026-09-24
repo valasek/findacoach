@@ -1,4 +1,8 @@
 2026:
+  - date: 2026-09-24
+    items:
+      - "New: Let clients request sessions from your public coach page, with available times shown in their timezone"
+      - "Set your booking hours and session lengths, connect a Google or Outlook calendar, and confirm or decline requests before a session is booked"
   - date: 2026-09-14
     items:
       - "Added a Changelog link to the user menu"

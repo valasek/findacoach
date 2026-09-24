@@ -8,8 +8,12 @@
       <%= form.date_field :date, autofocus: true, class: ["input w-full text-base-content", {"input-error": session.errors[:date].any?}] %>
     </fieldset>
     <fieldset class="fieldset min-w-0">
+      <legend class="fieldset-legend"><%= form.label :starts_at, "Scheduled start (optional)" %></legend>
+      <%= form.datetime_local_field :starts_at, class: ["input w-full text-base-content", {"input-error": session.errors[:starts_at].any?}] %>
+    </fieldset>
+    <fieldset class="fieldset min-w-0">
       <legend class="fieldset-legend"><%= form.label :duration %>(hrs)</legend>
-      <%= form.number_field :duration, value: session.duration || 1, step: 0.5, min: 0, class: ["input w-full text-base-content", {"input-error": session.errors[:duration].any?}] %>
+      <%= form.number_field :duration, value: session.duration || 1, step: 0.25, min: 0.25, class: ["input w-full text-base-content", {"input-error": session.errors[:duration].any?}] %>
     </fieldset>
     <fieldset class="fieldset min-w-0">
       <legend class="fieldset-legend"><%= form.label :service %></legend>

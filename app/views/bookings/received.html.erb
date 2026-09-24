@@ -1,0 +1,7 @@
+<% content_for :title, "Request sent" %>
+
+<div class="mx-auto max-w-xl py-16 text-center">
+  <h1 class="text-3xl font-bold">Your request was sent</h1>
+  <p class="mt-4 text-base-content/75">Check your email for the request details. <%= @profile.display_name %> will email you after reviewing it.</p>
+  <%= link_to "Back to coach profile", coach_homepage_path(username: @profile.username), class: "btn btn-primary mt-8" %>
+</div>

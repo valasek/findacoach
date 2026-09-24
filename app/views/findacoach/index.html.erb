@@ -4,9 +4,9 @@
     <div class="hero-content text-center px-4 sm:px-6">
       <div class="max-w-4xl">
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-base-content mb-4">Your Coaching Journey, Simplified</h1>
-        <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary mb-6">Clients / Bookings / Notes / ...</h2>
+        <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary mb-6">Online bookings, clients, and session notes</h2>
         <p class="text-lg sm:text-xl text-base-content/80 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Effortless client &amp; session management built for coaches, mentors, and guides
+          Share your coach page so clients can request a time that works for them. Review each request before it becomes a session.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <div data-controller="demo-login-increment" data-demo-login-increment-increment-url-value="<%= increment_demo_count_path %>">
@@ -93,6 +93,33 @@
       </div>
 
       <div class="space-y-16 sm:space-y-20">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div class="order-2 min-w-0 lg:order-1">
+            <div class="mockup-browser bg-base-100 border w-full min-w-0">
+              <div class="mockup-browser-toolbar">
+                <div class="input w-full min-w-0">https://findacoach.eu/coach/your-name</div>
+              </div>
+              <div class="bg-base-100 p-6">
+                <%= image_tag "feat-booking.png", alt: "Online booking form with available session times", class: "w-full" %>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 min-w-0 lg:order-2">
+            <h3 class="text-xl sm:text-2xl font-bold mb-4">Online booking requests</h3>
+            <p class="text-base-content/80 mb-6 leading-relaxed">
+              Share a public coach page with your photo, bio, and website so clients can get to know you
+              and request an available time in their own timezone.
+              Set your working hours and session lengths, connect your Google or Outlook calendar,
+              and confirm or decline each request before it becomes a booking.
+            </p>
+            <ul class="space-y-2 text-base-content/80">
+              <li>Available times reflect your calendar and working hours</li>
+              <li>Clients can request the session length they need</li>
+              <li>You decide which requests to accept</li>
+            </ul>
+          </div>
+        </div>
+
         <!-- Export in ICF template -->
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div class="min-w-0">
@@ -234,46 +261,6 @@
           </div>
         </div>
 
-        <!-- Coach Homepage Feature -->
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div class="min-w-0">
-            <h3 class="text-xl sm:text-2xl font-bold mb-4">Professional Coach Profile</h3>
-            <p class="text-base-content/80 mb-6 leading-relaxed">
-              Create a professional online presence with your own coach homepage.
-              Share your expertise and make it easy for potential clients to connect with you.
-            </p>
-            <ul class="space-y-2">
-              <li class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>Custom coach profile</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>Showcase credentials</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>Easy client contact</span>
-              </li>
-            </ul>
-          </div>
-          <div class="min-w-0">
-            <div class="mockup-browser bg-base-100 border w-full min-w-0">
-              <div class="mockup-browser-toolbar">
-                <div class="input w-full min-w-0">https://findacoach.eu/your-name</div>
-              </div>
-              <div class="bg-base-100 p-6">
-                <%= image_tag "feat-homepage.png", alt: "Coach Homepage" %>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>

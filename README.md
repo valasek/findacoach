@@ -127,8 +127,19 @@ Clean all assets `rails assets:clobber`
 
 See test emails (email integration is done via resend.com):
 
-- in folder `tmp/mail/`
-- see previews in the browser: `http://localhost:3000/rails/mailers`
+- emails delivered while developing are stored in `tmp/mail/`; Rails appends messages to one file per recipient
+- generated previews for every mailer are available at `http://localhost:3000/rails/mailers`
+
+### Session booking
+
+Coaches configure public session booking in **Settings → Booking**:
+
+1. Set the coach zone and weekly working hours.
+2. Paste a private ICS link published by Google Calendar, Outlook.com, or Microsoft 365.
+3. Choose up to six session lengths, minimum notice, and time between sessions.
+4. Enable booking requests.
+
+Calendar events are treated as busy time. Visitors see available slots for the next two weeks in their timezone. A request creates a session only after the coach confirms it. Confirmation emails include an `.ics` calendar attachment; this release does not write events back to the linked calendar.
 
 Include into precommit hook:
 

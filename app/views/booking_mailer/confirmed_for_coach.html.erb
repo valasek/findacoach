@@ -1,0 +1,5 @@
+<p>Your session with <%= @booking_request.visitor_name %> is confirmed.</p>
+
+<p><strong>Your time:</strong> <%= @booking_request.starts_at.in_time_zone(@coach.booking_timezone).to_fs(:long) %> (<%= @coach.booking_timezone %>)</p>
+
+<p>The client and session are now available in Find a Coach. A calendar event is attached.</p>
