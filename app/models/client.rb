@@ -1,6 +1,7 @@
 class Client < ApplicationRecord
   belongs_to :user
   has_many :sessions, dependent: :destroy
+  has_many :booking_requests, dependent: :nullify
 
   default_scope { order(:name) }
 

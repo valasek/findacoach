@@ -1,6 +1,7 @@
 class Session < ApplicationRecord
   belongs_to :client
   belongs_to :service
+  has_many :booking_requests, dependent: :nullify
 
   default_scope { order(date: :desc) }
 

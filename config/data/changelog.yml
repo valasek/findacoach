@@ -1,4 +1,7 @@
 2026:
+  - date: 2026-10-04
+    items:
+      - "Fixed: Deleting a session or client no longer fails when it is linked to a booking request"
   - date: 2026-09-24
     items:
       - "New: Let clients request sessions from your public coach page, with available times shown in their timezone"

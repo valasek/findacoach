@@ -28,6 +28,14 @@ class BookingRequestTest < ActiveSupport::TestCase
     assert_not booking_request.update(status: :confirmed)
   end
 
+  test "deleting the linked session keeps the booking request" do
+    session = sessions(:oneS)
+    booking_request = valid_request.tap { |r| r.session = session; r.client = session.client; r.save! }
+
+    assert_difference("Session.count", -1) { session.destroy! }
+    assert_nil booking_request.reload.session_id
+  end
+
   test "encrypts visitor details" do
     booking_request = valid_request.tap(&:save!)
     stored_value = BookingRequest.connection.select_value("SELECT visitor_email FROM booking_requests WHERE id = #{booking_request.id}")
