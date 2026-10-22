@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QS0SQ4NF2B" nonce="<%= request.content_security_policy_nonce %>"></script>
-    <script nonce="<%= request.content_security_policy_nonce %>">
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-QS0SQ4NF2B');
-    </script>
     <title><%= content_for(:title) || "Findacoach" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">

@@ -64,7 +64,7 @@ Clean up unused images and containers
 
 Hosting - [Hetzner VPS](https://www.hetzner.com/)
 
-Google Analytics
+Cloudflare Web Analytics
 
 # DB Backup
 Uses [Litestream](https://litestream.io/) onto [Claudfare R2](https://dash.cloudflare.com/)
